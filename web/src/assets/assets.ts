@@ -1,8 +1,5 @@
 import { MonsterId } from "@core/types/monster_id";
 
-import gold from "@/assets/gold.png";
-import diamond from "@/assets/diamond.png";
-
 import angel from "@/assets/monsters/angel.png";
 import death_knigth from "@/assets/monsters/death_knigth.png";
 import deep_dwarf from "@/assets/monsters/deep_dwarf.png";
@@ -31,8 +28,5 @@ function monsterIdToSrc(id: MonsterId) {
 }
 
 export const assets = {
-  gold,
-  diamond,
-
   monsterIdToSrc,
 }

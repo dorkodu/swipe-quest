@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
     "react-swipeable": "^7.0.1",
+    "twemoji": "^14.0.2",
     "zustand": "^4.4.1"
   },
   "devDependencies": {

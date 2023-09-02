@@ -2,6 +2,7 @@ import { assets } from "@/assets/assets";
 import { IGameEvent } from "@core/types/game_event";
 import { Button, Card, Flex, Image, Title } from "@mantine/core";
 import { IconSword } from "@tabler/icons-react";
+import Emoji from "../Emoji";
 
 function GameEvent({ event }: { event: IGameEvent | undefined }) {
   switch (event?.id) {
@@ -32,10 +33,10 @@ function GoldEvent({ event }: { event: IGameEvent }) {
 
   return (
     <Card withBorder w="100%" maw={360}>
-      <Flex direction="column" align="center">
-        <Image src={assets.gold} width={64} style={{ imageRendering: "pixelated" }} />
+      <Flex direction="column" align="center" gap="md">
+        <Emoji emoji="🪙" style={{ width: 48 }} />
         <Title order={3}>{event.count}</Title>
-        <Button fullWidth mt="md">Collect</Button>
+        <Button fullWidth>Collect</Button>
       </Flex>
     </Card>
   )
@@ -46,10 +47,10 @@ function DiamondEvent({ event }: { event: IGameEvent }) {
 
   return (
     <Card withBorder w="100%" maw={360}>
-      <Flex direction="column" align="center">
-        <Image src={assets.diamond} width={64} style={{ imageRendering: "pixelated" }} />
+      <Flex direction="column" align="center" gap="md">
+        <Emoji emoji="💎" style={{ width: 48 }} />
         <Title order={3}>{event.count}</Title>
-        <Button fullWidth mt="md">Collect</Button>
+        <Button fullWidth>Collect</Button>
       </Flex>
     </Card>
   )
@@ -103,7 +104,13 @@ function ExperienceEvent({ event }: { event: IGameEvent }) {
   if (event.id !== "experience") return null;
 
   return (
-    <Card withBorder w="100%" maw={360}>experience</Card>
+    <Card withBorder w="100%" maw={360}>
+      <Flex direction="column" align="center" gap="md">
+        <Emoji emoji="⭐" style={{ width: 48 }} />
+        <Title order={3}>{event.count}</Title>
+        <Button fullWidth>Collect</Button>
+      </Flex>
+    </Card>
   )
 }
 
