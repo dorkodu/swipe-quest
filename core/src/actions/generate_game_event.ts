@@ -2,7 +2,7 @@ import { monsterData } from "../data/monster_data";
 import { IGameData } from "../gamedata";
 import { random } from "../lib/random";
 import { IGameEvent } from "../types/game_event";
-import { MonsterId } from "../types/monster_id";
+import { MonsterId } from "../types/monster";
 
 export const actionGenerateGameEvent = {
   act,

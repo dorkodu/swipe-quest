@@ -1,4 +1,4 @@
-import { MonsterId } from "@core/types/monster_id";
+import { MonsterId } from "@core/types/monster";
 
 import angel from "@/assets/monsters/angel.png";
 import death_knigth from "@/assets/monsters/death_knigth.png";

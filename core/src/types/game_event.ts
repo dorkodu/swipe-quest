@@ -1,4 +1,4 @@
-import { MonsterId } from "./monster_id"
+import { MonsterId } from "./monster"
 
 export type IGameEvent =
   {

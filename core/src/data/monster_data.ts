@@ -1,5 +1,4 @@
-import { IMonster } from "../types/monster";
-import { MonsterId } from "../types/monster_id";
+import { IMonster, MonsterId } from "../types/monster";
 
 export const monsterData: Record<Exclude<MonsterId, MonsterId.None>, IMonster> = {
   [MonsterId.Angel]: {
