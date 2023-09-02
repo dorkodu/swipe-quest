@@ -28,6 +28,7 @@
     "noUncheckedIndexedAccess": true,
 
     "paths": {
+      "@core/*": ["../core/src/*"],
       "@/*": ["./src/*"],
     }
   },
