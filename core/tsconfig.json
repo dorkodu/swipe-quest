@@ -14,6 +14,8 @@
     "outDir": "./dist",
     "removeComments": true,
     "skipLibCheck": true,
+    
+    "resolveJsonModule": true,
 
     "lib": ["es2017","dom"]
   },

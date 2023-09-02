@@ -1,8 +1,7 @@
-import { monsterData } from "../data/monster_data";
 import { IGameData } from "../gamedata";
 import { random } from "../lib/random";
 import { IGameEvent } from "../types/game_event";
-import { MonsterId } from "../types/monster";
+import { MonsterId, monsterData } from "../types/monster";
 
 export const actionGenerateGameEvent = {
   act,
@@ -58,7 +57,7 @@ function act(data: IGameData, info: Info) {
         monsterId: random.percent(
           info.seed,
           Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
-        ) || MonsterId.None,
+        ) || "None",
       }
       break;
     case "monster_unlock":
@@ -67,7 +66,7 @@ function act(data: IGameData, info: Info) {
         monsterId: random.percent(
           info.seed,
           Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
-        ) || MonsterId.None,
+        ) || "None",
       }
       break;
     case "mystery_box":
@@ -97,7 +96,7 @@ function act(data: IGameData, info: Info) {
         monsterId: random.percent(
           info.seed,
           Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
-        ) || MonsterId.None,
+        ) || "None",
       }
       break;
   }

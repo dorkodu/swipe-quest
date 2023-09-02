@@ -1,13 +1,8 @@
+import item from "../data/item.json";
+
 export interface IItem {
-  
+  path: string;
 }
 
-export enum ItemId {
-  None,
-
-  /* Weapons */
-  /* Armors */
-  /* Runes */
-  /* Rings */
-  /* Amulets */
-}
+export type ItemId = keyof typeof item;
+export const itemData: Record<ItemId, IItem> = item;

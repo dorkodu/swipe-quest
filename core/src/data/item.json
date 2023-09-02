@@ -1,0 +1,41 @@
+{
+  /* Weapons */
+  "Ancient Sword": {
+    "path": "/weapons/ancient_sword.png"
+  },
+  "Axe": {
+    "path": "/weapons/axe.png"
+  },
+
+  /* Armors */
+  "Animal Skin Armor": {
+    "path": "/armors/animal_skin_1_new.png"
+  },
+  "Banded Mail Armor": {
+    "path": "/armors/banded_mail_1.png"
+  },
+
+  /* Runes */
+  "Generic Rune": {
+    "path": "/runes/generic.png"
+  },
+  "Abyss Rune": {
+    "path": "/runes/rune_abyss.png"
+  },
+
+  /* Rings */
+  "Agate Ring": {
+    "path": "/rings/agate.png"
+  },
+  "Brass Ring": {
+    "path": "/rings/brass.png"
+  },
+
+  /* Amulets */
+  "Bone Gray Amulet": {
+    "path": "/amulets/bone_gray.png"
+  },
+  "Cameo Blue Amulet": {
+    "path": "/amulets/cameo_blue.png"
+  }
+}

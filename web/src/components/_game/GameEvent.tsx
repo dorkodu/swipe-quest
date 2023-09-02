@@ -1,8 +1,8 @@
-import { assets } from "@/assets/assets";
 import { IGameEvent } from "@core/types/game_event";
 import { Button, Card, Flex, Image, Title } from "@mantine/core";
 import { IconSword } from "@tabler/icons-react";
 import Emoji from "../Emoji";
+import { monsterData } from "@core/types/monster";
 
 function GameEvent({ event }: { event: IGameEvent | undefined }) {
   switch (event?.id) {
@@ -34,7 +34,7 @@ function GoldEvent({ event }: { event: IGameEvent }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
-        <Emoji emoji="🪙" style={{ width: 48 }} />
+        <Emoji emoji="🪙" style={{ width: 48, height: 48 }} />
         <Title order={3}>{event.count}</Title>
         <Button fullWidth>Collect</Button>
       </Flex>
@@ -48,7 +48,7 @@ function DiamondEvent({ event }: { event: IGameEvent }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
-        <Emoji emoji="💎" style={{ width: 48 }} />
+        <Emoji emoji="💎" style={{ width: 48, height: 48 }} />
         <Title order={3}>{event.count}</Title>
         <Button fullWidth>Collect</Button>
       </Flex>
@@ -62,7 +62,7 @@ function MonsterFightEvent({ event }: { event: IGameEvent }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center">
-        <Image src={assets.monsterIdToSrc(event.monsterId)} width={64} style={{ imageRendering: "pixelated" }} />
+        <Image src={monsterData[event.monsterId].path} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
         <Button fullWidth mt="md" leftIcon={<IconSword />}>Fight</Button>
       </Flex>
@@ -76,7 +76,7 @@ function MonsterUnlockEvent({ event }: { event: IGameEvent }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center">
-        <Image src={assets.monsterIdToSrc(event.monsterId)} width={64} style={{ imageRendering: "pixelated" }} />
+        <Image src={monsterData[event.monsterId].path} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
         <Button fullWidth mt="md">Unlock</Button>
       </Flex>
@@ -106,7 +106,7 @@ function ExperienceEvent({ event }: { event: IGameEvent }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
-        <Emoji emoji="⭐" style={{ width: 48 }} />
+        <Emoji emoji="⭐" style={{ width: 48, height: 48 }} />
         <Title order={3}>{event.count}</Title>
         <Button fullWidth>Collect</Button>
       </Flex>
@@ -128,7 +128,7 @@ function BossFightEvent({ event }: { event: IGameEvent }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center">
-        <Image src={assets.monsterIdToSrc(event.monsterId)} width={64} style={{ imageRendering: "pixelated" }} />
+        <Image src={monsterData[event.monsterId].path} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
         <Button fullWidth mt="md" leftIcon={<IconSword />}>Fight</Button>
       </Flex>
