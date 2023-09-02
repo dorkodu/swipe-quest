@@ -1,15 +1,25 @@
-import { Card, Flex, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
-import { useSwipeable } from "react-swipeable"
+import { useGameStore } from "@/stores/gameStore";
+import { Flex, useMantineTheme } from "@mantine/core";
+import { useEffect, useState } from "react";
+import { useSwipeable } from "react-swipeable";
+import { actionGenerateGameEvent } from "@core/actions/generate_game_event";
+import GameEvent from "@/components/_game/GameEvent";
 
 function Home() {
   const theme = useMantineTheme();
   const handlers = useSwipeable({
-    onSwipedUp: (ev) => { console.log(ev); setCount(count + 1) },
+    onSwipedUp: (_ev) => { setCount(count + 1) },
     trackMouse: true,
   });
 
+  const data = useGameStore(state => state.data);
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    useGameStore.setState(s => {
+      actionGenerateGameEvent.act(s.data, { seed: Date.now() })
+    })
+  }, [count]);
 
   return (
     <>
@@ -18,7 +28,9 @@ function Home() {
         maw={theme.breakpoints.sm} w="100%"
         {...handlers}
       >
-        <Card withBorder w="100%" h="100%" mx="md">{count}</Card>
+        <Flex w="100%" h="100%" mx="md" align="center" justify="center">
+          <GameEvent event={data.currentGameEvent} />
+        </Flex>
       </Flex>
     </>
   )
