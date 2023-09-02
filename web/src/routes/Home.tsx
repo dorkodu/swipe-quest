@@ -14,11 +14,11 @@ function Home() {
   return (
     <>
       <Flex
-        pos="absolute" align="center" justify="center"
-        maw={theme.breakpoints.sm} w="100%" h="100%"
+        pos="absolute" top={80} bottom={80}
+        maw={theme.breakpoints.sm} w="100%"
         {...handlers}
       >
-        <Card withBorder>{count}</Card>
+        <Card withBorder w="100%" h="100%" mx="md">{count}</Card>
       </Flex>
     </>
   )
