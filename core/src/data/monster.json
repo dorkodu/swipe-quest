@@ -1,10 +1,4 @@
 {
-  "None": {
-    "path": null,
-    "baseHp": 0,
-    "baseDmg": 0,
-    "baseSpd": 0
-  },
   "Angel": {
     "path": "/src/assets/monsters/angel.png",
     "baseHp": 1,

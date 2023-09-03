@@ -1,9 +1,11 @@
+import { ItemId } from "./item";
 import { MonsterId } from "./monster"
 
 export type GameEventId = keyof IGameEvent;
 export interface IGameEvent {
   item: {
     id: "item",
+    itemId: ItemId,
   }
 
   gold: {

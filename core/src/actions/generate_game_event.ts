@@ -1,6 +1,7 @@
 import { IGameData } from "../gamedata";
 import { random } from "../lib/random";
 import { IGameEvent, GameEventId } from "../types/game_event";
+import { ItemId, itemData } from "../types/item";
 import { MonsterId, monsterData } from "../types/monster";
 
 export const actionGenerateGameEvent = {
@@ -47,9 +48,17 @@ function act(data: IGameData, info: Info) {
   }
 }
 
-function eventItem(id: "item", data: IGameData, _info: Info) {
+function eventItem(id: "item", data: IGameData, info: Info) {
+  const itemId = random.percent(
+    info.seed,
+    Object.keys(itemData).map(result => ({ percent: 1, result: result as ItemId }))
+  );
+
+  if (!itemId) return;
+
   data.currentGameEvent = {
     id,
+    itemId
   }
 }
 
@@ -68,23 +77,31 @@ function eventDiamond(id: "diamond", data: IGameData, info: Info) {
 }
 
 function eventMonsterFight(id: "monster_fight", data: IGameData, info: Info) {
+  const monsterId = random.percent(
+    info.seed,
+    Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+  );
+
+  if (!monsterId) return;
+
   data.currentGameEvent = {
     id,
-    monsterId: random.percent(
-      info.seed,
-      Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
-    ) || "None",
+    monsterId,
     level: random.number(info.seed, 1, 100 + 1),
   }
 }
 
 function eventMonsterUnlock(id: "monster_unlock", data: IGameData, info: Info) {
+  const monsterId = random.percent(
+    info.seed,
+    Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+  );
+
+  if (!monsterId) return;
+
   data.currentGameEvent = {
     id,
-    monsterId: random.percent(
-      info.seed,
-      Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
-    ) || "None",
+    monsterId,
   }
 }
 
@@ -115,12 +132,16 @@ function eventFood(id: "food", data: IGameData, info: Info) {
 }
 
 function eventBossFight(id: "boss_fight", data: IGameData, info: Info) {
+  const monsterId = random.percent(
+    info.seed,
+    Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+  );
+
+  if (!monsterId) return;
+
   data.currentGameEvent = {
     id,
-    monsterId: random.percent(
-      info.seed,
-      Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
-    ) || "None",
+    monsterId,
     level: random.number(info.seed, 1, 100 + 1),
   }
 }

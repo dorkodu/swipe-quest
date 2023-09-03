@@ -7,6 +7,7 @@ import { game } from "@core/game";
 import { monsterData } from "@core/types/monster";
 import MonsterStats from "./MonsterStats";
 import { useMemo } from "react";
+import { itemData } from "@core/types/item";
 
 function GameEvent({ event }: { event: IGameEvent[GameEventId] | undefined }) {
   switch (event?.id) {
@@ -24,9 +25,14 @@ function GameEvent({ event }: { event: IGameEvent[GameEventId] | undefined }) {
   }
 }
 
-function ItemEvent({ }: { event: IGameEvent["item"] }) {
+function ItemEvent({ event }: { event: IGameEvent["item"] }) {
   return (
-    <Card withBorder w="100%" maw={360}>item</Card>
+    <Card withBorder w="100%" maw={360}>
+      <Flex direction="column" align="center" gap="md">
+        <Image src={assets.url(itemData[event.itemId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
+        <Title order={3}>{event.itemId}</Title>
+      </Flex>
+    </Card>
   )
 }
 

@@ -33,3 +33,12 @@ export const amuletData: Record<AmuletId, IAmulet> = amulet;
 export interface IAmulet {
   path: string | null;
 }
+
+export type ItemId = keyof typeof itemData;
+export const itemData = {
+  ...weaponData,
+  ...armorData,
+  ...runeData,
+  ...ringData,
+  ...amuletData,
+}
