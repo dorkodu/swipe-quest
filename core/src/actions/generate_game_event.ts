@@ -60,6 +60,9 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
     id,
     itemId
   }
+
+  if (!data.inventory.items[itemId]) data.inventory.items[itemId] = { id: itemId, count: 0 }
+  data.inventory.items[itemId]!.count++;
 }
 
 function eventGold(id: "gold", data: IGameData, _info: Info) {
@@ -128,6 +131,8 @@ function eventExperience(id: "experience", data: IGameData, _info: Info) {
     id,
     count: random.number(data, 1, 100 + 1),
   }
+
+  data.player.xp += data.currentGameEvent.count;
 }
 
 function eventFood(id: "food", data: IGameData, _info: Info) {

@@ -1,3 +1,4 @@
+import { ItemId } from "./item";
 import { MonsterId } from "./monster";
 
 export interface IPlayer {
@@ -11,6 +12,8 @@ export interface IPlayer {
 
 export interface IInventory {
   currentMonsterIndex: number;
+
+  items: { [key in ItemId]?: { id: ItemId, count: number } },
 
   monsters: Array<{
     id: MonsterId,

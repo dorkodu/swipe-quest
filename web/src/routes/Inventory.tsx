@@ -9,6 +9,7 @@ import { useState } from "react";
 import MonsterItems from "@/components/_game/MonsterItems";
 import Emoji from "@/components/Emoji";
 import InventoryItem from "@/components/_game/InventoryItem";
+import { itemData } from "@core/types/item";
 
 const useStyles = createStyles((theme) => ({
   inventoryTop: {
@@ -135,6 +136,14 @@ function ItemsSegment() {
         <InventoryItem emoji="🪙" count={data.player.gold} />
         <InventoryItem emoji="💎" count={data.player.diamond} />
         <InventoryItem emoji="🍏" count={data.player.food} />
+
+        {Object.values(data.inventory.items).map((item, i) =>
+          <InventoryItem
+            key={i}
+            src={assets.url(itemData[item.id].path)}
+            count={item.count}
+          />
+        )}
       </Flex>
     </>
   )
