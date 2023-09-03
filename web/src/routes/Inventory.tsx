@@ -5,13 +5,13 @@ import { textShadow } from "@/styles/css";
 import { game } from "@core/game";
 import { monsterData } from "@core/types/monster";
 import { Button, Card, Flex, Image, SegmentedControl, Title } from "@mantine/core"
-import { IconApple } from "@tabler/icons-react";
+import { IconArrowBigUpFilled } from "@tabler/icons-react";
 import { useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
+import MonsterItems from "@/components/_game/MonsterItems";
+import Emoji from "@/components/Emoji";
 
 function Inventory() {
-  const [segment, setSegment] = useState("monsters");
-
   return (
     <Flex direction="column" gap="md" mx="md" my={80}>
       <InventoryTop />
@@ -51,8 +51,24 @@ function InventoryTop() {
               { label: "Items", value: "items" },
             ]}
           />
-          <Button leftIcon={<IconApple />}>Feed</Button>
-          {currentMonsterStats && <MonsterStats {...currentMonsterStats} />}
+
+          {segment === "info" &&
+            <>
+              <Flex align="center" gap="md" wrap="wrap">
+                <Flex gap="xs">
+                  <Title order={5}>Cost:</Title>
+                  <Emoji emoji="🪙" style={{ width: 24, height: 24 }} />
+                  <Title order={5}>123</Title>
+                  <Emoji emoji="🍏" style={{ width: 24, height: 24 }} />
+                  <Title order={5}>123</Title>
+                </Flex>
+                <Button leftIcon={<IconArrowBigUpFilled />}>Upgrade</Button>
+              </Flex>
+              {currentMonsterStats && <MonsterStats {...currentMonsterStats} />}
+            </>
+          }
+
+          {segment === "items" && <MonsterItems />}
         </Flex>
       </Card>
 
