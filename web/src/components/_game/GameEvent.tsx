@@ -3,6 +3,7 @@ import { Button, Card, Flex, Image, Title } from "@mantine/core";
 import { IconSword } from "@tabler/icons-react";
 import Emoji from "../Emoji";
 import { monsterData } from "@core/types/monster";
+import { assets } from "@/assets/assets";
 
 function GameEvent({ event }: { event: IGameEvent | undefined }) {
   switch (event?.id) {
@@ -62,7 +63,7 @@ function MonsterFightEvent({ event }: { event: IGameEvent }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center">
-        <Image src={monsterData[event.monsterId].path} width={64} height={64} style={{ imageRendering: "pixelated" }} />
+        <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
         <Button fullWidth mt="md" leftIcon={<IconSword />}>Fight</Button>
       </Flex>
@@ -76,7 +77,7 @@ function MonsterUnlockEvent({ event }: { event: IGameEvent }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center">
-        <Image src={monsterData[event.monsterId].path} width={64} height={64} style={{ imageRendering: "pixelated" }} />
+        <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
         <Button fullWidth mt="md">Unlock</Button>
       </Flex>
@@ -128,7 +129,7 @@ function BossFightEvent({ event }: { event: IGameEvent }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center">
-        <Image src={monsterData[event.monsterId].path} width={64} height={64} style={{ imageRendering: "pixelated" }} />
+        <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
         <Button fullWidth mt="md" leftIcon={<IconSword />}>Fight</Button>
       </Flex>

@@ -1,41 +1,41 @@
 {
   /* Weapons */
   "Ancient Sword": {
-    "path": "/weapons/ancient_sword.png"
+    "path": "/src/assets/weapons/ancient_sword.png"
   },
   "Axe": {
-    "path": "/weapons/axe.png"
+    "path": "/src/assets/weapons/axe.png"
   },
 
   /* Armors */
   "Animal Skin Armor": {
-    "path": "/armors/animal_skin_1_new.png"
+    "path": "/src/assets/armors/animal_skin_1_new.png"
   },
   "Banded Mail Armor": {
-    "path": "/armors/banded_mail_1.png"
+    "path": "/src/assets/armors/banded_mail_1.png"
   },
 
   /* Runes */
   "Generic Rune": {
-    "path": "/runes/generic.png"
+    "path": "/src/assets/runes/generic.png"
   },
   "Abyss Rune": {
-    "path": "/runes/rune_abyss.png"
+    "path": "/src/assets/runes/rune_abyss.png"
   },
 
   /* Rings */
   "Agate Ring": {
-    "path": "/rings/agate.png"
+    "path": "/src/assets/rings/agate.png"
   },
   "Brass Ring": {
-    "path": "/rings/brass.png"
+    "path": "/src/assets/rings/brass.png"
   },
 
   /* Amulets */
   "Bone Gray Amulet": {
-    "path": "/amulets/bone_gray.png"
+    "path": "/src/assets/amulets/bone_gray.png"
   },
   "Cameo Blue Amulet": {
-    "path": "/amulets/cameo_blue.png"
+    "path": "/src/assets/amulets/cameo_blue.png"
   }
 }

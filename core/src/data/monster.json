@@ -1,66 +1,66 @@
 {
   "None": {
     "path": null,
-    "baseHp": 1,
-    "baseDmg": 1,
-    "baseSpd": 1
+    "baseHp": 0,
+    "baseDmg": 0,
+    "baseSpd": 0
   },
   "Angel": {
-    "path": "/monsters/angel.png",
+    "path": "/src/assets/monsters/angel.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Death Knight": {
-    "path": "/monsters/death_knight.png",
+    "path": "/src/assets/monsters/death_knight.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Deep Dwarf": {
-    "path": "/monsters/deep_dwarf.png",
+    "path": "/src/assets/monsters/deep_dwarf.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Jelly": {
-    "path": "/monsters/jelly.png",
+    "path": "/src/assets/monsters/jelly.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Ogre": {
-    "path": "/monsters/ogre_new.png",
+    "path": "/src/assets/monsters/ogre_new.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Phoenix": {
-    "path": "/monsters/phoenix.png",
+    "path": "/src/assets/monsters/phoenix.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Raven": {
-    "path": "/monsters/raven.png",
+    "path": "/src/assets/monsters/raven.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Freed Slave": {
-    "path": "/monsters/slave_freed.png",
+    "path": "/src/assets/monsters/slave_freed.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Stone Giant": {
-    "path": "/monsters/stone_giant_new.png",
+    "path": "/src/assets/monsters/stone_giant_new.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Wizard": {
-    "path": "/monsters/wizard.png",
+    "path": "/src/assets/monsters/wizard.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
