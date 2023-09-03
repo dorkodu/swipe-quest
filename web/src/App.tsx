@@ -4,6 +4,7 @@ import { Outlet, ScrollRestoration, useLocation, useNavigate } from "react-route
 import { theme as _theme } from "./styles/theme";
 import { useAppStore } from "./stores/appStore";
 import { useEffect } from "react";
+import ItemPickerModal from "./components/_game/modals/ItemPickerModal";
 
 function App() {
   const theme = useMantineTheme();
@@ -23,7 +24,7 @@ function App() {
   return (
     <MantineProvider theme={_theme} withNormalizeCSS withGlobalStyles>
 
-      <Flex pos="fixed" maw={theme.breakpoints.sm} w="100%" h={48} top={0} style={{ zIndex: 1000, background: theme.colors.dark[7] }}>
+      <Flex pos="fixed" maw={theme.breakpoints.sm} w="100%" h={48} top={0} style={{ zIndex: 100, background: theme.colors.dark[7] }}>
         <Card withBorder m="md" w="100%" h="100%">
           <Flex h="100%" direction="row" align="center" justify="space-between">
             <ActionIcon
@@ -47,7 +48,7 @@ function App() {
 
       <Outlet />
 
-      <Flex pos="fixed" maw={theme.breakpoints.sm} w="100%" h={48} bottom={0} style={{ zIndex: 1000, background: theme.colors.dark[7] }}>
+      <Flex pos="fixed" maw={theme.breakpoints.sm} w="100%" h={48} bottom={0} style={{ zIndex: 100, background: theme.colors.dark[7] }}>
         <Card withBorder m="md" w="100%" h="100%" bottom={32}>
           <Flex h="100%" direction="row" align="center" justify="center" gap="md">
             <ActionIcon
@@ -73,6 +74,9 @@ function App() {
           </Flex>
         </Card>
       </Flex>
+
+      {/* Modals */}
+      <ItemPickerModal />
 
       <ScrollRestoration />
     </MantineProvider>

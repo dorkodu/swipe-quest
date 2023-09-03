@@ -1,4 +1,4 @@
-import { ItemId } from "./item";
+import { AmuletId, ArmorId, ItemId, RingId, RuneId, WeaponId } from "./item";
 import { MonsterId } from "./monster";
 
 export interface IPlayer {
@@ -19,5 +19,11 @@ export interface IInventory {
     id: MonsterId,
     level: number,
     xp: number,
+    
+    weapon?: WeaponId,
+    armor?: ArmorId,
+    rune?: RuneId,
+    ring?: RingId,
+    amulet?: AmuletId,
   }>
 }
