@@ -1,0 +1,8 @@
+{
+  "Ancient Sword": {
+    "path": "/src/assets/weapons/ancient_sword.png"
+  },
+  "Axe": {
+    "path": "/src/assets/weapons/axe.png"
+  }
+}

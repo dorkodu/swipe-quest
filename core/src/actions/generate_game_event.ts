@@ -1,6 +1,7 @@
 import { IGameData } from "../gamedata";
 import { random } from "../lib/random";
 import { IGameEvent } from "../types/game_event";
+import { FoodId, foodData } from "../types/item";
 import { MonsterId, monsterData } from "../types/monster";
 
 export const actionGenerateGameEvent = {
@@ -88,6 +89,10 @@ function act(data: IGameData, info: Info) {
     case "food":
       data.currentGameEvent = {
         id,
+        foodId: random.percent(
+          info.seed,
+          Object.keys(foodData).map(result => ({ percent: 1, result: result as FoodId }))
+        ) || "None",
       }
       break;
     case "boss_fight":

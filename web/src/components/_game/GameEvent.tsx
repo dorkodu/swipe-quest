@@ -4,6 +4,7 @@ import { IconSword } from "@tabler/icons-react";
 import Emoji from "../Emoji";
 import { monsterData } from "@core/types/monster";
 import { assets } from "@/assets/assets";
+import { foodData } from "@core/types/item";
 
 function GameEvent({ event }: { event: IGameEvent | undefined }) {
   switch (event?.id) {
@@ -119,7 +120,13 @@ function FoodEvent({ event }: { event: IGameEvent }) {
   if (event.id !== "food") return null;
 
   return (
-    <Card withBorder w="100%" maw={360}>food</Card>
+    <Card withBorder w="100%" maw={360}>
+      <Flex direction="column" align="center">
+        <Image src={assets.url(foodData[event.foodId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
+        <Title order={3}>{event.foodId}</Title>
+        <Button fullWidth mt="md">Collect</Button>
+      </Flex>
+    </Card>
   )
 }
 

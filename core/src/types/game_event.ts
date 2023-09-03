@@ -1,3 +1,4 @@
+import { FoodId } from "./item"
 import { MonsterId } from "./monster"
 
 export type IGameEvent =
@@ -40,6 +41,7 @@ export type IGameEvent =
   |
   {
     id: "food",
+    foodId: FoodId,
   }
   |
   {

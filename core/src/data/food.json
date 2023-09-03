@@ -1,0 +1,46 @@
+{
+  "None": {
+    "path": null,
+    "xp": 0
+  },
+  "Apple": {
+    "path": "/src/assets/foods/apple.png",
+    "xp": 1
+  },
+  "Banana": {
+    "path": "/src/assets/foods/banana_new.png",
+    "xp": 5
+  },
+  "Beef Jerky": {
+    "path": "/src/assets/foods/beef_jerky_new.png",
+    "xp": 10
+  },
+  "Bread": {
+    "path": "/src/assets/foods/bread_ration_new.png",
+    "xp": 20
+  },
+  "Cheese": {
+    "path": "/src/assets/foods/cheese.png",
+    "xp": 25
+  },
+  "Chunk": {
+    "path": "/src/assets/foods/chunk.png",
+    "xp": 50
+  },
+  "Grape": {
+    "path": "/src/assets/foods/grape.png",
+    "xp": 100
+  },
+  "Meat": {
+    "path": "/src/assets/foods/meat_ration_new.png",
+    "xp": 125
+  },
+  "Orange": {
+    "path": "/src/assets/foods/orange.png",
+    "xp": 150
+  },
+  "Pizza": {
+    "path": "/src/assets/foods/pizza_new.png",
+    "xp": 200
+  }
+}
