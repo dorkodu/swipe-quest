@@ -1,4 +1,5 @@
 import { IGameData } from "../gamedata";
+import { random } from "../lib/random";
 import { IGameEvent, GameEventId } from "../types/game_event";
 import { ItemId, itemData } from "../types/item";
 import { MonsterId, monsterData } from "../types/monster";
@@ -17,7 +18,8 @@ function actable(_data: IGameData, _info: Info): boolean {
 function act(data: IGameData, info: Info) {
   if (!actable(data, info)) return;
 
-  const id = data.srandom.percent<IGameEvent[GameEventId]["id"]>(
+  const id = random.percent<IGameEvent[GameEventId]["id"]>(
+    data,
     [
       { result: "item", percent: 5 },
       { result: "gold", percent: 25 },
@@ -47,7 +49,8 @@ function act(data: IGameData, info: Info) {
 }
 
 function eventItem(id: "item", data: IGameData, _info: Info) {
-  const itemId = data.srandom.percent(
+  const itemId = random.percent(
+    data,
     Object.keys(itemData).map(result => ({ percent: 1, result: result as ItemId }))
   );
 
@@ -62,7 +65,7 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
 function eventGold(id: "gold", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: data.srandom.number(1, 100 + 1),
+    count: random.number(data, 1, 100 + 1),
   }
 
   data.player.gold += data.currentGameEvent.count;
@@ -71,15 +74,15 @@ function eventGold(id: "gold", data: IGameData, _info: Info) {
 function eventDiamond(id: "diamond", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: data.srandom.number(1, 100 + 1),
+    count: random.number(data, 1, 100 + 1),
   }
-  
+
   data.player.diamond += data.currentGameEvent.count;
 }
 
 function eventMonsterFight(id: "monster_fight", data: IGameData, _info: Info) {
-  const monsterId = data.srandom.percent(
-
+  const monsterId = random.percent(
+    data,
     Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
   );
 
@@ -88,13 +91,13 @@ function eventMonsterFight(id: "monster_fight", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
     monsterId,
-    level: data.srandom.number(1, 100 + 1),
+    level: random.number(data, 1, 100 + 1),
   }
 }
 
 function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) {
-  const monsterId = data.srandom.percent(
-
+  const monsterId = random.percent(
+    data,
     Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
   );
 
@@ -104,6 +107,8 @@ function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) 
     id,
     monsterId,
   }
+
+  data.inventory.monsters.push({ id: monsterId, level: 1, xp: 0 });
 }
 
 function eventMysteryBox(id: "mystery_box", data: IGameData, _info: Info) {
@@ -121,22 +126,22 @@ function eventScratchCard(id: "scratch_card", data: IGameData, _info: Info) {
 function eventExperience(id: "experience", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: data.srandom.number(1, 100 + 1),
+    count: random.number(data, 1, 100 + 1),
   }
 }
 
 function eventFood(id: "food", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: data.srandom.number(1, 100 + 1),
+    count: random.number(data, 1, 100 + 1),
   }
 
   data.player.food += data.currentGameEvent.count;
 }
 
 function eventBossFight(id: "boss_fight", data: IGameData, _info: Info) {
-  const monsterId = data.srandom.percent(
-
+  const monsterId = random.percent(
+    data,
     Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
   );
 
@@ -145,6 +150,6 @@ function eventBossFight(id: "boss_fight", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
     monsterId,
-    level: data.srandom.number(1, 100 + 1),
+    level: random.number(data, 1, 100 + 1),
   }
 }
