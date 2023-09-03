@@ -64,6 +64,8 @@ function eventGold(id: "gold", data: IGameData, _info: Info) {
     id,
     count: data.srandom.number(1, 100 + 1),
   }
+
+  data.player.gold += data.currentGameEvent.count;
 }
 
 function eventDiamond(id: "diamond", data: IGameData, _info: Info) {
@@ -71,6 +73,8 @@ function eventDiamond(id: "diamond", data: IGameData, _info: Info) {
     id,
     count: data.srandom.number(1, 100 + 1),
   }
+  
+  data.player.diamond += data.currentGameEvent.count;
 }
 
 function eventMonsterFight(id: "monster_fight", data: IGameData, _info: Info) {
@@ -126,6 +130,8 @@ function eventFood(id: "food", data: IGameData, _info: Info) {
     id,
     count: data.srandom.number(1, 100 + 1),
   }
+
+  data.player.food += data.currentGameEvent.count;
 }
 
 function eventBossFight(id: "boss_fight", data: IGameData, _info: Info) {
