@@ -1,7 +1,6 @@
 import { IGameData } from "../gamedata";
 import { random } from "../lib/random";
 import { IGameEvent, GameEventId } from "../types/game_event";
-import { FoodId, foodData } from "../types/item";
 import { MonsterId, monsterData } from "../types/monster";
 
 export const actionGenerateGameEvent = {
@@ -48,7 +47,7 @@ function act(data: IGameData, info: Info) {
   }
 }
 
-function eventItem(id: "item", data: IGameData, info: Info) {
+function eventItem(id: "item", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
   }
@@ -89,13 +88,13 @@ function eventMonsterUnlock(id: "monster_unlock", data: IGameData, info: Info) {
   }
 }
 
-function eventMysteryBox(id: "mystery_box", data: IGameData, info: Info) {
+function eventMysteryBox(id: "mystery_box", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
   }
 }
 
-function eventScratchCard(id: "scratch_card", data: IGameData, info: Info) {
+function eventScratchCard(id: "scratch_card", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
   }
@@ -111,10 +110,7 @@ function eventExperience(id: "experience", data: IGameData, info: Info) {
 function eventFood(id: "food", data: IGameData, info: Info) {
   data.currentGameEvent = {
     id,
-    foodId: random.percent(
-      info.seed,
-      Object.keys(foodData).map(result => ({ percent: 1, result: result as FoodId }))
-    ) || "None",
+    count: random.number(info.seed, 1, 100 + 1),
   }
 }
 

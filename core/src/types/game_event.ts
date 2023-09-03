@@ -1,4 +1,3 @@
-import { FoodId } from "./item"
 import { MonsterId } from "./monster"
 
 export type GameEventId = keyof IGameEvent;
@@ -43,7 +42,7 @@ export interface IGameEvent {
 
   food: {
     id: "food",
-    foodId: FoodId,
+    count: number,
   }
 
   boss_fight: {

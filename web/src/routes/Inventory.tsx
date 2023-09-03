@@ -1,7 +1,6 @@
 import { assets } from "@/assets/assets";
 import MonsterStats from "@/components/_game/MonsterStats";
 import { useGameStore } from "@/stores/gameStore";
-import { textShadow } from "@/styles/css";
 import { game } from "@core/game";
 import { monsterData } from "@core/types/monster";
 import { Button, Card, Flex, Image, SegmentedControl, Title } from "@mantine/core"
@@ -10,6 +9,7 @@ import { useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
 import MonsterItems from "@/components/_game/MonsterItems";
 import Emoji from "@/components/Emoji";
+import InventoryItem from "@/components/_game/InventoryItem";
 
 function Inventory() {
   return (
@@ -106,13 +106,13 @@ function MonstersSegment() {
     <>
       <Flex direction="row" gap="md" wrap="wrap">
         {data.inventory.monsters.map((m, i) =>
-          <Button key={i}
-            variant={data.inventory.currentMonsterIndex === i ? "filled" : "default"}
-            h="auto" p="md" onClick={() => changeMonster(i)}
-          >
-            <Image src={assets.url(monsterData[m.id].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
-            <Title order={4} pos="absolute" right={8} bottom={8} color="white" style={textShadow}>{m.level}</Title>
-          </Button>
+          <InventoryItem
+            key={i}
+            src={assets.url(monsterData[m.id].path)}
+            count={m.level}
+            onClick={() => changeMonster(i)}
+            selected={data.inventory.currentMonsterIndex === i}
+          />
         )}
       </Flex>
     </>
@@ -120,8 +120,16 @@ function MonstersSegment() {
 }
 
 function ItemsSegment() {
+  const data = useGameStore(state => state.data);
+
   return (
-    <>items</>
+    <>
+      <Flex direction="row" gap="md" wrap="wrap">
+        <InventoryItem emoji="🪙" count={data.player.gold} />
+        <InventoryItem emoji="💎" count={data.player.diamond} />
+        <InventoryItem emoji="🍏" count={data.player.food} />
+      </Flex>
+    </>
   )
 }
 

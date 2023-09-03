@@ -6,11 +6,12 @@ export interface IPlayer {
 
   gold: number;
   diamond: number;
+  food: number;
 }
 
 export interface IInventory {
   currentMonsterIndex: number;
-  
+
   monsters: Array<{
     id: MonsterId,
     level: number,

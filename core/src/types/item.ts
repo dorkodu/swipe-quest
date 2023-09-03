@@ -1,7 +1,6 @@
 import weapon from "../data/weapon.json";
 import amulet from "../data/amulet.json";
 import armor from "../data/armor.json";
-import food from "../data/food.json";
 import ring from "../data/ring.json";
 import rune from "../data/rune.json";
 
@@ -33,11 +32,4 @@ export type AmuletId = keyof typeof amulet;
 export const amuletData: Record<AmuletId, IAmulet> = amulet;
 export interface IAmulet {
   path: string | null;
-}
-
-export type FoodId = keyof typeof food;
-export const foodData: Record<FoodId, IFood> = food;
-export interface IFood {
-  path: string | null;
-  xp: number;
 }

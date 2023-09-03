@@ -4,7 +4,6 @@ import { assets } from "@/assets/assets";
 import Emoji from "../Emoji";
 import { GameEventId, IGameEvent } from "@core/types/game_event";
 import { game } from "@core/game";
-import { foodData } from "@core/types/item";
 import { monsterData } from "@core/types/monster";
 import MonsterStats from "./MonsterStats";
 import { useMemo } from "react";
@@ -109,8 +108,8 @@ function FoodEvent({ event }: { event: IGameEvent["food"] }) {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
-        <Image src={assets.url(foodData[event.foodId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
-        <Title order={3}>{event.foodId}</Title>
+        <Emoji emoji="🍏" style={{ width: 48, height: 48 }} />
+        <Title order={3}>{event.count}</Title>
       </Flex>
     </Card>
   )
