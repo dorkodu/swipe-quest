@@ -1,3 +1,5 @@
+import { MonsterId } from "./monster";
+
 export interface IPlayer {
   level: number;
   xp: number;
@@ -7,5 +9,11 @@ export interface IPlayer {
 }
 
 export interface IInventory {
-
+  currentMonsterIndex: number;
+  
+  monsters: Array<{
+    id: MonsterId,
+    level: number,
+    xp: number,
+  }>
 }

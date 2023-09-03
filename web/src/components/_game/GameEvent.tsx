@@ -64,7 +64,7 @@ function MonsterFightEvent({ event }: { event: IGameEvent["monster_fight"] }) {
       <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
-        <MonsterStats level={event.level} {...stats} />
+        <MonsterStats {...stats} />
         <Button fullWidth leftIcon={<IconSword />}>Fight</Button>
       </Flex>
     </Card>
@@ -127,7 +127,7 @@ function BossFightEvent({ event }: { event: IGameEvent["boss_fight"] }) {
       <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3} color="red">{event.monsterId}</Title>
-        <MonsterStats level={event.level} {...stats} />
+        <MonsterStats {...stats} />
         <Button fullWidth leftIcon={<IconSword />}>Fight</Button>
       </Flex>
     </Card>

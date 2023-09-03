@@ -19,7 +19,16 @@ export function createGameData(): IGameData {
     },
 
     inventory: {
+      currentMonsterIndex: 0,
 
+      monsters: [
+        { id: "Angel", level: 1, xp: 0 },
+        { id: "Deep Dwarf", level: 12, xp: 0 },
+        { id: "Freed Slave", level: 13, xp: 0 },
+        { id: "Jelly", level: 14, xp: 0 },
+        { id: "Phoenix", level: 15, xp: 0 },
+        { id: "Stone Giant", level: 16, xp: 0 },
+      ]
     },
 
     currentGameEvent: undefined,

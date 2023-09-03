@@ -22,6 +22,7 @@ function getMonsterStats(id: MonsterId, level: number, boss?: boolean) {
   }
 
   return {
+    level,
     hp: Math.floor(hp),
     dmg: Math.floor(dmg),
     spd: Math.floor(spd),

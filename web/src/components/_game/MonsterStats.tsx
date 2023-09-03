@@ -14,25 +14,25 @@ function MonsterStats({ level, hp, dmg, spd }: Props) {
       <Card withBorder style={{ flex: 1 }}>
         <Flex direction="column" align="center">
           <Emoji emoji="⭐" style={{ width: 24, height: 24 }} />
-          <Title order={4}>{level}</Title>
+          <Title order={5}>{level}</Title>
         </Flex>
       </Card>
       <Card withBorder style={{ flex: 1 }}>
         <Flex direction="column" align="center">
           <Emoji emoji="❤" style={{ width: 24, height: 24 }} />
-          <Title order={4}>{hp}</Title>
+          <Title order={5}>{hp}</Title>
         </Flex>
       </Card>
       <Card withBorder style={{ flex: 1 }}>
         <Flex direction="column" align="center">
           <Emoji emoji="⚔" style={{ width: 24, height: 24 }} />
-          <Title order={4}>{dmg}</Title>
+          <Title order={5}>{dmg}</Title>
         </Flex>
       </Card>
       <Card withBorder style={{ flex: 1 }}>
         <Flex direction="column" align="center">
           <Emoji emoji="⚡" style={{ width: 24, height: 24 }} />
-          <Title order={4}>{spd}</Title>
+          <Title order={5}>{spd}</Title>
         </Flex>
       </Card>
     </Flex>
