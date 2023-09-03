@@ -14,7 +14,7 @@ interface Props {
 function InventoryItem({ src, emoji, count, onClick, selected }: Props) {
   return (
     <Button variant={selected ? "filled" : "default"} h="auto" p="md" onClick={onClick}>
-      {src && <Image src={src} width={48} height={48} />}
+      {src && <Image src={src} width={48} height={48} style={{ imageRendering: "pixelated" }} />}
       {emoji && <Emoji emoji={emoji} style={{ width: 48, height: 48 }} />}
       {count !== undefined &&
         <Title order={4} pos="absolute" right={8} bottom={8} color="white" style={textShadow}>
