@@ -24,7 +24,7 @@ function GameEvent({ event }: { event: IGameEvent[GameEventId] | undefined }) {
   }
 }
 
-function ItemEvent({ event }: { event: IGameEvent["item"] }) {
+function ItemEvent({ }: { event: IGameEvent["item"] }) {
   return (
     <Card withBorder w="100%" maw={360}>item</Card>
   )
@@ -81,13 +81,13 @@ function MonsterUnlockEvent({ event }: { event: IGameEvent["monster_unlock"] }) 
   )
 }
 
-function MysteryBoxEvent({ event }: { event: IGameEvent["mystery_box"] }) {
+function MysteryBoxEvent({ }: { event: IGameEvent["mystery_box"] }) {
   return (
     <Card withBorder w="100%" maw={360}>mystery_box</Card>
   )
 }
 
-function ScratchCardEvent({ event }: { event: IGameEvent["scratch_card"] }) {
+function ScratchCardEvent({ }: { event: IGameEvent["scratch_card"] }) {
   return (
     <Card withBorder w="100%" maw={360}>scratch_card</Card>
   )
