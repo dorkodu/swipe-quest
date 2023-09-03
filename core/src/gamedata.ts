@@ -1,4 +1,4 @@
-import { IGameEvent } from "./types/game_event"
+import { GameEventId, IGameEvent } from "./types/game_event"
 import { IInventory } from "./types/inventory";
 import { IPlayer } from "./types/player";
 
@@ -6,7 +6,7 @@ export interface IGameData {
   player: IPlayer;
   inventory: IInventory;
 
-  currentGameEvent: IGameEvent | undefined;
+  currentGameEvent: IGameEvent[GameEventId] | undefined;
 }
 
 export function createGameData(): IGameData {

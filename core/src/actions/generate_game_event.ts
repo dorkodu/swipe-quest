@@ -1,6 +1,6 @@
 import { IGameData } from "../gamedata";
 import { random } from "../lib/random";
-import { IGameEvent } from "../types/game_event";
+import { IGameEvent, GameEventId } from "../types/game_event";
 import { FoodId, foodData } from "../types/item";
 import { MonsterId, monsterData } from "../types/monster";
 
@@ -18,7 +18,7 @@ function actable(_data: IGameData, _info: Info): boolean {
 function act(data: IGameData, info: Info) {
   if (!actable(data, info)) return;
 
-  const id = random.percent<IGameEvent["id"]>(
+  const id = random.percent<IGameEvent[GameEventId]["id"]>(
     info.seed,
     [
       { result: "item", percent: 5 },
