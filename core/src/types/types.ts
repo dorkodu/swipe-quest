@@ -3,7 +3,7 @@ export interface IPlayer {
   xp: number;
 
   gold: number;
-  diamonds: number;
+  diamond: number;
 }
 
 export interface IInventory {

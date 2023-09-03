@@ -15,7 +15,7 @@ export function createGameData(): IGameData {
       xp: 0,
 
       gold: 0,
-      diamonds: 0,
+      diamond: 0,
     },
 
     inventory: {

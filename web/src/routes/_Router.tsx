@@ -6,6 +6,8 @@ import { wait } from "@/lib/util";
 
 // Lazy routes \\
 const Home = React.lazy(wait(() => import("./Home")));
+const Map = React.lazy(wait(() => import("./Map")));
+const Inventory = React.lazy(wait(() => import("./Inventory")));
 const NotFound = React.lazy(wait(() => import("./NotFound")));
 // Lazy routes \\
 
@@ -24,6 +26,8 @@ export const router = createBrowserRouter(
       <Route index element={<Navigate to="/home" />} />
 
       <Route path="/home" element={Page(Home)} />
+      <Route path="/map" element={Page(Map)} />
+      <Route path="/inventory" element={Page(Inventory)} />
 
       {/* Error routes & catch all */}
       <Route path="/404" element={Page(NotFound)} />
