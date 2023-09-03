@@ -1,32 +1,33 @@
-import { Button, Flex } from "@mantine/core"
-import Emoji from "../Emoji"
+import { Button, Flex, Image } from "@mantine/core"
+import { itemData } from "@core/types/item"
+import { assets } from "@/assets/assets"
 
 function MonsterItems() {
   return (
     <>
       <Flex direction="column" align="center">
         <Button variant="default" h="auto" p="md">
-          <Emoji emoji="⭐" style={{ width: 32, height: 32 }} />
+          <Image src={assets.url(itemData["Axe"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} />
         </Button>
       </Flex>
 
       <Flex direction="row" justify="center" gap="xl">
         <Button variant="default" h="auto" p="md" mr="xl">
-          <Emoji emoji="⭐" style={{ width: 32, height: 32 }} />
+          <Image src={assets.url(itemData["Banded Mail Armor"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} />
         </Button>
 
         <Button variant="default" h="auto" p="md" ml="xl">
-          <Emoji emoji="⭐" style={{ width: 32, height: 32 }} />
+          <Image src={assets.url(itemData["Cameo Blue Amulet"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} />
         </Button>
       </Flex>
 
       <Flex direction="row" justify="center" gap="md">
         <Button variant="default" h="auto" p="md">
-          <Emoji emoji="⭐" style={{ width: 32, height: 32 }} />
+          <Image src={assets.url(itemData["Generic Rune"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} />
         </Button>
 
         <Button variant="default" h="auto" p="md">
-          <Emoji emoji="⭐" style={{ width: 32, height: 32 }} />
+          <Image src={assets.url(itemData["Agate Ring"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} />
         </Button>
       </Flex>
     </>

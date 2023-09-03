@@ -8,6 +8,7 @@ import { monsterData } from "@core/types/monster";
 import MonsterStats from "./MonsterStats";
 import { useMemo } from "react";
 import { itemData } from "@core/types/item";
+import { util } from "@/lib/util";
 
 function GameEvent({ event }: { event: IGameEvent[GameEventId] | undefined }) {
   switch (event?.id) {
@@ -41,7 +42,7 @@ function GoldEvent({ event }: { event: IGameEvent["gold"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="🪙" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{event.count}</Title>
+        <Title order={3}>{util.formatNumber(event.count)}</Title>
       </Flex>
     </Card>
   )
@@ -52,7 +53,7 @@ function DiamondEvent({ event }: { event: IGameEvent["diamond"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="💎" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{event.count}</Title>
+        <Title order={3}>{util.formatNumber(event.count)}</Title>
       </Flex>
     </Card>
   )
@@ -104,7 +105,7 @@ function ExperienceEvent({ event }: { event: IGameEvent["experience"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="⭐" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{event.count}</Title>
+        <Title order={3}>{util.formatNumber(event.count)}</Title>
       </Flex>
     </Card>
   )
@@ -115,7 +116,7 @@ function FoodEvent({ event }: { event: IGameEvent["food"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="🍏" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{event.count}</Title>
+        <Title order={3}>{util.formatNumber(event.count)}</Title>
       </Flex>
     </Card>
   )

@@ -26,3 +26,12 @@ export function wait<T>(
     loaded = true;
   })
 }
+
+function formatNumber(number: number, long?: boolean) {
+  if (long) return Intl.NumberFormat("en").format(number);
+  return Intl.NumberFormat("en", { notation: "compact" }).format(number);
+}
+
+export const util = {
+  formatNumber,
+}
