@@ -9,18 +9,22 @@ export interface GameStoreState {
 }
 
 export interface GameStoreAction {
-
+  reset: () => void;
 }
 
-const initialState: GameStoreState = {
+const initialState: () => GameStoreState = () => ({
   data: createGameData(Date.now()),
-}
+})
 
 export const useGameStore = create(
   immer(
     persist<GameStoreState & GameStoreAction>(
-      (_set, _get) => ({
-        ...initialState,
+      (set, _get) => ({
+        ...initialState(),
+
+        reset: () => {
+          set(initialState());
+        },
       }),
       {
         name: "game"

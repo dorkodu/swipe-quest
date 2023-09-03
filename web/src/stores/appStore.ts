@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
 export interface AppStoreState {
-  route: "home" | "map" | "inventory" | "any";
+  route: "home" | "map" | "inventory" | "menu" | "any";
 }
 
 export interface AppStoreAction {

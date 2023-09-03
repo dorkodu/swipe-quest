@@ -16,6 +16,7 @@ function App() {
     if (location.pathname.indexOf("/home") !== -1) useAppStore.setState(s => { s.route = "home" });
     else if (location.pathname.indexOf("/map") !== -1) useAppStore.setState(s => { s.route = "map" });
     else if (location.pathname.indexOf("/inventory") !== -1) useAppStore.setState(s => { s.route = "inventory" });
+    else if (location.pathname.indexOf("/menu") !== -1) useAppStore.setState(s => { s.route = "menu" });
     else useAppStore.setState(s => { s.route = "any" });
   }, [location.pathname]);
 
@@ -31,7 +32,10 @@ function App() {
 
             <Title order={2}>RPG</Title>
 
-            <ActionIcon>
+            <ActionIcon
+              color={route === "menu" ? "green" : undefined}
+              onClick={() => navigate("/menu")}
+            >
               <IconMenu2 />
             </ActionIcon>
           </Flex>
