@@ -3,13 +3,20 @@ import MonsterStats from "@/components/_game/MonsterStats";
 import { useGameStore } from "@/stores/gameStore";
 import { game } from "@core/game";
 import { monsterData } from "@core/types/monster";
-import { Button, Card, Flex, Image, SegmentedControl, Title } from "@mantine/core"
+import { Button, Card, Flex, Image, SegmentedControl, Title, createStyles } from "@mantine/core"
 import { IconArrowBigUpFilled } from "@tabler/icons-react";
 import { useState } from "react";
-import { useMediaQuery } from "@mantine/hooks";
 import MonsterItems from "@/components/_game/MonsterItems";
 import Emoji from "@/components/Emoji";
 import InventoryItem from "@/components/_game/InventoryItem";
+
+const useStyles = createStyles((theme) => ({
+  inventoryTop: {
+    [theme.fn.largerThan(640)]: {
+      flex: 1,
+    }
+  }
+}));
 
 function Inventory() {
   return (
@@ -21,7 +28,7 @@ function Inventory() {
 }
 
 function InventoryTop() {
-  const matches = useMediaQuery("(min-width: 640px)");
+  const { classes } = useStyles();
 
   const [segment, setSegment] = useState("info");
 
@@ -35,14 +42,14 @@ function InventoryTop() {
   return (
     <Flex direction="row" justify="center" gap="md" wrap="wrap">
 
-      <Card withBorder w="100%" style={matches ? { flex: 1 } : {}}>
+      <Card withBorder w="100%" className={classes.inventoryTop}>
         <Flex direction="column" align="center" justify="center" gap="md" h="100%">
           <Title order={3}>{currentMonster?.id}</Title>
           <Image src={currentMonsterSrc} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         </Flex>
       </Card>
 
-      <Card withBorder w="100%" style={matches ? { flex: 1 } : {}}>
+      <Card withBorder w="100%" className={classes.inventoryTop}>
         <Flex direction="column" gap="md">
           <SegmentedControl fullWidth
             value={segment} onChange={setSegment}
