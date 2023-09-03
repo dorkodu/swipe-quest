@@ -19,6 +19,7 @@ export type IGameEvent =
   {
     id: "monster_fight",
     monsterId: MonsterId,
+    level: number,
   }
   |
   {
@@ -47,4 +48,5 @@ export type IGameEvent =
   {
     id: "boss_fight",
     monsterId: MonsterId,
+    level: number,
   }

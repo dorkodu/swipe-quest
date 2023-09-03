@@ -43,13 +43,13 @@ function act(data: IGameData, info: Info) {
     case "gold":
       data.currentGameEvent = {
         id,
-        count: random.number(info.seed, 1, 100),
+        count: random.number(info.seed, 1, 100 + 1),
       }
       break;
     case "diamond":
       data.currentGameEvent = {
         id,
-        count: random.number(info.seed, 1, 100),
+        count: random.number(info.seed, 1, 100 + 1),
       }
       break;
     case "monster_fight":
@@ -59,6 +59,7 @@ function act(data: IGameData, info: Info) {
           info.seed,
           Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
         ) || "None",
+        level: random.number(info.seed, 1, 100 + 1),
       }
       break;
     case "monster_unlock":
@@ -83,7 +84,7 @@ function act(data: IGameData, info: Info) {
     case "experience":
       data.currentGameEvent = {
         id,
-        count: random.number(info.seed, 1, 100),
+        count: random.number(info.seed, 1, 100 + 1),
       }
       break;
     case "food":
@@ -102,6 +103,7 @@ function act(data: IGameData, info: Info) {
           info.seed,
           Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
         ) || "None",
+        level: random.number(info.seed, 1, 100 + 1),
       }
       break;
   }

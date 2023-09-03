@@ -1,10 +1,11 @@
-import { IGameEvent } from "@core/types/game_event";
 import { Button, Card, Flex, Image, Title } from "@mantine/core";
 import { IconSword } from "@tabler/icons-react";
-import Emoji from "../Emoji";
-import { monsterData } from "@core/types/monster";
 import { assets } from "@/assets/assets";
+import Emoji from "../Emoji";
+import { IGameEvent } from "@core/types/game_event";
 import { foodData } from "@core/types/item";
+import { monsterData } from "@core/types/monster";
+import MonsterStats from "./MonsterStats";
 
 function GameEvent({ event }: { event: IGameEvent | undefined }) {
   switch (event?.id) {
@@ -63,10 +64,11 @@ function MonsterFightEvent({ event }: { event: IGameEvent }) {
 
   return (
     <Card withBorder w="100%" maw={360}>
-      <Flex direction="column" align="center">
+      <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
-        <Button fullWidth mt="md" leftIcon={<IconSword />}>Fight</Button>
+        <MonsterStats level={event.level} hp={123} dmg={123} spd={123} />
+        <Button fullWidth leftIcon={<IconSword />}>Fight</Button>
       </Flex>
     </Card>
   )
@@ -77,10 +79,10 @@ function MonsterUnlockEvent({ event }: { event: IGameEvent }) {
 
   return (
     <Card withBorder w="100%" maw={360}>
-      <Flex direction="column" align="center">
+      <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
-        <Button fullWidth mt="md">Unlock</Button>
+        <Button fullWidth>Unlock</Button>
       </Flex>
     </Card>
   )
@@ -121,10 +123,10 @@ function FoodEvent({ event }: { event: IGameEvent }) {
 
   return (
     <Card withBorder w="100%" maw={360}>
-      <Flex direction="column" align="center">
+      <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(foodData[event.foodId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.foodId}</Title>
-        <Button fullWidth mt="md">Collect</Button>
+        <Button fullWidth>Collect</Button>
       </Flex>
     </Card>
   )
@@ -135,10 +137,11 @@ function BossFightEvent({ event }: { event: IGameEvent }) {
 
   return (
     <Card withBorder w="100%" maw={360}>
-      <Flex direction="column" align="center">
+      <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
-        <Title order={3}>{event.monsterId}</Title>
-        <Button fullWidth mt="md" leftIcon={<IconSword />}>Fight</Button>
+        <Title order={3} color="red">{event.monsterId}</Title>
+        <MonsterStats level={event.level} hp={123} dmg={123} spd={123} />
+        <Button fullWidth leftIcon={<IconSword />}>Fight</Button>
       </Flex>
     </Card>
   )
