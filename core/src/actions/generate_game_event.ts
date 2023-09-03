@@ -1,5 +1,4 @@
 import { IGameData } from "../gamedata";
-import { random } from "../lib/random";
 import { IGameEvent, GameEventId } from "../types/game_event";
 import { ItemId, itemData } from "../types/item";
 import { MonsterId, monsterData } from "../types/monster";
@@ -9,7 +8,7 @@ export const actionGenerateGameEvent = {
   actable,
 }
 
-type Info = { seed: number }
+type Info = {}
 
 function actable(_data: IGameData, _info: Info): boolean {
   return true;
@@ -18,8 +17,7 @@ function actable(_data: IGameData, _info: Info): boolean {
 function act(data: IGameData, info: Info) {
   if (!actable(data, info)) return;
 
-  const id = random.percent<IGameEvent[GameEventId]["id"]>(
-    info.seed,
+  const id = data.srandom.percent<IGameEvent[GameEventId]["id"]>(
     [
       { result: "item", percent: 5 },
       { result: "gold", percent: 25 },
@@ -48,9 +46,8 @@ function act(data: IGameData, info: Info) {
   }
 }
 
-function eventItem(id: "item", data: IGameData, info: Info) {
-  const itemId = random.percent(
-    info.seed,
+function eventItem(id: "item", data: IGameData, _info: Info) {
+  const itemId = data.srandom.percent(
     Object.keys(itemData).map(result => ({ percent: 1, result: result as ItemId }))
   );
 
@@ -62,23 +59,23 @@ function eventItem(id: "item", data: IGameData, info: Info) {
   }
 }
 
-function eventGold(id: "gold", data: IGameData, info: Info) {
+function eventGold(id: "gold", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(info.seed, 1, 100 + 1),
+    count: data.srandom.number(1, 100 + 1),
   }
 }
 
-function eventDiamond(id: "diamond", data: IGameData, info: Info) {
+function eventDiamond(id: "diamond", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(info.seed, 1, 100 + 1),
+    count: data.srandom.number(1, 100 + 1),
   }
 }
 
-function eventMonsterFight(id: "monster_fight", data: IGameData, info: Info) {
-  const monsterId = random.percent(
-    info.seed,
+function eventMonsterFight(id: "monster_fight", data: IGameData, _info: Info) {
+  const monsterId = data.srandom.percent(
+
     Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
   );
 
@@ -87,13 +84,13 @@ function eventMonsterFight(id: "monster_fight", data: IGameData, info: Info) {
   data.currentGameEvent = {
     id,
     monsterId,
-    level: random.number(info.seed, 1, 100 + 1),
+    level: data.srandom.number(1, 100 + 1),
   }
 }
 
-function eventMonsterUnlock(id: "monster_unlock", data: IGameData, info: Info) {
-  const monsterId = random.percent(
-    info.seed,
+function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) {
+  const monsterId = data.srandom.percent(
+
     Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
   );
 
@@ -117,23 +114,23 @@ function eventScratchCard(id: "scratch_card", data: IGameData, _info: Info) {
   }
 }
 
-function eventExperience(id: "experience", data: IGameData, info: Info) {
+function eventExperience(id: "experience", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(info.seed, 1, 100 + 1),
+    count: data.srandom.number(1, 100 + 1),
   }
 }
 
-function eventFood(id: "food", data: IGameData, info: Info) {
+function eventFood(id: "food", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(info.seed, 1, 100 + 1),
+    count: data.srandom.number(1, 100 + 1),
   }
 }
 
-function eventBossFight(id: "boss_fight", data: IGameData, info: Info) {
-  const monsterId = random.percent(
-    info.seed,
+function eventBossFight(id: "boss_fight", data: IGameData, _info: Info) {
+  const monsterId = data.srandom.percent(
+
     Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
   );
 
@@ -142,6 +139,6 @@ function eventBossFight(id: "boss_fight", data: IGameData, info: Info) {
   data.currentGameEvent = {
     id,
     monsterId,
-    level: random.number(info.seed, 1, 100 + 1),
+    level: data.srandom.number(1, 100 + 1),
   }
 }

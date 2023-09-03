@@ -1,15 +1,20 @@
+import { ISeedRandom, createSeedRandom } from "./lib/seed_random";
 import { GameEventId, IGameEvent } from "./types/game_event"
 import { IInventory, IPlayer } from "./types/types";
 
 export interface IGameData {
+  srandom: ISeedRandom;
+
   player: IPlayer;
   inventory: IInventory;
 
   currentGameEvent: IGameEvent[GameEventId] | undefined;
 }
 
-export function createGameData(): IGameData {
+export function createGameData(seed: number): IGameData {
   const data: IGameData = {
+    srandom: createSeedRandom(seed),
+
     player: {
       level: 1,
       xp: 0,

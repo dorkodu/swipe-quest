@@ -19,7 +19,7 @@ function Home() {
 
   useEffect(() => {
     useGameStore.setState(s => {
-      actionGenerateGameEvent.act(s.data, { seed: Date.now() })
+      actionGenerateGameEvent.act(s.data, {})
     })
   }, [count]);
 

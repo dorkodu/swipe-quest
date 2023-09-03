@@ -12,7 +12,7 @@ export interface GameStoreAction {
 }
 
 const initialState: GameStoreState = {
-  data: createGameData(),
+  data: createGameData(Date.now()),
 }
 
 export const useGameStore = create(
