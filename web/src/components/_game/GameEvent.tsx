@@ -37,7 +37,6 @@ function GoldEvent({ event }: { event: IGameEvent["gold"] }) {
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="🪙" style={{ width: 48, height: 48 }} />
         <Title order={3}>{event.count}</Title>
-        <Button fullWidth>Collect</Button>
       </Flex>
     </Card>
   )
@@ -49,7 +48,6 @@ function DiamondEvent({ event }: { event: IGameEvent["diamond"] }) {
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="💎" style={{ width: 48, height: 48 }} />
         <Title order={3}>{event.count}</Title>
-        <Button fullWidth>Collect</Button>
       </Flex>
     </Card>
   )
@@ -79,7 +77,6 @@ function MonsterUnlockEvent({ event }: { event: IGameEvent["monster_unlock"] }) 
       <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.monsterId}</Title>
-        <Button fullWidth>Unlock</Button>
       </Flex>
     </Card>
   )
@@ -103,7 +100,6 @@ function ExperienceEvent({ event }: { event: IGameEvent["experience"] }) {
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="⭐" style={{ width: 48, height: 48 }} />
         <Title order={3}>{event.count}</Title>
-        <Button fullWidth>Collect</Button>
       </Flex>
     </Card>
   )
@@ -115,7 +111,6 @@ function FoodEvent({ event }: { event: IGameEvent["food"] }) {
       <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(foodData[event.foodId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3}>{event.foodId}</Title>
-        <Button fullWidth>Collect</Button>
       </Flex>
     </Card>
   )

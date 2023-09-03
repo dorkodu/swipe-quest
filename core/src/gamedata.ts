@@ -1,6 +1,5 @@
 import { GameEventId, IGameEvent } from "./types/game_event"
-import { IInventory } from "./types/inventory";
-import { IPlayer } from "./types/player";
+import { IInventory, IPlayer } from "./types/types";
 
 export interface IGameData {
   player: IPlayer;

@@ -2,7 +2,6 @@ import { MonsterId, monsterData } from "../types/monster";
 
 function getMonsterStats(id: MonsterId, level: number, boss?: boolean) {
   const modifier = boss ? 1.25 : 1;
-  const threshold = boss ? 5 : 10;
 
   let baseHp = monsterData[id].baseHp * modifier;
   let baseDmg = monsterData[id].baseDmg * modifier;
@@ -17,12 +16,9 @@ function getMonsterStats(id: MonsterId, level: number, boss?: boolean) {
     dmg += baseDmg
     spd += baseSpd
 
-    /* Double the base values at each: 10 if normal, 5 if boss */
-    if (i % threshold === 0) {
-      baseHp += baseHp * 150 / 100
-      baseDmg += baseDmg * 100 / 100
-      baseSpd += baseSpd * 75 / 100
-    }
+    baseHp += baseHp * 5 / 100;
+    baseDmg += baseDmg * 2.5 / 100;
+    baseSpd += baseSpd * 1 / 100;
   }
 
   return {

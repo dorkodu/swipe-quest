@@ -5,9 +5,9 @@ import food from "../data/food.json";
 import ring from "../data/ring.json";
 import rune from "../data/rune.json";
 
-export type AmuletId = keyof typeof amulet;
-export const amuletData: Record<AmuletId, IAmulet> = amulet;
-export interface IAmulet {
+export type WeaponId = keyof typeof weapon;
+export const weaponData: Record<WeaponId, IWeapon> = weapon;
+export interface IWeapon {
   path: string | null;
 }
 
@@ -17,11 +17,10 @@ export interface IArmor {
   path: string | null;
 }
 
-export type FoodId = keyof typeof food;
-export const foodData: Record<FoodId, IFood> = food;
-export interface IFood {
+export type RuneId = keyof typeof rune;
+export const runeData: Record<RuneId, IRune> = rune;
+export interface IRune {
   path: string | null;
-  xp: number;
 }
 
 export type RingId = keyof typeof ring;
@@ -30,14 +29,15 @@ export interface IRing {
   path: string | null;
 }
 
-export type RuneId = keyof typeof rune;
-export const runeData: Record<RuneId, IRune> = rune;
-export interface IRune {
+export type AmuletId = keyof typeof amulet;
+export const amuletData: Record<AmuletId, IAmulet> = amulet;
+export interface IAmulet {
   path: string | null;
 }
 
-export type WeaponId = keyof typeof weapon;
-export const weaponData: Record<WeaponId, IWeapon> = weapon;
-export interface IWeapon {
+export type FoodId = keyof typeof food;
+export const foodData: Record<FoodId, IFood> = food;
+export interface IFood {
   path: string | null;
+  xp: number;
 }

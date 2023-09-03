@@ -35,76 +35,96 @@ function act(data: IGameData, info: Info) {
   );
 
   switch (id) {
-    case "item":
-      data.currentGameEvent = {
-        id,
-      }
-      break;
-    case "gold":
-      data.currentGameEvent = {
-        id,
-        count: random.number(info.seed, 1, 100 + 1),
-      }
-      break;
-    case "diamond":
-      data.currentGameEvent = {
-        id,
-        count: random.number(info.seed, 1, 100 + 1),
-      }
-      break;
-    case "monster_fight":
-      data.currentGameEvent = {
-        id,
-        monsterId: random.percent(
-          info.seed,
-          Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
-        ) || "None",
-        level: random.number(info.seed, 1, 100 + 1),
-      }
-      break;
-    case "monster_unlock":
-      data.currentGameEvent = {
-        id,
-        monsterId: random.percent(
-          info.seed,
-          Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
-        ) || "None",
-      }
-      break;
-    case "mystery_box":
-      data.currentGameEvent = {
-        id,
-      }
-      break;
-    case "scratch_card":
-      data.currentGameEvent = {
-        id,
-      }
-      break;
-    case "experience":
-      data.currentGameEvent = {
-        id,
-        count: random.number(info.seed, 1, 100 + 1),
-      }
-      break;
-    case "food":
-      data.currentGameEvent = {
-        id,
-        foodId: random.percent(
-          info.seed,
-          Object.keys(foodData).map(result => ({ percent: 1, result: result as FoodId }))
-        ) || "None",
-      }
-      break;
-    case "boss_fight":
-      data.currentGameEvent = {
-        id,
-        monsterId: random.percent(
-          info.seed,
-          Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
-        ) || "None",
-        level: random.number(info.seed, 1, 100 + 1),
-      }
-      break;
+    case "item": eventItem(id, data, info); break;
+    case "gold": eventGold(id, data, info); break;
+    case "diamond": eventDiamond(id, data, info); break;
+    case "monster_fight": eventMonsterFight(id, data, info); break;
+    case "monster_unlock": eventMonsterUnlock(id, data, info); break;
+    case "mystery_box": eventMysteryBox(id, data, info); break;
+    case "scratch_card": eventScratchCard(id, data, info); break;
+    case "experience": eventExperience(id, data, info); break;
+    case "food": eventFood(id, data, info); break;
+    case "boss_fight": eventBossFight(id, data, info); break;
+  }
+}
+
+function eventItem(id: "item", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+  }
+}
+
+function eventGold(id: "gold", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+    count: random.number(info.seed, 1, 100 + 1),
+  }
+}
+
+function eventDiamond(id: "diamond", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+    count: random.number(info.seed, 1, 100 + 1),
+  }
+}
+
+function eventMonsterFight(id: "monster_fight", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+    monsterId: random.percent(
+      info.seed,
+      Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+    ) || "None",
+    level: random.number(info.seed, 1, 100 + 1),
+  }
+}
+
+function eventMonsterUnlock(id: "monster_unlock", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+    monsterId: random.percent(
+      info.seed,
+      Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+    ) || "None",
+  }
+}
+
+function eventMysteryBox(id: "mystery_box", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+  }
+}
+
+function eventScratchCard(id: "scratch_card", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+  }
+}
+
+function eventExperience(id: "experience", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+    count: random.number(info.seed, 1, 100 + 1),
+  }
+}
+
+function eventFood(id: "food", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+    foodId: random.percent(
+      info.seed,
+      Object.keys(foodData).map(result => ({ percent: 1, result: result as FoodId }))
+    ) || "None",
+  }
+}
+
+function eventBossFight(id: "boss_fight", data: IGameData, info: Info) {
+  data.currentGameEvent = {
+    id,
+    monsterId: random.percent(
+      info.seed,
+      Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+    ) || "None",
+    level: random.number(info.seed, 1, 100 + 1),
   }
 }

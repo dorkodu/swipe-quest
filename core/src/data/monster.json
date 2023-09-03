@@ -13,56 +13,56 @@
   },
   "Death Knight": {
     "path": "/src/assets/monsters/death_knight.png",
-    "baseHp": 1,
-    "baseDmg": 1,
+    "baseHp": 2,
+    "baseDmg": 1.1,
     "baseSpd": 1
   },
   "Deep Dwarf": {
     "path": "/src/assets/monsters/deep_dwarf.png",
-    "baseHp": 1,
-    "baseDmg": 1,
-    "baseSpd": 1
+    "baseHp": 3,
+    "baseDmg": 1.5,
+    "baseSpd": 2
   },
   "Jelly": {
     "path": "/src/assets/monsters/jelly.png",
-    "baseHp": 1,
-    "baseDmg": 1,
+    "baseHp": 4,
+    "baseDmg": 2,
     "baseSpd": 1
   },
   "Ogre": {
     "path": "/src/assets/monsters/ogre_new.png",
-    "baseHp": 1,
-    "baseDmg": 1,
-    "baseSpd": 1
+    "baseHp": 5,
+    "baseDmg": 2,
+    "baseSpd": 1.25
   },
   "Phoenix": {
     "path": "/src/assets/monsters/phoenix.png",
-    "baseHp": 1,
-    "baseDmg": 1,
-    "baseSpd": 1
+    "baseHp": 6,
+    "baseDmg": 5,
+    "baseSpd": 3
   },
   "Raven": {
     "path": "/src/assets/monsters/raven.png",
-    "baseHp": 1,
-    "baseDmg": 1,
-    "baseSpd": 1
+    "baseHp": 6,
+    "baseDmg": 7,
+    "baseSpd": 3
   },
   "Freed Slave": {
     "path": "/src/assets/monsters/slave_freed.png",
-    "baseHp": 1,
-    "baseDmg": 1,
-    "baseSpd": 1
+    "baseHp": 10,
+    "baseDmg": 5,
+    "baseSpd": 2
   },
   "Stone Giant": {
     "path": "/src/assets/monsters/stone_giant_new.png",
-    "baseHp": 1,
-    "baseDmg": 1,
+    "baseHp": 15,
+    "baseDmg": 5.5,
     "baseSpd": 1
   },
   "Wizard": {
     "path": "/src/assets/monsters/wizard.png",
-    "baseHp": 1,
-    "baseDmg": 1,
-    "baseSpd": 1
+    "baseHp": 12,
+    "baseDmg": 10,
+    "baseSpd": 4
   }
 }

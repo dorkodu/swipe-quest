@@ -5,3 +5,7 @@ export interface IPlayer {
   gold: number;
   diamonds: number;
 }
+
+export interface IInventory {
+
+}
