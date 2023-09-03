@@ -10,6 +10,7 @@ function Home() {
   const handlers = useSwipeable({
     onSwipedUp: (_ev) => { setCount(count + 1) },
     trackMouse: true,
+    swipeDuration: 100,
   });
 
   const data = useGameStore(state => state.data);
@@ -30,13 +31,13 @@ function Home() {
   return (
     <>
       <Flex
-        pos="absolute" top={80} bottom={80}
+        pos="absolute" top={64} bottom={64}
         maw={theme.breakpoints.sm} w="100%"
         {...handlers}
       >
         <Flex w="100%" h="100%" mx="md">
           <ScrollArea w="100%" h="100%" viewportRef={scrollAreaRef}>
-            <Flex w="100%" h="100%" align="center" justify="center">
+            <Flex w="100%" h="100%" py="md" align="center" justify="center">
               <GameEvent event={data.currentGameEvent} />
             </Flex>
           </ScrollArea>
