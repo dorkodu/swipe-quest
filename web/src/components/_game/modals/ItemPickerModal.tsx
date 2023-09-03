@@ -1,8 +1,9 @@
 import { useAppStore } from "@/stores/appStore";
 import { itemData } from "@core/types/item";
-import { Card, Flex, Modal, Title } from "@mantine/core";
+import { Button, Card, Flex, Modal, Title } from "@mantine/core";
 import InventoryItem from "../InventoryItem";
 import { assets } from "@/assets/assets";
+import { IconX } from "@tabler/icons-react";
 
 function ItemPickerModal() {
   const itemPicker = useAppStore(state => state.modals.itemPicker);
@@ -23,6 +24,11 @@ function ItemPickerModal() {
           />
         )}
 
+        <Button variant="default" h="auto" p="md" onClick={() => itemPicker.callback?.(undefined)}>
+          <IconX width={48} height={48} />
+        </Button>
+
+        {/* TODO: Don't how "no items" if no items but can un-equip the equipped item */}
         {itemPicker.items.length === 0 &&
           <Card withBorder w="100%">
             <Flex direction="column" align="center" gap="md">

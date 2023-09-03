@@ -8,7 +8,7 @@ export const actionMonsterEquipItem = {
 
 type Info = {
   monsterIndex: number,
-  itemId: ItemId,
+  itemId: ItemId | undefined,
   slot: "weapon" | "armor" | "rune" | "ring" | "amulet"
 }
 
@@ -16,10 +16,10 @@ function actable(data: IGameData, info: Info): boolean {
   const monster = data.inventory.monsters[info.monsterIndex];
   if (!monster) return false;
 
-  const item = data.inventory.items[info.itemId];
-  if (!item) return false;
+  const item = info.itemId && data.inventory.items[info.itemId];
+  if (info.itemId !== undefined && !item) return false;
 
-  if (item.count <= 0) return false;
+  if (item && item.count <= 0) return false;
 
   return true;
 }
@@ -30,8 +30,7 @@ function act(data: IGameData, info: Info) {
   const monster = data.inventory.monsters[info.monsterIndex];
   if (!monster) return;
 
-  const itemToEquip = data.inventory.items[info.itemId];
-  if (!itemToEquip) return;
+  const itemToEquip = info.itemId && data.inventory.items[info.itemId];
 
   const itemToUnequip = monster[info.slot];
 
@@ -42,8 +41,8 @@ function act(data: IGameData, info: Info) {
   }
 
   // TODO: Fix
-  monster[info.slot] = itemToEquip.id as any;
-  itemToEquip.count--;
+  monster[info.slot] = itemToEquip ? itemToEquip.id : undefined as any;
+  itemToEquip && itemToEquip.count--;
 
-  if (itemToEquip.count === 0) delete data.inventory.items[info.itemId];
+  if (info.itemId && itemToEquip && itemToEquip.count === 0) delete data.inventory.items[info.itemId];
 }

@@ -10,7 +10,7 @@ export interface AppStoreState {
     itemPicker: {
       opened: boolean,
       items: Array<Exclude<IInventory["items"][ItemId], undefined>>,
-      callback?: (item: Exclude<IInventory["items"][ItemId], undefined>) => void,
+      callback?: (item: IInventory["items"][ItemId]) => void,
     },
   }
 }

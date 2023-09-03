@@ -19,7 +19,7 @@ function MonsterItems() {
           actionMonsterEquipItem.act(
             s.data,
             {
-              itemId: item.id,
+              itemId: item?.id,
               monsterIndex: s.data.inventory.currentMonsterIndex,
               slot: "weapon"
             }
@@ -39,7 +39,7 @@ function MonsterItems() {
           actionMonsterEquipItem.act(
             s.data,
             {
-              itemId: item.id,
+              itemId: item?.id,
               monsterIndex: s.data.inventory.currentMonsterIndex,
               slot: "armor"
             }
@@ -59,7 +59,7 @@ function MonsterItems() {
           actionMonsterEquipItem.act(
             s.data,
             {
-              itemId: item.id,
+              itemId: item?.id,
               monsterIndex: s.data.inventory.currentMonsterIndex,
               slot: "rune"
             }
@@ -79,7 +79,7 @@ function MonsterItems() {
           actionMonsterEquipItem.act(
             s.data,
             {
-              itemId: item.id,
+              itemId: item?.id,
               monsterIndex: s.data.inventory.currentMonsterIndex,
               slot: "ring"
             }
@@ -99,7 +99,7 @@ function MonsterItems() {
           actionMonsterEquipItem.act(
             s.data,
             {
-              itemId: item.id,
+              itemId: item?.id,
               monsterIndex: s.data.inventory.currentMonsterIndex,
               slot: "amulet"
             }
