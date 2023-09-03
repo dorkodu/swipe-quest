@@ -1,5 +1,5 @@
 import { Button, Card, Flex, Image, Title } from "@mantine/core";
-import { IconSword } from "@tabler/icons-react";
+import { IconArrowBigUpFilled, IconHandMove, IconSword } from "@tabler/icons-react";
 import { assets } from "@/assets/assets";
 import Emoji from "../Emoji";
 import { GameEventId, IGameEvent } from "@core/types/game_event";
@@ -21,7 +21,7 @@ function GameEvent({ event }: { event: IGameEvent[GameEventId] | undefined }) {
     case "experience": return <ExperienceEvent event={event} />;
     case "food": return <FoodEvent event={event} />;
     case "boss_fight": return <BossFightEvent event={event} />;
-    default: return null;
+    default: return <NoEvent />;
   }
 }
 
@@ -134,6 +134,20 @@ function BossFightEvent({ event }: { event: IGameEvent["boss_fight"] }) {
         <Title order={3} color="red">{event.monsterId}</Title>
         <MonsterStats {...stats} />
         <Button fullWidth leftIcon={<IconSword />}>Fight</Button>
+      </Flex>
+    </Card>
+  )
+}
+
+function NoEvent() {
+  return (
+    <Card withBorder w="100%" maw={360}>
+      <Flex direction="column" align="center" gap="md">
+        <Title order={3}>{"Start swiping up!"}</Title>
+        <Flex>
+          <IconArrowBigUpFilled size={32} />
+          <IconHandMove size={32} />
+        </Flex>
       </Flex>
     </Card>
   )
