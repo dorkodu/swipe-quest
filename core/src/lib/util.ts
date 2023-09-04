@@ -1,3 +1,4 @@
+import { IGameData } from "../gamedata";
 import { MonsterId, monsterData } from "../types/monster";
 
 function getMonsterStats(id: MonsterId, level: number, boss?: boolean) {
@@ -48,7 +49,35 @@ function getMonsterUpgradeCost(level: number) {
   return { gold, food };
 }
 
+function getLevelUpXp(level: number) {
+  let baseXp = 10;
+
+  let xp = 0;
+
+  for (let i = 1; i < level + 1; ++i) {
+    xp += baseXp;
+
+    baseXp += baseXp * 5 / 100
+  }
+
+  return xp;
+}
+
+function checkPlayerXp(data: IGameData) {
+  let cost = getLevelUpXp(data.player.level);
+
+  while (data.player.xp >= cost) {
+    data.player.xp -= cost;
+    data.player.level++;
+
+    cost = getLevelUpXp(data.player.level);
+  }
+}
+
 export const util = {
   getMonsterStats,
   getMonsterUpgradeCost,
+  getLevelUpXp,
+
+  checkPlayerXp,
 }

@@ -1,5 +1,6 @@
 import { IGameData } from "../gamedata";
 import { random } from "../lib/random";
+import { util } from "../lib/util";
 import { IGameEvent, GameEventId } from "../types/game_event";
 import { ItemId, itemData } from "../types/item";
 import { MonsterId, monsterData } from "../types/monster";
@@ -133,6 +134,8 @@ function eventExperience(id: "experience", data: IGameData, _info: Info) {
   }
 
   data.player.xp += data.currentGameEvent.count;
+
+  util.checkPlayerXp(data);
 }
 
 function eventFood(id: "food", data: IGameData, _info: Info) {

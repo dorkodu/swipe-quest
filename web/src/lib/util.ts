@@ -28,6 +28,7 @@ export function wait<T>(
 }
 
 function formatNumber(number: number, long?: boolean) {
+  number = Math.floor(number);
   if (long) return Intl.NumberFormat("en").format(number);
   return Intl.NumberFormat("en", { notation: "compact" }).format(number);
 }

@@ -149,15 +149,38 @@ function ItemsSegment() {
     useAppStore.setState(s => {
       s.modals.itemInfo.opened = true;
       s.modals.itemInfo.item = item;
-    })
+    });
+  }
+
+  const showOtherInfo = (name: "level" | "gold" | "diamond" | "food", text: string) => {
+    useAppStore.setState(s => {
+      s.modals.itemInfo.opened = true;
+      s.modals.itemInfo.other = { name, text };
+    });
   }
 
   return (
     <>
       <Flex direction="row" gap="md" wrap="wrap">
-        <InventoryItem emoji="🪙" count={data.player.gold} />
-        <InventoryItem emoji="💎" count={data.player.diamond} />
-        <InventoryItem emoji="🍏" count={data.player.food} />
+        <InventoryItem
+          emoji="⭐" count={data.player.level}
+          onClick={() => showOtherInfo(
+            "level",
+            `${util.formatNumber(data.player.xp, true)} / ${util.formatNumber(game.util.getLevelUpXp(data.player.level), true)}`
+          )}
+        />
+        <InventoryItem
+          emoji="🪙" count={data.player.gold}
+          onClick={() => showOtherInfo("gold", util.formatNumber(data.player.gold, true))}
+        />
+        <InventoryItem
+          emoji="💎" count={data.player.diamond}
+          onClick={() => showOtherInfo("diamond", util.formatNumber(data.player.diamond, true))}
+        />
+        <InventoryItem
+          emoji="🍏" count={data.player.food}
+          onClick={() => showOtherInfo("food", util.formatNumber(data.player.food, true))}
+        />
 
         {Object.values(data.inventory.items).map((item, i) =>
           <InventoryItem

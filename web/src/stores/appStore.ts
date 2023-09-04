@@ -15,6 +15,10 @@ export interface AppStoreState {
     itemInfo: {
       opened: boolean,
       item?: IInventory["items"][ItemId],
+      other?: {
+        name: "level" | "gold" | "diamond" | "food",
+        text: string,
+      }
     }
   }
 }
