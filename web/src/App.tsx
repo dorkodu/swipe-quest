@@ -36,7 +36,7 @@ function App() {
             </ActionIcon>
 
             <Flex align="center" gap="xs">
-              <Image src="/icon-512.png" width={32} height={32} style={{ imageRendering: "pixelated" }} />
+              <Image src="./icon-512.png" width={32} height={32} style={{ imageRendering: "pixelated" }} />
               <Title order={2}>RPG</Title>
             </Flex>
 
