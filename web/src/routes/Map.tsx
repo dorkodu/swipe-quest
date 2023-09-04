@@ -1,5 +1,5 @@
 import { Button, Flex } from "@mantine/core"
-import { IconBuildingStore, IconChevronRight, IconHammer, IconLicense, IconSword, IconTarget, IconTower } from "@tabler/icons-react"
+import { IconBuildingStore, IconCalendarEvent, IconChevronRight, IconHammer, IconLicense, IconMail, IconSword, IconTarget, IconTower } from "@tabler/icons-react"
 
 function Map() {
   const buttons = [
@@ -9,6 +9,8 @@ function Map() {
     { icon: <IconBuildingStore />, name: "Store", onClick: () => { } },
     { icon: <IconLicense />, name: "Daily Missions", onClick: () => { } },
     { icon: <IconTarget />, name: "Achievements", onClick: () => { } },
+    { icon: <IconCalendarEvent />, name: "Events", onClick: () => { } },
+    { icon: <IconMail />, name: "Mails", onClick: () => { } },
   ]
 
   return (
