@@ -4,35 +4,37 @@ import armor from "../data/armor.json";
 import ring from "../data/ring.json";
 import rune from "../data/rune.json";
 
-export type WeaponId = keyof typeof weapon;
-export const weaponData: Record<WeaponId, IWeapon> = weapon;
-export interface IWeapon {
-  path: string | null;
+export enum ItemType {
+  Weapon = "weapon",
+  Armor = "armor",
+  Rune = "rune",
+  Ring = "ring",
+  Amulet = "amulet",
 }
+
+export interface IItem {
+  path: string;
+  type?: ItemType;
+
+  hp?: number;
+  dmg?: number;
+  spd?: number;
+}
+
+export type WeaponId = keyof typeof weapon;
+export const weaponData: Record<WeaponId, IItem> = weapon;
 
 export type ArmorId = keyof typeof armor;
-export const armorData: Record<ArmorId, IArmor> = armor;
-export interface IArmor {
-  path: string | null;
-}
+export const armorData: Record<ArmorId, IItem> = armor;
 
 export type RuneId = keyof typeof rune;
-export const runeData: Record<RuneId, IRune> = rune;
-export interface IRune {
-  path: string | null;
-}
+export const runeData: Record<RuneId, IItem> = rune;
 
 export type RingId = keyof typeof ring;
-export const ringData: Record<RingId, IRing> = ring;
-export interface IRing {
-  path: string | null;
-}
+export const ringData: Record<RingId, IItem> = ring;
 
 export type AmuletId = keyof typeof amulet;
-export const amuletData: Record<AmuletId, IAmulet> = amulet;
-export interface IAmulet {
-  path: string | null;
-}
+export const amuletData: Record<AmuletId, IItem> = amulet;
 
 export type ItemId = keyof typeof itemData;
 export const itemData = {

@@ -4,6 +4,7 @@ import { Button, Card, Flex, Modal, Title } from "@mantine/core";
 import InventoryItem from "../InventoryItem";
 import { assets } from "@/assets/assets";
 import { IconX } from "@tabler/icons-react";
+import React from "react";
 
 function ItemPickerModal() {
   const itemPicker = useAppStore(state => state.modals.itemPicker);
@@ -16,17 +17,20 @@ function ItemPickerModal() {
     >
       <Flex direction="row" gap="md" wrap="wrap">
         {itemPicker.items.map((item, i) =>
-          <InventoryItem
-            key={i}
-            src={assets.url(itemData[item.id].path)}
-            count={item.count}
-            onClick={() => itemPicker.callback?.(item)}
-          />
+          <React.Fragment key={i}>
+            {item ?
+              <InventoryItem
+                src={item && assets.url(itemData[item.id].path)}
+                count={item?.count}
+                onClick={() => itemPicker.callback?.(item)}
+              />
+              :
+              <Button variant="default" h="auto" p="md" onClick={() => itemPicker.callback?.(undefined)}>
+                <IconX width={48} height={48} />
+              </Button>
+            }
+          </React.Fragment>
         )}
-
-        <Button variant="default" h="auto" p="md" onClick={() => itemPicker.callback?.(undefined)}>
-          <IconX width={48} height={48} />
-        </Button>
 
         {/* TODO: Don't how "no items" if no items but can un-equip the equipped item */}
         {itemPicker.items.length === 0 &&

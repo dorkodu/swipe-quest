@@ -9,7 +9,7 @@ export interface AppStoreState {
   modals: {
     itemPicker: {
       opened: boolean,
-      items: Array<Exclude<IInventory["items"][ItemId], undefined>>,
+      items: Array<IInventory["items"][ItemId]>,
       callback?: (item: IInventory["items"][ItemId]) => void,
     },
   }

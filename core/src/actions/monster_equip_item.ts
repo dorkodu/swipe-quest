@@ -1,5 +1,5 @@
 import { IGameData } from "../gamedata";
-import { ItemId } from "../types/item";
+import { ItemId, ItemType } from "../types/item";
 
 export const actionMonsterEquipItem = {
   act,
@@ -9,7 +9,7 @@ export const actionMonsterEquipItem = {
 type Info = {
   monsterIndex: number,
   itemId: ItemId | undefined,
-  slot: "weapon" | "armor" | "rune" | "ring" | "amulet"
+  type: ItemType,
 }
 
 function actable(data: IGameData, info: Info): boolean {
@@ -32,7 +32,7 @@ function act(data: IGameData, info: Info) {
 
   const itemToEquip = info.itemId && data.inventory.items[info.itemId];
 
-  const itemToUnequip = monster[info.slot];
+  const itemToUnequip = monster[info.type];
 
   // Un-equip the item if exists
   if (itemToUnequip) {
@@ -41,7 +41,7 @@ function act(data: IGameData, info: Info) {
   }
 
   // TODO: Fix
-  monster[info.slot] = itemToEquip ? itemToEquip.id : undefined as any;
+  monster[info.type] = itemToEquip ? itemToEquip.id : undefined as any;
   itemToEquip && itemToEquip.count--;
 
   if (info.itemId && itemToEquip && itemToEquip.count === 0) delete data.inventory.items[info.itemId];
