@@ -29,7 +29,7 @@ function act(data: IGameData, info: Info) {
       { result: "mystery_box", percent: 10 },
       { result: "scratch_card", percent: 10 },
       { result: "experience", percent: 10 },
-      { result: "food", percent: 10 },
+      { result: "food", percent: 30 },
       { result: "boss_fight", percent: 5 },
     ]
   );
