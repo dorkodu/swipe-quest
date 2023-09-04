@@ -29,7 +29,7 @@ function MonsterItems() {
       <Flex direction="column" align="center">
         <Button variant="default" h="auto" p="md" onClick={() => show(weaponData, ItemType.Weapon)}>
           {!monster.weapon ?
-            <Image src={assets.url(itemData["Axe"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
+            <Image src={assets.url(itemData["Common Axe"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
             <Image src={assets.url(itemData[monster.weapon].path)} width={32} height={32} />
           }
         </Button>
@@ -38,14 +38,14 @@ function MonsterItems() {
       <Flex direction="row" justify="center" gap="xl">
         <Button variant="default" h="auto" p="md" mr="xl" onClick={() => show(armorData, ItemType.Armor)}>
           {!monster.armor ?
-            <Image src={assets.url(itemData["Banded Mail Armor"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
+            <Image src={assets.url(itemData["Common Banded Mail Armor"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
             <Image src={assets.url(itemData[monster.armor].path)} width={32} height={32} />
           }
         </Button>
 
         <Button variant="default" h="auto" p="md" ml="xl" onClick={() => show(amuletData, ItemType.Amulet)}>
           {!monster.amulet ?
-            <Image src={assets.url(itemData["Cameo Blue Amulet"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
+            <Image src={assets.url(itemData["Common Cameo Blue Amulet"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
             <Image src={assets.url(itemData[monster.amulet].path)} width={32} height={32} />
           }
         </Button>
@@ -54,14 +54,14 @@ function MonsterItems() {
       <Flex direction="row" justify="center" gap="md">
         <Button variant="default" h="auto" p="md" onClick={() => show(runeData, ItemType.Rune)}>
           {!monster.rune ?
-            <Image src={assets.url(itemData["Generic Rune"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
+            <Image src={assets.url(itemData["Common Generic Rune"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
             <Image src={assets.url(itemData[monster.rune].path)} width={32} height={32} />
           }
         </Button>
 
         <Button variant="default" h="auto" p="md" onClick={() => show(ringData, ItemType.Ring)}>
           {!monster.ring ?
-            <Image src={assets.url(itemData["Agate Ring"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
+            <Image src={assets.url(itemData["Common Agate Ring"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
             <Image src={assets.url(itemData[monster.ring].path)} width={32} height={32} />
           }
         </Button>
