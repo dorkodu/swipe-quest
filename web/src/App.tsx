@@ -1,4 +1,4 @@
-import { ActionIcon, Card, Flex, MantineProvider, Title, useMantineTheme } from "@mantine/core"
+import { ActionIcon, Card, Flex, Image, MantineProvider, Title, useMantineTheme } from "@mantine/core"
 import { IconArrowLeft, IconBackpack, IconHome, IconMap, IconMenu2 } from "@tabler/icons-react";
 import { Outlet, ScrollRestoration, useLocation, useNavigate } from "react-router-dom"
 import { theme as _theme } from "./styles/theme";
@@ -35,7 +35,10 @@ function App() {
               <IconArrowLeft />
             </ActionIcon>
 
-            <Title order={2}>RPG</Title>
+            <Flex align="center" gap="xs">
+              <Image src="/icon-512.png" width={32} height={32} style={{ imageRendering: "pixelated" }} />
+              <Title order={2}>RPG</Title>
+            </Flex>
 
             <ActionIcon
               color={route === "menu" ? "green" : undefined}
