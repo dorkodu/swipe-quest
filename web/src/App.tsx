@@ -5,6 +5,7 @@ import { theme as _theme } from "./styles/theme";
 import { useAppStore } from "./stores/appStore";
 import { useEffect } from "react";
 import ItemPickerModal from "./components/_game/modals/ItemPickerModal";
+import ItemInfoModal from "./components/_game/modals/ItemInfoModal";
 
 function App() {
   const theme = useMantineTheme();
@@ -77,6 +78,7 @@ function App() {
 
       {/* Modals */}
       <ItemPickerModal />
+      <ItemInfoModal />
 
       <ScrollRestoration />
     </MantineProvider>

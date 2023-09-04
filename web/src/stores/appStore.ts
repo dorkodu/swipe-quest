@@ -12,6 +12,10 @@ export interface AppStoreState {
       items: Array<IInventory["items"][ItemId]>,
       callback?: (item: IInventory["items"][ItemId]) => void,
     },
+    itemInfo: {
+      opened: boolean,
+      item?: IInventory["items"][ItemId],
+    }
   }
 }
 
@@ -28,6 +32,11 @@ const initialState: AppStoreState = {
       items: [],
       callback: undefined,
     },
+
+    itemInfo: {
+      opened: false,
+      item: undefined,
+    }
   }
 }
 

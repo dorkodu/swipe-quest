@@ -9,9 +9,11 @@ import { useState } from "react";
 import MonsterItems from "@/components/_game/MonsterItems";
 import Emoji from "@/components/Emoji";
 import InventoryItem from "@/components/_game/InventoryItem";
-import { itemData } from "@core/types/item";
+import { ItemId, itemData } from "@core/types/item";
 import { util } from "@/lib/util";
 import { actionMonsterUpgrade } from "@core/actions/monster_upgrade";
+import { IInventory } from "@core/types/types";
+import { useAppStore } from "@/stores/appStore";
 
 const useStyles = createStyles((theme) => ({
   inventoryTop: {
@@ -143,6 +145,13 @@ function MonstersSegment() {
 function ItemsSegment() {
   const data = useGameStore(state => state.data);
 
+  const showItemInfo = (item: IInventory["items"][ItemId]) => {
+    useAppStore.setState(s => {
+      s.modals.itemInfo.opened = true;
+      s.modals.itemInfo.item = item;
+    })
+  }
+
   return (
     <>
       <Flex direction="row" gap="md" wrap="wrap">
@@ -155,6 +164,7 @@ function ItemsSegment() {
             key={i}
             src={assets.url(itemData[item.id].path)}
             count={item.count}
+            onClick={() => showItemInfo(item)}
           />
         )}
       </Flex>

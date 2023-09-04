@@ -22,28 +22,29 @@ export interface IItem {
   spd?: number;
 }
 
-type IItemId<T extends string> = `Common ${T}` | `Rare ${T}` | `Legendary ${T}`
+type ItemRarity<T extends string> = `Common ${T}` | `Rare ${T}` | `Legendary ${T}`
 
-export const weaponData: Record<IItemId<keyof typeof weapon>, IItem> = {} as any;
+export const weaponData: Record<ItemRarity<keyof typeof weapon>, IItem> = {} as any;
 export type WeaponId = keyof typeof weaponData;
 
-export const armorData: Record<IItemId<keyof typeof armor>, IItem> = {} as any;
+export const armorData: Record<ItemRarity<keyof typeof armor>, IItem> = {} as any;
 export type ArmorId = keyof typeof armorData;
 
-export const runeData: Record<IItemId<keyof typeof rune>, IItem> = {} as any;
+export const runeData: Record<ItemRarity<keyof typeof rune>, IItem> = {} as any;
 export type RuneId = keyof typeof runeData;
 
-export const ringData: Record<IItemId<keyof typeof ring>, IItem> = {} as any;
+export const ringData: Record<ItemRarity<keyof typeof ring>, IItem> = {} as any;
 export type RingId = keyof typeof ringData;
 
-export const amuletData: Record<IItemId<keyof typeof amulet>, IItem> = {} as any;
+export const amuletData: Record<ItemRarity<keyof typeof amulet>, IItem> = {} as any;
 export type AmuletId = keyof typeof amuletData;
 
-function setData(data: any, source: any) {
+// TODO: Fix types
+function setData(data: Record<any, IItem>, source: Record<any, IItem>) {
   for (const [key, value] of Object.entries(source)) {
-    data[`Common ${key}`] = value;
-    data[`Rare ${key}`] = value;
-    data[`Legendary ${key}`] = value;
+    data[`Common ${key}`] = { ...value as any, hp: 1, dmg: 1, spd: 1 };
+    data[`Rare ${key}`] = { ...value as any, hp: 1, dmg: 1, spd: 1 };
+    data[`Legendary ${key}`] = { ...value as any, hp: 1, dmg: 1, spd: 1 };
   }
 }
 
