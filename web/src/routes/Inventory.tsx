@@ -10,11 +10,15 @@ import MonsterItems from "@/components/_game/MonsterItems";
 import Emoji from "@/components/Emoji";
 import InventoryItem from "@/components/_game/InventoryItem";
 import { itemData } from "@core/types/item";
+import { util } from "@/lib/util";
+import { actionMonsterUpgrade } from "@core/actions/monster_upgrade";
 
 const useStyles = createStyles((theme) => ({
   inventoryTop: {
+
     [theme.fn.largerThan(640)]: {
       flex: 1,
+      height: 320,
     }
   }
 }));
@@ -39,6 +43,15 @@ function InventoryTop() {
   const currentMonster = data.inventory.monsters[currentMonsterIndex]
   const currentMonsterSrc = currentMonster ? assets.url(monsterData[currentMonster.id].path) : undefined;
   const currentMonsterStats = currentMonster && game.util.getMonsterStats(currentMonster.id, currentMonster.level);
+
+  const upgradeCost = currentMonster && game.util.getMonsterUpgradeCost(currentMonster?.level);
+
+  const upgradeActable = actionMonsterUpgrade.actable(data, { monsterIndex: currentMonsterIndex });
+  const upgrade = () => {
+    useGameStore.setState(s => {
+      actionMonsterUpgrade.act(s.data, { monsterIndex: currentMonsterIndex });
+    });
+  }
 
   return (
     <Flex direction="row" justify="center" gap="md" wrap="wrap">
@@ -66,11 +79,11 @@ function InventoryTop() {
                 <Flex gap="xs">
                   <Title order={5}>Cost:</Title>
                   <Emoji emoji="🪙" style={{ width: 24, height: 24 }} />
-                  <Title order={5}>123</Title>
+                  <Title order={5}>{upgradeCost && util.formatNumber(upgradeCost.gold)}</Title>
                   <Emoji emoji="🍏" style={{ width: 24, height: 24 }} />
-                  <Title order={5}>123</Title>
+                  <Title order={5}>{upgradeCost && util.formatNumber(upgradeCost.food)}</Title>
                 </Flex>
-                <Button leftIcon={<IconArrowBigUpFilled />}>Upgrade</Button>
+                <Button onClick={upgrade} disabled={!upgradeActable} leftIcon={<IconArrowBigUpFilled />}>Upgrade</Button>
               </Flex>
               {currentMonsterStats && <MonsterStats {...currentMonsterStats} />}
             </>
@@ -78,9 +91,9 @@ function InventoryTop() {
 
           {segment === "items" && <MonsterItems />}
         </Flex>
-      </Card>
+      </Card >
 
-    </Flex>
+    </Flex >
   )
 }
 
