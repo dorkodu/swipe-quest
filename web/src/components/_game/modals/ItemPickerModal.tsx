@@ -32,7 +32,7 @@ function ItemPickerModal() {
           </React.Fragment>
         )}
 
-        {/* TODO: Don't how "no items" if no items but can un-equip the equipped item */}
+        {/* If the equipped item can be un-equipped, "No items to pick!" is not visible */}
         {itemPicker.items.length === 0 &&
           <Card withBorder w="100%">
             <Flex direction="column" align="center" gap="md">

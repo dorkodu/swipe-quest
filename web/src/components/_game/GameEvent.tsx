@@ -42,7 +42,7 @@ function GoldEvent({ event }: { event: IGameEvent["gold"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="🪙" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{util.formatNumber(event.count)}</Title>
+        <Title order={3}>{`${util.formatNumber(event.count)} Gold`}</Title>
       </Flex>
     </Card>
   )
@@ -53,7 +53,7 @@ function DiamondEvent({ event }: { event: IGameEvent["diamond"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="💎" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{util.formatNumber(event.count)}</Title>
+        <Title order={3}>{`${util.formatNumber(event.count)} Diamond`}</Title>
       </Flex>
     </Card>
   )
@@ -105,7 +105,7 @@ function ExperienceEvent({ event }: { event: IGameEvent["experience"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="⭐" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{util.formatNumber(event.count)}</Title>
+        <Title order={3}>{`${util.formatNumber(event.count)} Experience`}</Title>
       </Flex>
     </Card>
   )
@@ -116,7 +116,7 @@ function FoodEvent({ event }: { event: IGameEvent["food"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="🍏" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{util.formatNumber(event.count)}</Title>
+        <Title order={3}>{`${util.formatNumber(event.count)} Food`}</Title>
       </Flex>
     </Card>
   )
