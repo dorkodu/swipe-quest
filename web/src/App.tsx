@@ -6,6 +6,7 @@ import { useAppStore } from "./stores/appStore";
 import { useEffect } from "react";
 import ItemPickerModal from "./components/_game/modals/ItemPickerModal";
 import ItemInfoModal from "./components/_game/modals/ItemInfoModal";
+import UpdateSWModal from "./components/modals/UpdateSWModal";
 
 function App() {
   const theme = useMantineTheme();
@@ -80,6 +81,7 @@ function App() {
       </Flex>
 
       {/* Modals */}
+      <UpdateSWModal />
       <ItemPickerModal />
       <ItemInfoModal />
 

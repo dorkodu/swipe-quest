@@ -19,6 +19,9 @@ export interface AppStoreState {
         name: "level" | "gold" | "diamond" | "food",
         text: string,
       }
+    },
+    updateSW: {
+      opened: boolean,
     }
   }
 }
@@ -40,6 +43,10 @@ const initialState: AppStoreState = {
     itemInfo: {
       opened: false,
       item: undefined,
+    },
+
+    updateSW: {
+      opened: false,
     }
   }
 }
