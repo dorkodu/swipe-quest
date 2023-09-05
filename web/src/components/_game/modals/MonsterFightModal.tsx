@@ -73,7 +73,8 @@ function MonsterFightModal() {
               </Flex>
               <Flex direction="column" gap="xs">
                 <Image
-                  src={assets.url(monsterData[fight.enemy.id].path)} width={64} height={64}
+                  src={assets.url(monsterData[fight.enemy.id].path)}
+                  width={fight.isEnemyBoss ? 80 : 64} height={fight.isEnemyBoss ? 80 : 64}
                   style={{
                     imageRendering: "pixelated",
                     filter: winner === "ally" ? "blur(2px)" : undefined

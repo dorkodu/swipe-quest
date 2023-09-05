@@ -141,13 +141,23 @@ function BossFightEvent({ event }: { event: IGameEvent["boss_fight"] }) {
     [event]
   );
 
+  const fight = () => {
+    useAppStore.setState(s => { s.modals.monsterFight.opened = true });
+    useGameStore.setState(s => {
+      const enemy = { id: event.monsterId, level: event.level, xp: 0 };
+      const ally = s.data.inventory.monsters[s.data.inventory.currentMonsterIndex];
+      if (!ally) return;
+      actionMonsterFight.act(s.data, { type: "start", ally, enemy, isEnemyBoss: true });
+    });
+  }
+
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
         <Title order={3} color="red">{event.monsterId}</Title>
         <MonsterStats {...stats} />
-        <Button fullWidth leftIcon={<IconSword />}>Fight</Button>
+        <Button fullWidth leftIcon={<IconSword />} onClick={fight}>Fight</Button>
       </Flex>
     </Card>
   )
