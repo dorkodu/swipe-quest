@@ -77,10 +77,10 @@ function InventoryTop() {
 
           {segment === "info" &&
             <>
-              <Flex align="center" gap="md">
+              <Flex align="center" gap="md" wrap="wrap">
                 <Button onClick={upgrade} disabled={!upgradeActable} leftIcon={<IconArrowBigUpFilled />}>Upgrade</Button>
 
-                <Flex gap="xs">
+                <Flex gap="xs" >
                   <Emoji emoji="🪙" style={{ width: 24, height: 24 }} />
                   <Title order={5}>{upgradeCost && util.formatNumber(upgradeCost.gold)}</Title>
                   <Emoji emoji="🍏" style={{ width: 24, height: 24 }} />
