@@ -70,7 +70,7 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
 function eventGold(id: "gold", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(data, 1, 100 + 1),
+    count: random.number(data, data.player.level * 10, data.player.level * 100),
   }
 
   data.player.gold += data.currentGameEvent.count;
@@ -79,7 +79,7 @@ function eventGold(id: "gold", data: IGameData, _info: Info) {
 function eventDiamond(id: "diamond", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(data, 1, 100 + 1),
+    count: random.number(data, data.player.level * 1, data.player.level * 10),
   }
 
   data.player.diamond += data.currentGameEvent.count;
@@ -93,10 +93,13 @@ function eventMonsterFight(id: "monster_fight", data: IGameData, _info: Info) {
 
   if (!monsterId) return;
 
+  const currentMonster = data.inventory.monsters[data.inventory.currentMonsterIndex];
+  if (!currentMonster) return;
+
   data.currentGameEvent = {
     id,
     monsterId,
-    level: random.number(data, 1, 100 + 1),
+    level: random.number(data, currentMonster.level, currentMonster.level + 25),
   }
 }
 
@@ -131,7 +134,7 @@ function eventScratchCard(id: "scratch_card", data: IGameData, _info: Info) {
 function eventExperience(id: "experience", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(data, 1, 100 + 1),
+    count: random.number(data, data.player.level * 10, data.player.level * 100),
   }
 
   data.player.xp += data.currentGameEvent.count;
@@ -142,7 +145,7 @@ function eventExperience(id: "experience", data: IGameData, _info: Info) {
 function eventFood(id: "food", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(data, 1, 100 + 1),
+    count: random.number(data, data.player.level * 10, data.player.level * 100),
   }
 
   data.player.food += data.currentGameEvent.count;
@@ -156,9 +159,12 @@ function eventBossFight(id: "boss_fight", data: IGameData, _info: Info) {
 
   if (!monsterId) return;
 
+  const currentMonster = data.inventory.monsters[data.inventory.currentMonsterIndex];
+  if (!currentMonster) return;
+
   data.currentGameEvent = {
     id,
     monsterId,
-    level: random.number(data, 1, 100 + 1),
+    level: random.number(data, currentMonster.level, currentMonster.level + 5),
   }
 }
