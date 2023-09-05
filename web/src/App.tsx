@@ -8,7 +8,6 @@ import ItemPickerModal from "./components/_game/modals/ItemPickerModal";
 import ItemInfoModal from "./components/_game/modals/ItemInfoModal";
 import UpdateSWModal from "./components/modals/UpdateSWModal";
 
-
 function App() {
   const theme = useMantineTheme();
   const navigate = useNavigate();

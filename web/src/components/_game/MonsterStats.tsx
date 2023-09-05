@@ -32,7 +32,7 @@ function MonsterStats({ level, hp, dmg, spd }: Props) {
       </Card>
       <Card withBorder style={{ flex: 1 }}>
         <Flex direction="column" align="center">
-          <Emoji emoji="⚡" style={{ width: 24, height: 24 }} />
+          <Emoji emoji="👟" style={{ width: 24, height: 24 }} />
           <Title order={5}>{util.formatNumber(spd)}</Title>
         </Flex>
       </Card>
