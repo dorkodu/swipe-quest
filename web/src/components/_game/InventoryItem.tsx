@@ -1,6 +1,7 @@
 import { Button, Image, Title } from "@mantine/core";
 import Emoji from "../Emoji";
 import { util } from "@/lib/util";
+import { textShadow } from "@/styles/css";
 
 type InventoryItemProps = InventoryItemImageProps & { selected?: boolean, onClick?: () => void }
 
@@ -32,7 +33,7 @@ export function InventoryItemImage({ src, emoji, stars, count }: InventoryItemIm
         )
       }
       {count !== undefined &&
-        <Title order={5} pos="absolute" right={4} bottom={0}>
+        <Title order={5} pos="absolute" right={4} bottom={0} color="white" style={textShadow}>
           {util.formatNumber(count)}
         </Title>
       }
