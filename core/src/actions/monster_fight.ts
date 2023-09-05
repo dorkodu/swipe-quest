@@ -23,8 +23,8 @@ function act(data: IGameData, info: Info) {
 
   switch (info.type) {
     case "start":
-      const allyStats = util.getMonsterStats(info.ally.id, info.ally.level);
-      const enemyStats = util.getMonsterStats(info.enemy.id, info.enemy.level, info.isEnemyBoss);
+      const allyStats = util.getMonsterStats(info.ally);
+      const enemyStats = util.getMonsterStats(info.enemy, info.isEnemyBoss);
 
       data.currentMonsterFight = {
         ally: info.ally,

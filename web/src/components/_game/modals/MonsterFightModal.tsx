@@ -23,8 +23,8 @@ function MonsterFightModal() {
   const monsterStats = useMemo(() => {
     if (!fight) return undefined;
     if (!monsterFight.opened) return undefined;
-    const ally = game.util.getMonsterStats(fight.ally.id, fight.ally.level);
-    const enemy = game.util.getMonsterStats(fight.enemy.id, fight.enemy.level, fight.isEnemyBoss);
+    const ally = game.util.getMonsterStats(fight.ally);
+    const enemy = game.util.getMonsterStats(fight.enemy, fight.isEnemyBoss);
     return { ally, enemy };
   }, [fight, monsterFight.opened])
 

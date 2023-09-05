@@ -1,22 +1,50 @@
 import { IGameData } from "../gamedata";
-import { MonsterId, monsterData } from "../types/monster";
+import { ItemId, itemData } from "../types/item";
+import { IMonster, monsterData } from "../types/monster";
+
+function getItemStats(itemId: ItemId | undefined) {
+  const hp = itemId && itemData[itemId].hp || 0;
+  const dmg = itemId && itemData[itemId].dmg || 0;
+  const spd = itemId && itemData[itemId].spd || 0;
+
+  return {
+    hp: Math.floor(hp),
+    dmg: Math.floor(dmg),
+    spd: Math.floor(spd),
+  }
+}
+
+function getMonsterItemsStats(monster: IMonster) {
+  const weapon = getItemStats(monster.weapon);
+  const armor = getItemStats(monster.armor);
+  const rune = getItemStats(monster.rune);
+  const ring = getItemStats(monster.ring);
+  const amulet = getItemStats(monster.amulet);
+
+  return {
+    hp: weapon.hp + armor.hp + rune.hp + ring.hp + amulet.hp,
+    dmg: weapon.dmg + armor.dmg + rune.dmg + ring.dmg + amulet.dmg,
+    spd: weapon.spd + armor.spd + rune.spd + ring.spd + amulet.spd,
+  }
+}
 
 function getMonsterPower(hp: number, dmg: number, spd: number) {
   return hp + dmg + spd;
 }
 
-function getMonsterStats(id: MonsterId, level: number, boss?: boolean) {
+function getMonsterStats(monster: IMonster, boss?: boolean) {
+  const itemStats = getMonsterItemsStats(monster);
   const modifier = boss ? 1.25 : 1;
 
-  let baseHp = monsterData[id].baseHp * modifier;
-  let baseDmg = monsterData[id].baseDmg * modifier;
-  let baseSpd = monsterData[id].baseSpd * modifier;
+  let baseHp = monsterData[monster.id].baseHp * modifier;
+  let baseDmg = monsterData[monster.id].baseDmg * modifier;
+  let baseSpd = monsterData[monster.id].baseSpd * modifier;
 
-  let hp = 0;
-  let dmg = 0;
-  let spd = 0;
+  let hp = itemStats.hp;
+  let dmg = itemStats.dmg;
+  let spd = itemStats.spd;
 
-  for (let i = 1; i < level + 1; ++i) {
+  for (let i = 1; i < monster.level + 1; ++i) {
     hp += baseHp
     dmg += baseDmg
     spd += baseSpd
@@ -27,7 +55,7 @@ function getMonsterStats(id: MonsterId, level: number, boss?: boolean) {
   }
 
   return {
-    level,
+    level: monster.level,
     hp: Math.floor(hp),
     dmg: Math.floor(dmg),
     spd: Math.floor(spd),
@@ -79,10 +107,13 @@ function checkPlayerXp(data: IGameData) {
 }
 
 export const util = {
+  getItemStats,
+  getMonsterItemsStats,
+
   getMonsterPower,
   getMonsterStats,
   getMonsterUpgradeCost,
-  getLevelUpXp,
 
+  getLevelUpXp,
   checkPlayerXp,
 }

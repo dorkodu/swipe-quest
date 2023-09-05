@@ -64,7 +64,7 @@ function DiamondEvent({ event }: { event: IGameEvent["diamond"] }) {
 
 function MonsterFightEvent({ event }: { event: IGameEvent["monster_fight"] }) {
   const stats = useMemo(
-    () => game.util.getMonsterStats(event.monsterId, event.level, false),
+    () => game.util.getMonsterStats({ id: event.monsterId, level: event.level, xp: 0 }, false),
     [event]
   );
 
@@ -137,7 +137,7 @@ function FoodEvent({ event }: { event: IGameEvent["food"] }) {
 
 function BossFightEvent({ event }: { event: IGameEvent["boss_fight"] }) {
   const stats = useMemo(
-    () => game.util.getMonsterStats(event.monsterId, event.level, true),
+    () => game.util.getMonsterStats({ id: event.monsterId, level: event.level, xp: 0 }, true),
     [event]
   );
 

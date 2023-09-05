@@ -40,8 +40,7 @@ function act(data: IGameData, info: Info) {
     data.inventory.items[itemToUnequip]!.count++;
   }
 
-  // TODO: Fix
-  monster[info.type] = itemToEquip ? itemToEquip.id : undefined as any;
+  monster[info.type] = itemToEquip ? itemToEquip.id : undefined;
   itemToEquip && itemToEquip.count--;
 
   if (info.itemId && itemToEquip && itemToEquip.count === 0) delete data.inventory.items[info.itemId];

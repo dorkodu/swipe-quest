@@ -44,7 +44,7 @@ function InventoryTop() {
   const currentMonsterIndex = data.inventory.currentMonsterIndex;
   const currentMonster = data.inventory.monsters[currentMonsterIndex]
   const currentMonsterSrc = currentMonster ? assets.url(monsterData[currentMonster.id].path) : undefined;
-  const currentMonsterStats = currentMonster && game.util.getMonsterStats(currentMonster.id, currentMonster.level);
+  const currentMonsterStats = currentMonster && game.util.getMonsterStats(currentMonster);
 
   const upgradeCost = currentMonster && game.util.getMonsterUpgradeCost(currentMonster?.level);
 
