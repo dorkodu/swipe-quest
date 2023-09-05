@@ -2,6 +2,7 @@ import { assets } from "@/assets/assets";
 import { util } from "@/lib/util";
 import { useAppStore } from "@/stores/appStore";
 import { useGameStore } from "@/stores/gameStore";
+import { actionGenerateGameEvent } from "@core/actions/generate_game_event";
 import { actionMonsterFight } from "@core/actions/monster_fight";
 import { game } from "@core/game";
 import { monsterData } from "@core/types/monster";
@@ -11,6 +12,7 @@ import { useEffect, useMemo, useState } from "react";
 function MonsterFightModal() {
   const monsterFight = useAppStore(state => state.modals.monsterFight);
   const close = () => {
+    useGameStore.setState(s => { actionGenerateGameEvent.act(s.data, {}) })
     useAppStore.setState(s => { s.modals.monsterFight.opened = false })
     setWinner(undefined);
   }
