@@ -33,4 +33,8 @@ function act(data: IGameData, info: Info) {
   data.player.gold -= cost.gold;
   data.player.food -= cost.food;
   monster.level++;
+
+  // Sort monster by level and re-calculate the current monster index
+  data.inventory.monsters.sort((a, b) => b.level - a.level);
+  data.inventory.currentMonsterIndex = data.inventory.monsters.indexOf(monster);
 }
