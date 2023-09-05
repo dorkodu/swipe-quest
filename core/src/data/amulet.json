@@ -1,8 +1,10 @@
 {
   "Bone Gray Amulet": {
+    "_id": 1,
     "path": "/src/assets/amulets/bone_gray.png"
   },
   "Cameo Blue Amulet": {
+    "_id": 2,
     "path": "/src/assets/amulets/cameo_blue.png"
   }
 }

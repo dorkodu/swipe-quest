@@ -1,10 +1,10 @@
 import { useAppStore } from "@/stores/appStore";
 import { itemData } from "@core/types/item";
 import { Button, Card, Flex, Modal, Title } from "@mantine/core";
-import InventoryItem from "../InventoryItem";
 import { assets } from "@/assets/assets";
 import { IconX } from "@tabler/icons-react";
 import React from "react";
+import { InventoryItem } from "../InventoryItem";
 
 function ItemPickerModal() {
   const itemPicker = useAppStore(state => state.modals.itemPicker);
@@ -21,12 +21,13 @@ function ItemPickerModal() {
             {item ?
               <InventoryItem
                 src={item && assets.url(itemData[item.id].path)}
+                stars={item && itemData[item.id].stars}
                 count={item?.count}
                 onClick={() => itemPicker.callback?.(item)}
               />
               :
               <Button variant="default" h="auto" p="md" onClick={() => itemPicker.callback?.(undefined)}>
-                <IconX width={48} height={48} />
+                <IconX width={32} height={32} />
               </Button>
             }
           </React.Fragment>

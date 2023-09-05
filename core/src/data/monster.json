@@ -1,59 +1,69 @@
 {
   "Angel": {
+    "_id": 1,
     "path": "/src/assets/monsters/angel.png",
     "baseHp": 1,
     "baseDmg": 1,
     "baseSpd": 1
   },
   "Death Knight": {
+    "_id": 2,
     "path": "/src/assets/monsters/death_knight.png",
     "baseHp": 2,
     "baseDmg": 1.1,
     "baseSpd": 1
   },
   "Deep Dwarf": {
+    "_id": 3,
     "path": "/src/assets/monsters/deep_dwarf.png",
     "baseHp": 3,
     "baseDmg": 1.5,
     "baseSpd": 2
   },
   "Jelly": {
+    "_id": 4,
     "path": "/src/assets/monsters/jelly.png",
     "baseHp": 4,
     "baseDmg": 2,
     "baseSpd": 1
   },
   "Ogre": {
+    "_id": 5,
     "path": "/src/assets/monsters/ogre_new.png",
     "baseHp": 5,
     "baseDmg": 2,
     "baseSpd": 1.25
   },
   "Phoenix": {
+    "_id": 6,
     "path": "/src/assets/monsters/phoenix.png",
     "baseHp": 6,
     "baseDmg": 5,
     "baseSpd": 3
   },
   "Raven": {
+    "_id": 7,
     "path": "/src/assets/monsters/raven.png",
     "baseHp": 6,
     "baseDmg": 7,
     "baseSpd": 3
   },
   "Freed Slave": {
+    "_id": 8,
     "path": "/src/assets/monsters/slave_freed.png",
     "baseHp": 10,
     "baseDmg": 5,
     "baseSpd": 2
   },
   "Stone Giant": {
+    "_id": 9,
     "path": "/src/assets/monsters/stone_giant_new.png",
     "baseHp": 15,
     "baseDmg": 5.5,
     "baseSpd": 1
   },
   "Wizard": {
+    "_id": 10,
     "path": "/src/assets/monsters/wizard.png",
     "baseHp": 12,
     "baseDmg": 10,

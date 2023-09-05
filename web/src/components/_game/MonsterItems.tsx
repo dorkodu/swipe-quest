@@ -4,6 +4,7 @@ import { assets } from "@/assets/assets"
 import { useAppStore } from "@/stores/appStore"
 import { useGameStore } from "@/stores/gameStore"
 import { actionMonsterEquipItem } from "@core/actions/monster_equip_item"
+import { InventoryItemImage } from "./InventoryItem"
 
 function MonsterItems() {
   const monsterIndex = useGameStore(state => state.data.inventory.currentMonsterIndex);
@@ -30,7 +31,10 @@ function MonsterItems() {
         <Button variant="default" h="auto" p="md" onClick={() => show(weaponData, ItemType.Weapon)}>
           {!monster.weapon ?
             <Image src={assets.url(itemData["Common Axe"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
-            <Image src={assets.url(itemData[monster.weapon].path)} width={32} height={32} />
+            <InventoryItemImage
+              src={assets.url(itemData[monster.weapon].path)}
+              stars={itemData[monster.weapon].stars}
+            />
           }
         </Button>
       </Flex >
@@ -39,14 +43,20 @@ function MonsterItems() {
         <Button variant="default" h="auto" p="md" mr="xl" onClick={() => show(armorData, ItemType.Armor)}>
           {!monster.armor ?
             <Image src={assets.url(itemData["Common Banded Mail Armor"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
-            <Image src={assets.url(itemData[monster.armor].path)} width={32} height={32} />
+            <InventoryItemImage
+              src={assets.url(itemData[monster.armor].path)}
+              stars={itemData[monster.armor].stars}
+            />
           }
         </Button>
 
         <Button variant="default" h="auto" p="md" ml="xl" onClick={() => show(amuletData, ItemType.Amulet)}>
           {!monster.amulet ?
             <Image src={assets.url(itemData["Common Cameo Blue Amulet"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
-            <Image src={assets.url(itemData[monster.amulet].path)} width={32} height={32} />
+            <InventoryItemImage
+              src={assets.url(itemData[monster.amulet].path)}
+              stars={itemData[monster.amulet].stars}
+            />
           }
         </Button>
       </Flex>
@@ -55,14 +65,20 @@ function MonsterItems() {
         <Button variant="default" h="auto" p="md" onClick={() => show(runeData, ItemType.Rune)}>
           {!monster.rune ?
             <Image src={assets.url(itemData["Common Generic Rune"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
-            <Image src={assets.url(itemData[monster.rune].path)} width={32} height={32} />
+            <InventoryItemImage
+              src={assets.url(itemData[monster.rune].path)}
+              stars={itemData[monster.rune].stars}
+            />
           }
         </Button>
 
         <Button variant="default" h="auto" p="md" onClick={() => show(ringData, ItemType.Ring)}>
           {!monster.ring ?
             <Image src={assets.url(itemData["Common Agate Ring"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
-            <Image src={assets.url(itemData[monster.ring].path)} width={32} height={32} />
+            <InventoryItemImage
+              src={assets.url(itemData[monster.ring].path)}
+              stars={itemData[monster.ring].stars}
+            />
           }
         </Button>
       </Flex>

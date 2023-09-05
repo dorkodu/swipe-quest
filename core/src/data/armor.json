@@ -1,8 +1,10 @@
 {
   "Animal Skin Armor": {
+    "_id": 1,
     "path": "/src/assets/armors/animal_skin_1_new.png"
   },
   "Banded Mail Armor": {
+    "_id": 2,
     "path": "/src/assets/armors/banded_mail_1.png"
   }
 }

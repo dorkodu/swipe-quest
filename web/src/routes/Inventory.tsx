@@ -8,12 +8,12 @@ import { IconArrowBigUpFilled } from "@tabler/icons-react";
 import { useState } from "react";
 import MonsterItems from "@/components/_game/MonsterItems";
 import Emoji from "@/components/Emoji";
-import InventoryItem from "@/components/_game/InventoryItem";
 import { ItemId, itemData } from "@core/types/item";
 import { util } from "@/lib/util";
 import { actionMonsterUpgrade } from "@core/actions/monster_upgrade";
 import { IInventory } from "@core/types/types";
 import { useAppStore } from "@/stores/appStore";
+import { InventoryItem } from "@/components/_game/InventoryItem";
 
 const useStyles = createStyles((theme) => ({
   inventoryTop: {
@@ -186,6 +186,7 @@ function ItemsSegment() {
           <InventoryItem
             key={i}
             src={assets.url(itemData[item.id].path)}
+            stars={item && itemData[item.id].stars}
             count={item.count}
             onClick={() => showItemInfo(item)}
           />

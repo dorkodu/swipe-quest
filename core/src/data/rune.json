@@ -1,8 +1,10 @@
 {
   "Generic Rune": {
+    "_id": 1,
     "path": "/src/assets/runes/generic.png"
   },
   "Abyss Rune": {
+    "_id": 2,
     "path": "/src/assets/runes/rune_abyss.png"
   }
 }

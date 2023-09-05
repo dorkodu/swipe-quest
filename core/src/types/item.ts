@@ -13,6 +13,7 @@ export enum ItemType {
 }
 
 export interface IItem {
+  _id: number;
   path: string;
   type?: ItemType;
   stars?: number;
@@ -42,9 +43,29 @@ export type AmuletId = keyof typeof amuletData;
 // TODO: Fix types
 function setData(data: Record<any, IItem>, source: Record<any, IItem>) {
   for (const [key, value] of Object.entries(source)) {
-    data[`Common ${key}`] = { ...value as any, hp: 1, dmg: 1, spd: 1 };
-    data[`Rare ${key}`] = { ...value as any, hp: 1, dmg: 1, spd: 1 };
-    data[`Legendary ${key}`] = { ...value as any, hp: 1, dmg: 1, spd: 1 };
+    data[`Common ${key}`] = {
+      ...value as any,
+      hp: value._id,
+      dmg: value._id,
+      spd: value._id,
+      stars: 1,
+    };
+
+    data[`Rare ${key}`] = {
+      ...value as any,
+      hp: value._id * 2,
+      dmg: value._id * 2,
+      spd: value._id * 2,
+      stars: 2,
+    };
+
+    data[`Legendary ${key}`] = {
+      ...value as any,
+      hp: value._id * 3,
+      dmg: value._id * 3,
+      spd: value._id * 3,
+      stars: 3,
+    };
   }
 }
 
