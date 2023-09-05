@@ -1,4 +1,5 @@
 import { IGameData } from "../gamedata";
+import { constants } from "../types/constants";
 import { ItemId, itemData } from "../types/item";
 import { IMonster, monsterData } from "../types/monster";
 
@@ -34,7 +35,7 @@ function getMonsterPower(hp: number, dmg: number, spd: number) {
 
 function getMonsterStats(monster: IMonster, boss?: boolean) {
   const itemStats = getMonsterItemsStats(monster);
-  const modifier = boss ? 1.25 : 1;
+  const modifier = boss ? constants.MONSTER_STATS_BOSS_MODIFIER : 1;
 
   let baseHp = monsterData[monster.id].baseHp * modifier;
   let baseDmg = monsterData[monster.id].baseDmg * modifier;
@@ -49,9 +50,9 @@ function getMonsterStats(monster: IMonster, boss?: boolean) {
     dmg += baseDmg
     spd += baseSpd
 
-    baseHp += baseHp * 5 / 100;
-    baseDmg += baseDmg * 2.5 / 100;
-    baseSpd += baseSpd * 1 / 100;
+    baseHp += baseHp * constants.MONSTER_STATS_HP_MODIFIER;
+    baseDmg += baseDmg * constants.MONSTER_STATS_DMG_MODIFIER;
+    baseSpd += baseSpd * constants.MONSTER_STATS_SPD_MODIFIER;
   }
 
   return {
@@ -63,33 +64,32 @@ function getMonsterStats(monster: IMonster, boss?: boolean) {
 }
 
 function getMonsterUpgradeCost(level: number) {
-  let baseGold = 20;
-  let baseFood = 80;
+  let baseGold = constants.MONSTER_UPGRADE_COST_BASE_GOLD;
+  let baseFood = constants.MONSTER_UPGRADE_COST_BASE_FOOD;
 
   let gold = 0;
   let food = 0;
-
 
   for (let i = 1; i < level + 1; ++i) {
     gold += baseGold;
     food += baseFood;
 
-    baseGold += baseGold * 5 / 100
-    baseFood += baseFood * 7.5 / 100
+    baseGold += baseGold * constants.MONSTER_UPGRADE_COST_GOLD_MODIFIER;
+    baseFood += baseFood * constants.MONSTER_UPGRADE_COST_FOOD_MODIFIER;
   }
 
   return { gold, food };
 }
 
 function getLevelUpXp(level: number) {
-  let baseXp = 10;
+  let baseXp = constants.PLAYER_LEVEL_UP_BASE_XP;
 
   let xp = 0;
 
   for (let i = 1; i < level + 1; ++i) {
     xp += baseXp;
 
-    baseXp += baseXp * 5 / 100
+    baseXp += baseXp * constants.PLAYER_LEVEL_UP_MODIFIER;
   }
 
   return xp;

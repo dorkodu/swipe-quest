@@ -4,6 +4,8 @@ import { util } from "@/lib/util";
 import { AppStoreState, useAppStore } from "@/stores/appStore";
 import { itemData } from "@core/types/item";
 import { Flex, Image, Modal, Title } from "@mantine/core";
+import Stats from "../Stats";
+import { game } from "@core/game";
 
 function ItemInfoModal() {
   const itemInfo = useAppStore(state => state.modals.itemInfo);
@@ -29,11 +31,14 @@ function ItemInfoModal() {
 }
 
 function ItemInfo({ id, count }: Required<AppStoreState["modals"]["itemInfo"]>["item"]) {
+  const stats = game.util.getItemStats(id);
+
   return (
     <>
       <Title order={3}>{id}</Title>
       <Image src={assets.url(itemData[id].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
-      <Title order={3}>{util.formatNumber(count)}</Title>
+      <Title order={3}>{`Count: ${util.formatNumber(count)}`}</Title>
+      <Stats {...stats} />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import { IGameData } from "../gamedata";
 import { random } from "../lib/random";
 import { util } from "../lib/util";
+import { constants } from "../types/constants";
 import { IGameEvent, GameEventId } from "../types/game_event";
 import { ItemId, itemData } from "../types/item";
 import { MonsterId, monsterData } from "../types/monster";
@@ -22,16 +23,16 @@ function act(data: IGameData, info: Info) {
   const id = random.percent<IGameEvent[GameEventId]["id"]>(
     data,
     [
-      { result: "item", percent: 5 },
-      { result: "gold", percent: 25 },
-      { result: "diamond", percent: 1 },
-      { result: "monster_fight", percent: 50 },
-      { result: "monster_unlock", percent: 1 },
-      //{ result: "mystery_box", percent: 10 },
-      //{ result: "scratch_card", percent: 10 },
-      { result: "experience", percent: 10 },
-      { result: "food", percent: 30 },
-      { result: "boss_fight", percent: 5 },
+      { result: "item", percent: constants.GAME_EVENT_ITEM_PERCENT },
+      { result: "gold", percent: constants.GAME_EVENT_GOLD_PERCENT },
+      { result: "diamond", percent: constants.GAME_EVENT_DIAMOND_PERCENT },
+      { result: "monster_fight", percent: constants.GAME_EVENT_MONSTER_FIGHT_PERCENT },
+      { result: "monster_unlock", percent: constants.GAME_EVENT_MONSTER_UNLOCK_PERCENT },
+      { result: "mystery_box", percent: constants.GAME_EVENT_MYSTERY_BOX_PERCENT },
+      { result: "scratch_card", percent: constants.GAME_EVENT_SCRATCH_CARD_PERCENT },
+      { result: "experience", percent: constants.GAME_EVENT_EXPERIENCE_PERCENT },
+      { result: "food", percent: constants.GAME_EVENT_FOOD_PERCENT },
+      { result: "boss_fight", percent: constants.GAME_EVENT_BOSS_FIGHT_PERCENT },
     ]
   );
 
