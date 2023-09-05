@@ -3,5 +3,5 @@ A RPG game.
 
 ### To-do
 
-- Remember last opened info/items and monsters/items segments
-- Make all items have same properties, hp/dmg/spd but also type: weapon, armor, etc.
+- Add item descriptions using Google Bard
+- Show item description, stars and count in ItemInfoModal's ItemInfo component

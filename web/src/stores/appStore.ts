@@ -6,6 +6,11 @@ import { immer } from "zustand/middleware/immer";
 export interface AppStoreState {
   route: "home" | "map" | "inventory" | "menu" | "any";
 
+  segments: {
+    inventoryTop: "info" | "items",
+    inventoryBottom: "monsters" | "items",
+  }
+
   modals: {
     itemPicker: {
       opened: boolean,
@@ -32,6 +37,11 @@ export interface AppStoreAction {
 
 const initialState: AppStoreState = {
   route: "any",
+
+  segments: {
+    inventoryTop: "info",
+    inventoryBottom: "monsters",
+  },
 
   modals: {
     itemPicker: {
