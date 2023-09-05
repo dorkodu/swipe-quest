@@ -31,7 +31,7 @@ export function createGameData(seed: number): IGameData {
       items: {},
 
       monsters: [
-        { id: "Angel", level: 1, xp: 0 },
+        { id: "Angel", level: 1 },
       ]
     },
 

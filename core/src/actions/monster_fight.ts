@@ -1,4 +1,5 @@
 import { IGameData } from "../gamedata";
+import { random } from "../lib/random";
 import { util } from "../lib/util";
 import { IMonster } from "../types/monster";
 
@@ -42,9 +43,17 @@ function act(data: IGameData, info: Info) {
 
       // If turn is 15 and allies hasn't won, enemy wins
       if (fight.turn === 15) return "enemy";
-      
-      if (fight.allyStats.hp <= 0) return "enemy";
-      if (fight.enemyStats.hp <= 0) return "ally";
+
+      if (fight.allyStats.hp <= 0) {
+        return "enemy";
+      }
+      if (fight.enemyStats.hp <= 0) {
+        data.player.food += random.number(data, data.player.level * 10, data.player.level * 100);
+        data.player.gold += random.number(data, data.player.level * 10, data.player.level * 100);
+        data.player.xp += random.number(data, data.player.level * 10, data.player.level * 100);
+        util.checkPlayerXp(data);
+        return "ally";
+      }
 
       switch (fight.whoseTurn) {
         case "ally": fight.enemyStats.hp -= fight.allyStats.dmg; break;

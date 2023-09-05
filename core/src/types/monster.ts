@@ -4,7 +4,6 @@ import { ItemId } from "./item";
 export interface IMonster {
   id: MonsterId;
   level: number;
-  xp: number;
 
   weapon?: ItemId;
   armor?: ItemId;
