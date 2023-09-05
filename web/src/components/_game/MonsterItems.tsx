@@ -1,5 +1,5 @@
 import { Button, Flex, Image } from "@mantine/core"
-import { IItem, ItemId, ItemType, amuletData, armorData, itemData, ringData, runeData, weaponData } from "@core/types/item"
+import { IItemData, ItemId, ItemType, amuletData, armorData, itemData, ringData, runeData, weaponData } from "@core/types/item"
 import { assets } from "@/assets/assets"
 import { useAppStore } from "@/stores/appStore"
 import { useGameStore } from "@/stores/gameStore"
@@ -12,7 +12,7 @@ function MonsterItems() {
 
   const inventory = useGameStore(state => state.data.inventory);
 
-  const show = (items: { [key in ItemId]?: IItem }, type: ItemType) => {
+  const show = (items: { [key in ItemId]?: IItemData }, type: ItemType) => {
     useAppStore.setState(s => {
       s.modals.itemPicker.opened = true;
       s.modals.itemPicker.items = Object.keys(items).map(v => inventory.items[v as ItemId]).filter(Boolean) as any;

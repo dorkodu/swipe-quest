@@ -1,4 +1,5 @@
 import { GameEventId, IGameEvent } from "./types/game_event"
+import { IMonsterFight } from "./types/monster_fight";
 import { IInventory, IPlayer } from "./types/types";
 
 export interface IGameData {
@@ -8,6 +9,7 @@ export interface IGameData {
   inventory: IInventory;
 
   currentGameEvent: IGameEvent[GameEventId] | undefined;
+  currentMonsterFight: IMonsterFight | undefined;
 }
 
 export function createGameData(seed: number): IGameData {
@@ -34,6 +36,7 @@ export function createGameData(seed: number): IGameData {
     },
 
     currentGameEvent: undefined,
+    currentMonsterFight: undefined,
   }
 
   return data;

@@ -25,6 +25,9 @@ export interface AppStoreState {
         text: string,
       }
     },
+    monsterFight: {
+      opened: boolean,
+    },
     updateSW: {
       opened: boolean,
     }
@@ -53,6 +56,10 @@ const initialState: AppStoreState = {
     itemInfo: {
       opened: false,
       item: undefined,
+    },
+
+    monsterFight: {
+      opened: false,
     },
 
     updateSW: {

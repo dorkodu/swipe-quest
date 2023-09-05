@@ -13,6 +13,11 @@ export enum ItemType {
 }
 
 export interface IItem {
+  id: ItemId;
+  count: number;
+}
+
+export interface IItemData {
   _id: number;
   path: string;
   type?: ItemType;
@@ -25,23 +30,23 @@ export interface IItem {
 
 type ItemRarity<T extends string> = `Common ${T}` | `Rare ${T}` | `Legendary ${T}`
 
-export const weaponData: Record<ItemRarity<keyof typeof weapon>, IItem> = {} as any;
+export const weaponData: Record<ItemRarity<keyof typeof weapon>, IItemData> = {} as any;
 export type WeaponId = keyof typeof weaponData;
 
-export const armorData: Record<ItemRarity<keyof typeof armor>, IItem> = {} as any;
+export const armorData: Record<ItemRarity<keyof typeof armor>, IItemData> = {} as any;
 export type ArmorId = keyof typeof armorData;
 
-export const runeData: Record<ItemRarity<keyof typeof rune>, IItem> = {} as any;
+export const runeData: Record<ItemRarity<keyof typeof rune>, IItemData> = {} as any;
 export type RuneId = keyof typeof runeData;
 
-export const ringData: Record<ItemRarity<keyof typeof ring>, IItem> = {} as any;
+export const ringData: Record<ItemRarity<keyof typeof ring>, IItemData> = {} as any;
 export type RingId = keyof typeof ringData;
 
-export const amuletData: Record<ItemRarity<keyof typeof amulet>, IItem> = {} as any;
+export const amuletData: Record<ItemRarity<keyof typeof amulet>, IItemData> = {} as any;
 export type AmuletId = keyof typeof amuletData;
 
 // TODO: Fix types
-function setData(data: Record<any, IItem>, source: Record<any, IItem>) {
+function setData(data: Record<any, IItemData>, source: Record<any, IItemData>) {
   for (const [key, value] of Object.entries(source)) {
     data[`Common ${key}`] = {
       ...value as any,

@@ -33,6 +33,13 @@ function formatNumber(number: number, long?: boolean) {
   return Intl.NumberFormat("en", { notation: "compact" }).format(number);
 }
 
+function clampNumber(number: number, min: number, max: number) {
+  if (number < min) return min;
+  if (number > max) return max;
+  return number;
+}
+
 export const util = {
   formatNumber,
+  clampNumber,
 }

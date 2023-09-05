@@ -1,5 +1,5 @@
-import { AmuletId, ArmorId, ItemId, RingId, RuneId, WeaponId } from "./item";
-import { MonsterId } from "./monster";
+import { IItem, ItemId } from "./item";
+import { IMonster } from "./monster";
 
 export interface IPlayer {
   level: number;
@@ -13,17 +13,6 @@ export interface IPlayer {
 export interface IInventory {
   currentMonsterIndex: number;
 
-  items: { [key in ItemId]?: { id: ItemId, count: number } },
-
-  monsters: Array<{
-    id: MonsterId,
-    level: number,
-    xp: number,
-    
-    weapon?: WeaponId,
-    armor?: ArmorId,
-    rune?: RuneId,
-    ring?: RingId,
-    amulet?: AmuletId,
-  }>
+  items: { [key in ItemId]?: IItem },
+  monsters: Array<IMonster>
 }
