@@ -34,7 +34,7 @@ function ItemEvent({ event }: { event: IGameEvent["item"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(itemData[event.itemId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
-        <Title order={3}>{event.itemId}</Title>
+        <Title order={3} align="center">Found: <br /> {event.itemId}</Title>
       </Flex>
     </Card>
   )
@@ -45,7 +45,10 @@ function GoldEvent({ event }: { event: IGameEvent["gold"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="🪙" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{`${util.formatNumber(event.count)} Gold`}</Title>
+        <Title order={3} align="center">
+          Received: <br />
+          {`${util.formatNumber(event.count)} Gold`}
+        </Title>
       </Flex>
     </Card>
   )
@@ -56,7 +59,10 @@ function DiamondEvent({ event }: { event: IGameEvent["diamond"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="💎" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{`${util.formatNumber(event.count)} Diamond`}</Title>
+        <Title order={3} align="center">
+          Received: <br />
+          {`${util.formatNumber(event.count)} Diamond`}
+        </Title>
       </Flex>
     </Card>
   )
@@ -82,7 +88,7 @@ function MonsterFightEvent({ event }: { event: IGameEvent["monster_fight"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
-        <Title order={3}>{event.monsterId}</Title>
+        <Title order={3} align="center">{event.monsterId}</Title>
         <MonsterStats {...stats} />
         <Button fullWidth leftIcon={<IconSword />} onClick={fight}>Fight</Button>
       </Flex>
@@ -95,7 +101,9 @@ function MonsterUnlockEvent({ event }: { event: IGameEvent["monster_unlock"] }) 
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Image src={assets.url(monsterData[event.monsterId].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
-        <Title order={3}>{event.monsterId}</Title>
+        <Title order={3} align="center">
+          Found: <br />
+          {event.monsterId}</Title>
       </Flex>
     </Card>
   )
@@ -118,7 +126,10 @@ function ExperienceEvent({ event }: { event: IGameEvent["experience"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="⭐" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{`${util.formatNumber(event.count)} Experience`}</Title>
+        <Title order={3} align="center">
+          Received: <br />
+          {`${util.formatNumber(event.count)} Experience`}
+        </Title>
       </Flex>
     </Card>
   )
@@ -129,7 +140,10 @@ function FoodEvent({ event }: { event: IGameEvent["food"] }) {
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
         <Emoji emoji="🍏" style={{ width: 48, height: 48 }} />
-        <Title order={3}>{`${util.formatNumber(event.count)} Food`}</Title>
+        <Title order={3} align="center">
+          Received: <br />
+          {`${util.formatNumber(event.count)} Food`}
+        </Title>
       </Flex>
     </Card>
   )
@@ -167,7 +181,7 @@ function NoEvent() {
   return (
     <Card withBorder w="100%" maw={360}>
       <Flex direction="column" align="center" gap="md">
-        <Title order={3}>{"Start swiping up!"}</Title>
+        <Title order={3} align="center">{"Start swiping up!"}</Title>
         <Flex>
           <IconArrowBigUpFilled size={32} />
           <IconHandMove size={32} />

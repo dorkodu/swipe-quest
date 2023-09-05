@@ -5,3 +5,4 @@ A RPG game.
 
 - Add item descriptions using Google Bard
 - Show item description, stars and count in ItemInfoModal's ItemInfo component
+- Make mystery box and scratch card work
