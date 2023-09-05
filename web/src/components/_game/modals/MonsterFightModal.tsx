@@ -6,11 +6,16 @@ import { actionMonsterFight } from "@core/actions/monster_fight";
 import { game } from "@core/game";
 import { monsterData } from "@core/types/monster";
 import { Flex, Image, Modal, Progress, Title } from "@mantine/core";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function MonsterFightModal() {
   const monsterFight = useAppStore(state => state.modals.monsterFight);
-  const close = () => { useAppStore.setState(s => { s.modals.monsterFight.opened = false }) }
+  const close = () => {
+    useAppStore.setState(s => { s.modals.monsterFight.opened = false })
+    setWinner(undefined);
+  }
+
+  const [winner, setWinner] = useState<"ally" | "enemy" | undefined>(undefined);
 
   const fight = useGameStore(state => state.data.currentMonsterFight);
   const monsterStats = useMemo(() => {
@@ -24,15 +29,21 @@ function MonsterFightModal() {
   useEffect(() => {
     if (!fight) return;
     if (!monsterFight.opened) return;
+
     const interval = setInterval(() => {
-      let result: "ally" | "enemy" | undefined;
       useGameStore.setState(s => {
-        result = actionMonsterFight.act(s.data, { type: "progress" })
+        const result = actionMonsterFight.act(s.data, { type: "progress" });
+        setWinner(result);
       });
-      if (!!result) close();
-    }, 1000);
+    }, 500);
     return () => clearInterval(interval);
   }, [monsterFight.opened]);
+
+  useEffect(() => {
+    if (!winner) return;
+    const timeout = setTimeout(() => { close() }, 1000);
+    return () => clearTimeout(timeout);
+  }, [winner]);
 
   return (
     <Modal
@@ -49,11 +60,23 @@ function MonsterFightModal() {
               </Flex>
 
               <Flex direction="column" gap="xs">
-                <Image src={assets.url(monsterData[fight.ally.id].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
+                <Image
+                  src={assets.url(monsterData[fight.ally.id].path)} width={64} height={64}
+                  style={{
+                    imageRendering: "pixelated",
+                    filter: winner === "enemy" ? "blur(2px)" : undefined
+                  }}
+                />
                 <Progress value={util.clampNumber((fight.allyStats.hp / monsterStats.ally.hp) * 100, 0, 100)} />
               </Flex>
               <Flex direction="column" gap="xs">
-                <Image src={assets.url(monsterData[fight.enemy.id].path)} width={64} height={64} style={{ imageRendering: "pixelated" }} />
+                <Image
+                  src={assets.url(monsterData[fight.enemy.id].path)} width={64} height={64}
+                  style={{
+                    imageRendering: "pixelated",
+                    filter: winner === "ally" ? "blur(2px)" : undefined
+                  }}
+                />
                 <Progress value={util.clampNumber((fight.enemyStats.hp / monsterStats.enemy.hp) * 100, 0, 100)} />
               </Flex>
             </>
