@@ -68,5 +68,75 @@
     "baseHp": 320,
     "baseDmg": 60,
     "baseSpd": 10
+  },
+  "Hell Sentinel": {
+    "_id": 11,
+    "path": "/src/assets/monsters/hell_sentinel.png",
+    "baseHp": 666,
+    "baseDmg": 66,
+    "baseSpd": 6
+  },
+  "Red Devil": {
+    "_id": 12,
+    "path": "/src/assets/monsters/red_devil_new.png",
+    "baseHp": 510,
+    "baseDmg": 80,
+    "baseSpd": 3
+  },
+  "Black Dragon": {
+    "_id": 13,
+    "path": "/src/assets/monsters/draconic_base-black_new.png",
+    "baseHp": 1000,
+    "baseDmg": 113,
+    "baseSpd": 7
+  },
+  "Golden Dragon": {
+    "_id": 14,
+    "path": "/src/assets/monsters/golden_dragon.png",
+    "baseHp": 1500,
+    "baseDmg": 226,
+    "baseSpd": 14
+  },
+  "Shining Eye": {
+    "_id": 15,
+    "path": "/src/assets/monsters/shining_eye_new.png",
+    "baseHp": 700,
+    "baseDmg": 99,
+    "baseSpd": 10
+  },
+  "Paladin": {
+    "_id": 16,
+    "path": "/src/assets/monsters/paladin.png",
+    "baseHp": 1900,
+    "baseDmg": 230,
+    "baseSpd": 31
+  },
+  "Molten Gargoyle": {
+    "_id": 17,
+    "path": "/src/assets/monsters/molten_gargoyle.png",
+    "baseHp": 2000,
+    "baseDmg": 312,
+    "baseSpd": 15
+  },
+  "Bone Dragon": {
+    "_id": 18,
+    "path": "/src/assets/monsters/bone_dragon_new.png",
+    "baseHp": 1200,
+    "baseDmg": 79,
+    "baseSpd": 10
+  },
+  "Lich": {
+    "_id": 19,
+    "path": "/src/assets/monsters/lich.png",
+    "baseHp": 3200,
+    "baseDmg": 500,
+    "baseSpd": 69
+  },
+  "Gigabat": {
+    "_id": 20,
+    "path": "/src/assets/monsters/gigabat.png",
+    "baseHp": 900,
+    "baseDmg": 750,
+    "baseSpd": 30
   }
 }
