@@ -5,6 +5,7 @@ import { useAppStore } from "@/stores/appStore"
 import { useGameStore } from "@/stores/gameStore"
 import { actionMonsterEquipItem } from "@core/actions/monster_equip_item"
 import { InventoryItemImage } from "./InventoryItem"
+import { util } from "@/lib/util"
 
 function MonsterItems() {
   const monsterIndex = useGameStore(state => state.data.inventory.currentMonsterIndex);
@@ -15,7 +16,7 @@ function MonsterItems() {
   const show = (items: { [key in ItemId]?: IItemData }, type: ItemType) => {
     useAppStore.setState(s => {
       s.modals.itemPicker.opened = true;
-      s.modals.itemPicker.items = Object.keys(items).map(v => inventory.items[v as ItemId]).filter(Boolean) as any;
+      s.modals.itemPicker.items = util.sortItems(Object.keys(items).map(v => inventory.items[v as ItemId]).filter(Boolean) as any);
       if (monster && monster[type]) s.modals.itemPicker.items.push(undefined);
       s.modals.itemPicker.callback = (item) => {
         useAppStore.setState(s => { s.modals.itemPicker.opened = false });

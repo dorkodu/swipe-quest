@@ -37,7 +37,6 @@ function act(data: IGameData, info: Info) {
   data.player.food -= cost.food;
   monster.level++;
 
-  // Sort monster by level and re-calculate the current monster index
-  data.inventory.monsters.sort((a, b) => b.level - a.level);
-  data.inventory.currentMonsterIndex = data.inventory.monsters.indexOf(monster);
+  // Sort the monsters by level because the monster level has changed
+  util.sortMonsters(data);
 }

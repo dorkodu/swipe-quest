@@ -1,3 +1,6 @@
+import { game } from "@core/game";
+import { IItem } from "@core/types/item";
+
 export function wait<T>(
   start: () => Promise<T>,
   before: number = 100,
@@ -39,7 +42,18 @@ function clampNumber(number: number, min: number, max: number) {
   return number;
 }
 
+/**
+ * Sorts the items by the strongest to the weakest.
+ * @param items 
+ * @returns 
+ */
+function sortItems(items: IItem[]) {
+  return items.sort((a, b) => game.util.getItemPower(b.id) - game.util.getItemPower(a.id));
+}
+
 export const util = {
   formatNumber,
   clampNumber,
+
+  sortItems,
 }

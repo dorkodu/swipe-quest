@@ -13,6 +13,7 @@ import { actionMonsterUpgrade } from "@core/actions/monster_upgrade";
 import { IInventory } from "@core/types/types";
 import { useAppStore } from "@/stores/appStore";
 import { InventoryItem } from "@/components/_game/InventoryItem";
+import { useMemo } from "react";
 
 const useStyles = createStyles((theme) => ({
   inventoryTop: {
@@ -145,6 +146,7 @@ function MonstersSegment() {
 
 function ItemsSegment() {
   const data = useGameStore(state => state.data);
+  const items = useMemo(() => util.sortItems(Object.values(data.inventory.items)), [data.inventory.items]);
 
   const showItemInfo = (item: IInventory["items"][ItemId]) => {
     useAppStore.setState(s => {
@@ -189,7 +191,7 @@ function ItemsSegment() {
           onClick={() => showOtherInfo("food", foodText)}
         />
 
-        {Object.values(data.inventory.items).map((item, i) =>
+        {items.map((item, i) =>
           <InventoryItem
             key={i}
             src={assets.url(itemData[item.id].path)}

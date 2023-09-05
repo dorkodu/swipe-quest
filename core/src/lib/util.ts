@@ -3,6 +3,11 @@ import { constants } from "../types/constants";
 import { ItemId, itemData } from "../types/item";
 import { IMonster, monsterData } from "../types/monster";
 
+function getItemPower(itemId: ItemId | undefined) {
+  const stats = getItemStats(itemId);
+  return stats.hp + stats.dmg + stats.spd;
+}
+
 function getItemStats(itemId: ItemId | undefined) {
   const hp = itemId && itemData[itemId].hp || 0;
   const dmg = itemId && itemData[itemId].dmg || 0;
@@ -106,7 +111,17 @@ function checkPlayerXp(data: IGameData) {
   }
 }
 
+function sortMonsters(data: IGameData) {
+  const monster = data.inventory.monsters[data.inventory.currentMonsterIndex];
+  if (!monster) return;
+
+  // Sort monster by level and re-calculate the current monster index
+  data.inventory.monsters.sort((a, b) => b.level - a.level);
+  data.inventory.currentMonsterIndex = data.inventory.monsters.indexOf(monster);
+}
+
 export const util = {
+  getItemPower,
   getItemStats,
   getMonsterItemsStats,
 
@@ -116,4 +131,6 @@ export const util = {
 
   getLevelUpXp,
   checkPlayerXp,
+
+  sortMonsters,
 }
