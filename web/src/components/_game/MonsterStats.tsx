@@ -13,7 +13,7 @@ interface Props {
 function MonsterStats({ level, hp, dmg, spd }: Props) {
   return (
     <Flex direction="column" gap="md" w="100%">
-      <Flex justify="center" gap="md" wrap="wrap">
+      <Flex gap="md" wrap="wrap">
         <Flex gap="xs">
           <Emoji emoji="⚡" style={{ width: 24, height: 24 }} />
           <Title order={5}>{`Power: ${game.util.getMonsterPower(hp, dmg, spd)}`}</Title>
