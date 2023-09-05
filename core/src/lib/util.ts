@@ -1,6 +1,10 @@
 import { IGameData } from "../gamedata";
 import { MonsterId, monsterData } from "../types/monster";
 
+function getMonsterPower(hp: number, dmg: number, spd: number) {
+  return hp + dmg + spd;
+}
+
 function getMonsterStats(id: MonsterId, level: number, boss?: boolean) {
   const modifier = boss ? 1.25 : 1;
 
@@ -75,6 +79,7 @@ function checkPlayerXp(data: IGameData) {
 }
 
 export const util = {
+  getMonsterPower,
   getMonsterStats,
   getMonsterUpgradeCost,
   getLevelUpXp,
