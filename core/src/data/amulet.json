@@ -6,5 +6,37 @@
   "Cameo Blue Amulet": {
     "_id": 2,
     "path": "/src/assets/amulets/cameo_blue.png"
+  },
+  "Cameo Orange Amulet": {
+    "_id": 3,
+    "path": "/src/assets/amulets/cameo_orange.png"
+  },
+  "Celtic Blue Amulet": {
+    "_id": 4,
+    "path": "/src/assets/amulets/celtic_blue.png"
+  },
+  "Celtic Red Amulet": {
+    "_id": 5,
+    "path": "/src/assets/amulets/celtic_red.png"
+  },
+  "Celtic Yellow Amulet": {
+    "_id": 6,
+    "path": "/src/assets/amulets/celtic_yellow.png"
+  },
+  "Crystal Green Amulet": {
+    "_id": 7,
+    "path": "/src/assets/amulets/crystal_green.png"
+  },
+  "Crystal Red Amulet": {
+    "_id": 8,
+    "path": "/src/assets/amulets/crystal_red.png"
+  },
+  "Crystal White Amulet": {
+    "_id": 9,
+    "path": "/src/assets/amulets/crystal_white.png"
+  },
+  "Cylinder Gray Amulet": {
+    "_id": 10,
+    "path": "/src/assets/amulets/cylinder_gray.png"
   }
 }

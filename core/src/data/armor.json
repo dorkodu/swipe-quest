@@ -1,10 +1,42 @@
 {
-  "Animal Skin Armor": {
+  "Animal Skin 1 Armor": {
     "_id": 1,
     "path": "/src/assets/armors/animal_skin_1_new.png"
   },
-  "Banded Mail Armor": {
+  "Animal Skin 2 Armor": {
     "_id": 2,
+    "path": "/src/assets/armors/animal_skin_2_new.png"
+  },
+  "Animal Skin 3 Armor": {
+    "_id": 3,
+    "path": "/src/assets/armors/animal_skin_3.png"
+  },
+  "Banded Mail 1 Armor": {
+    "_id": 4,
     "path": "/src/assets/armors/banded_mail_1.png"
+  },
+  "Banded Mail 2 Armor": {
+    "_id": 5,
+    "path": "/src/assets/armors/banded_mail_2.png"
+  },
+  "Blue Dragon Scalemail Armor": {
+    "_id": 6,
+    "path": "/src/assets/armors/blue_dragon_scale_mail_new.png"
+  },
+  "Chainmail 1 Armor": {
+    "_id": 7,
+    "path": "/src/assets/armors/chain_mail_1.png"
+  },
+  "Chainmail 2 Armor": {
+    "_id": 8,
+    "path": "/src/assets/armors/chain_mail_2.png"
+  },
+  "Chainmail 3 Armor": {
+    "_id": 9,
+    "path": "/src/assets/armors/chain_mail_3.png"
+  },
+  "Crystal Platemail Armor": {
+    "_id": 10,
+    "path": "/src/assets/armors/crystal_plate_mail.png"
   }
 }

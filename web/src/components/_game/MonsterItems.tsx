@@ -43,7 +43,7 @@ function MonsterItems() {
       <Flex direction="row" justify="center" gap="xl">
         <Button variant="default" h="auto" p="md" mr="xl" onClick={() => show(armorData, ItemType.Armor)}>
           {!monster.armor ?
-            <Image src={assets.url(itemData["Common Banded Mail Armor"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
+            <Image src={assets.url(itemData["Common Banded Mail 1 Armor"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
             <InventoryItemImage
               src={assets.url(itemData[monster.armor].path)}
               stars={itemData[monster.armor].stars}

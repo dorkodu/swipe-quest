@@ -40,6 +40,9 @@ function act(data: IGameData, info: Info) {
       const fight = data.currentMonsterFight;
       if (!fight) return;
 
+      // If turn is 15 and allies hasn't won, enemy wins
+      if (fight.turn === 15) return "enemy";
+      
       if (fight.allyStats.hp <= 0) return "enemy";
       if (fight.enemyStats.hp <= 0) return "ally";
 
