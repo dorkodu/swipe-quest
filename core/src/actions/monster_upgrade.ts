@@ -14,6 +14,9 @@ function actable(data: IGameData, info: Info): boolean {
   const monster = data.inventory.monsters[info.monsterIndex];
   if (!monster) return false;
 
+  // Can't level up if monster's level is equal or greater to player's level
+  if (data.player.level <= monster.level) return false;
+
   const cost = util.getMonsterUpgradeCost(monster.level);
 
   if (cost.gold > data.player.gold) return false;
