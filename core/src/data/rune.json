@@ -6,5 +6,37 @@
   "Abyss Rune": {
     "_id": 2,
     "path": "/src/assets/runes/rune_abyss.png"
+  },
+  "Cerebov Rune": {
+    "_id": 3,
+    "path": "/src/assets/runes/rune_cerebov_new.png"
+  },
+  "Cocytus Rune": {
+    "_id": 4,
+    "path": "/src/assets/runes/rune_cocytus_new.png"
+  },
+  "Demonic 1 Rune": {
+    "_id": 5,
+    "path": "/src/assets/runes/rune_demonic_1.png"
+  },
+  "Demonic 2 Rune": {
+    "_id": 6,
+    "path": "/src/assets/runes/rune_demonic_2.png"
+  },
+  "Demonic 3 Rune": {
+    "_id": 7,
+    "path": "/src/assets/runes/rune_demonic_3.png"
+  },
+  "Demonic 4 Rune": {
+    "_id": 8,
+    "path": "/src/assets/runes/rune_demonic_4.png"
+  },
+  "Demonic 5 Rune": {
+    "_id": 9,
+    "path": "/src/assets/runes/rune_demonic_5.png"
+  },
+  "Demonic 6 Rune": {
+    "_id": 10,
+    "path": "/src/assets/runes/rune_demonic_6.png"
   }
 }

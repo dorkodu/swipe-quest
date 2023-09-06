@@ -6,5 +6,37 @@
   "Brass Ring": {
     "_id": 2,
     "path": "/src/assets/rings/brass.png"
+  },
+  "Bronze Ring": {
+    "_id": 3,
+    "path": "/src/assets/rings/bronze.png"
+  },
+  "Clay Ring": {
+    "_id": 4,
+    "path": "/src/assets/rings/clay.png"
+  },
+  "Copper Ring": {
+    "_id": 5,
+    "path": "/src/assets/rings/copper.png"
+  },
+  "Coral Ring": {
+    "_id": 6,
+    "path": "/src/assets/rings/coral.png"
+  },
+  "Diamond Ring": {
+    "_id": 7,
+    "path": "/src/assets/rings/diamond.png"
+  },
+  "Emerald Ring": {
+    "_id": 8,
+    "path": "/src/assets/rings/emerald.png"
+  },
+  "Glass Ring": {
+    "_id": 9,
+    "path": "/src/assets/rings/glass.png"
+  },
+  "Gold Ring": {
+    "_id": 10,
+    "path": "/src/assets/rings/gold.png"
   }
 }

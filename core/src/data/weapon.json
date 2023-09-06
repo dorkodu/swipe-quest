@@ -3,8 +3,40 @@
     "_id": 1,
     "path": "/src/assets/weapons/ancient_sword.png"
   },
-  "Axe": {
+  "Ankus": {
     "_id": 2,
+    "path": "/src/assets/weapons/ankus.png"
+  },
+  "Axe": {
+    "_id": 3,
     "path": "/src/assets/weapons/axe.png"
+  },
+  "Bardiche 1": {
+    "_id": 4,
+    "path": "/src/assets/weapons/bardiche_1.png"
+  },
+  "Bardiche 2": {
+    "_id": 5,
+    "path": "/src/assets/weapons/bardiche_2.png"
+  },
+  "Bardiche 4": {
+    "_id": 6,
+    "path": "/src/assets/weapons/bardiche_4.png"
+  },
+  "Bardiche 5": {
+    "_id": 7,
+    "path": "/src/assets/weapons/bardiche_5.png"
+  },
+  "Battle Axe 1": {
+    "_id": 8,
+    "path": "/src/assets/weapons/battle_axe_1.png"
+  },
+  "Battle Axe 2": {
+    "_id": 9,
+    "path": "/src/assets/weapons/battle_axe_2.png"
+  },
+  "Battle Axe 3": {
+    "_id": 10,
+    "path": "/src/assets/weapons/battle_axe_3.png"
   }
 }
