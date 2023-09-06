@@ -2,7 +2,7 @@ import { game } from "../game";
 import { IGameData } from "../gamedata";
 import { constants } from "../types/constants";
 import { IItem, IItemData, ItemId, itemData } from "../types/item";
-import { IMonster, monsterData } from "../types/monster";
+import { IMonster, MonsterId, monsterData } from "../types/monster";
 import { IInventory, IRewards } from "../types/types";
 import { random } from "./random";
 
@@ -174,12 +174,26 @@ function applyRewards(data: IGameData, rewards: IRewards) {
   checkPlayerXp(data);
 }
 
-function getCampaignLevels() {
+function getCampaignLevel(level: number): { monster: IMonster, rewards: IRewards, isBoss: boolean } {
+  const monsterId: MonsterId = random.percent(
+    { seed: level },
+    Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+  ) || "Angel";
 
+  const monster: IMonster = { id: monsterId, level }
+  const rewards: IRewards = { xp: level * 10, gold: level * 10, food: level * 10 }
+  const isBoss = level % 10 === 0;
+
+  return { monster, rewards, isBoss };
 }
 
 function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } {
-  const monster: IMonster = { id: "Angel", level }
+  const monsterId: MonsterId = random.percent(
+    { seed: level },
+    Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+  ) || "Angel";
+
+  const monster: IMonster = { id: monsterId, level }
   const rewards: IRewards = { gold: level * 25 }
 
   if (level % 10 === 0) {
@@ -213,6 +227,6 @@ export const util = {
 
   applyRewards,
 
-  getCampaignLevels,
+  getCampaignLevel,
   getTowerLevel,
 }

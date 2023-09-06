@@ -18,7 +18,6 @@ export interface IInventory {
 }
 
 export interface ICampaign {
-  stage: "easy" | "normal" | "hard" | "expert" | "hell";
   level: number;
 }
 

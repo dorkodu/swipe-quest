@@ -38,7 +38,7 @@ export function createGameData(seed: number): IGameData {
       ]
     },
 
-    campaign: { stage: "easy", level: 1 },
+    campaign: { level: 1 },
     tower: { level: 1 },
 
     currentGameEvent: undefined,

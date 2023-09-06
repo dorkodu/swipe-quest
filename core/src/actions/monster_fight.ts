@@ -59,6 +59,7 @@ function act(data: IGameData, info: Info) {
       }
       if (fight.enemyStats.hp <= 0) {
         if (fight.type === MonsterFightType.GameEvent) actionGenerateGameEvent.act(data, {});
+        if (fight.type === MonsterFightType.Campaign) data.campaign.level++;
         if (fight.type === MonsterFightType.Tower) data.tower.level++;
         util.applyRewards(data, fight.rewards);
         return "ally";
