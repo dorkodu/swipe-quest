@@ -1,7 +1,9 @@
+import { game } from "../game";
 import { IGameData } from "../gamedata";
 import { constants } from "../types/constants";
-import { ItemId, itemData } from "../types/item";
+import { IItem, IItemData, ItemId, itemData } from "../types/item";
 import { IMonster, monsterData } from "../types/monster";
+import { IInventory } from "../types/types";
 
 function getItemPower(itemId: ItemId | undefined) {
   const stats = getItemStats(itemId);
@@ -120,6 +122,38 @@ function sortMonsters(data: IGameData) {
   data.inventory.currentMonsterIndex = data.inventory.monsters.indexOf(monster);
 }
 
+/**
+ * Sorts the items by the strongest to the weakest.
+ * @param items 
+ * @returns 
+ */
+function sortItems(items: IItem[]) {
+  return items.sort((a, b) => util.getItemPower(b.id) - util.getItemPower(a.id));
+}
+
+function hasBetterItem(inventory: IInventory, items: { [key in ItemId]?: IItemData }) {
+  const sortedItems = game.util.sortItems(
+    Object
+      .keys(items)
+      .map(v => inventory.items[v as ItemId])
+      .filter(Boolean) as any
+  );
+
+  const monster = inventory.monsters[inventory.currentMonsterIndex];
+  if (!monster) return false;
+
+  const bestItem = sortedItems[0];
+  if (!bestItem) return false;
+
+  const itemType = itemData[bestItem.id].type;
+  if (!itemType) return false
+
+  const monsterItemId = monster[itemType];
+  if (!monsterItemId) return true;
+
+  return util.getItemPower(bestItem.id) > util.getItemPower(monsterItemId);
+}
+
 export const util = {
   getItemPower,
   getItemStats,
@@ -133,4 +167,7 @@ export const util = {
   checkPlayerXp,
 
   sortMonsters,
+  sortItems,
+
+  hasBetterItem,
 }

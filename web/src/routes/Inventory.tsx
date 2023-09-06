@@ -146,7 +146,7 @@ function MonstersSegment() {
 
 function ItemsSegment() {
   const data = useGameStore(state => state.data);
-  const items = useMemo(() => util.sortItems(Object.values(data.inventory.items)), [data.inventory.items]);
+  const items = useMemo(() => game.util.sortItems(Object.values(data.inventory.items)), [data.inventory.items]);
 
   const showItemInfo = (item: IInventory["items"][ItemId]) => {
     useAppStore.setState(s => {
