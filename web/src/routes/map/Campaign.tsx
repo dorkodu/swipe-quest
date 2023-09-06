@@ -27,7 +27,8 @@ function Campaign() {
           type: MonsterFightType.Campaign,
           rewards: campaign.rewards,
           ally,
-          enemy
+          enemy,
+          isEnemyBoss: campaign.isBoss,
         }
       );
     })
