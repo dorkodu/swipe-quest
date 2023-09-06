@@ -184,6 +184,15 @@ function getCampaignLevel(level: number): { monster: IMonster, rewards: IRewards
   const rewards: IRewards = { xp: level * 10, gold: level * 10, food: level * 10 }
   const isBoss = level % 10 === 0;
 
+  if (level % 10 === 0) {
+    const items = Object.keys(itemData) as ItemId[];
+    const itemId = random.percent(
+      { seed: level * 10000 },
+      items.map(result => ({ percent: (1 / itemData[result]._id) * items.length * 100, result }))
+    );
+    if (itemId) rewards.items = [{ id: itemId, count: 1 }];
+  }
+
   return { monster, rewards, isBoss };
 }
 
