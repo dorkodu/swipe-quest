@@ -1,7 +1,7 @@
 import { game } from "../game";
 import { IGameData } from "../gamedata";
 import { constants } from "../types/constants";
-import { IItem, IItemData, ItemId, itemData } from "../types/item";
+import { IItem, IItemData, ItemId, ItemType, amuletData, armorData, itemData, ringData, runeData, weaponData } from "../types/item";
 import { IMonster, MonsterId, monsterData } from "../types/monster";
 import { IInventory, IRewards } from "../types/types";
 import { random } from "./random";
@@ -21,6 +21,31 @@ function getItemStats(itemId: ItemId | undefined) {
     dmg: Math.floor(dmg),
     spd: Math.floor(spd),
   }
+}
+
+function getItemUpgrade(itemId: ItemId | undefined): ItemId | undefined {
+  if (!itemId) return undefined;
+
+  let data: { [key in ItemId]?: IItemData };
+  switch (itemData[itemId].type) {
+    case ItemType.Weapon: data = weaponData; break;
+    case ItemType.Armor: data = armorData; break;
+    case ItemType.Rune: data = runeData; break;
+    case ItemType.Ring: data = ringData; break;
+    case ItemType.Amulet: data = amuletData; break;
+    default: return undefined;
+  }
+
+  const item = itemData[itemId];
+  const itemIds = Object.keys(itemData) as ItemId[];
+
+  switch (item.stars) {
+    case 1: return itemIds.filter(i => data[i]?._id === item._id && data[i]?.stars === 2)[0];
+    case 2: return itemIds.filter(i => data[i]?._id === item._id && data[i]?.stars === 3)[0];
+    case 3: return itemIds.filter(i => data[i]?._id === item._id + 1 && data[i]?.stars === 1)[0];
+  }
+
+  return undefined;
 }
 
 function getMonsterItemsStats(monster: IMonster) {
@@ -220,6 +245,7 @@ function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } 
 export const util = {
   getItemPower,
   getItemStats,
+  getItemUpgrade,
   getMonsterItemsStats,
 
   getMonsterPower,

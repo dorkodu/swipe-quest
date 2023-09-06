@@ -18,13 +18,21 @@ interface InventoryItemImageProps {
   emoji?: string;
   stars?: number;
   count?: number;
+  blur?: boolean;
 }
 
-export function InventoryItemImage({ src, emoji, stars, count }: InventoryItemImageProps) {
+export function InventoryItemImage({ src, emoji, stars, count, blur }: InventoryItemImageProps) {
   return (
     <>
-      {src && <Image src={src} width={32} height={32} style={{ imageRendering: "pixelated" }} />}
+      {src &&
+        <Image
+          src={src} width={32} height={32}
+          style={{ imageRendering: "pixelated", filter: blur ? "blur(1px) contrast(50%)" : "" }}
+        />
+      }
+
       {emoji && <Emoji emoji={emoji} style={{ width: 32, height: 32 }} />}
+
       {stars !== undefined &&
         [...Array(stars).keys()].map(s =>
           <Emoji key={s} emoji="⭐"
@@ -32,6 +40,7 @@ export function InventoryItemImage({ src, emoji, stars, count }: InventoryItemIm
           />
         )
       }
+
       {count !== undefined &&
         <Title order={5} pos="absolute" right={4} bottom={0} color="white" style={textShadow}>
           {util.formatNumber(count)}

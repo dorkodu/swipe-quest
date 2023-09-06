@@ -101,7 +101,7 @@ function ItemList(
           src={assets.url(itemData[item.id].path)}
           stars={item && itemData[item.id].stars}
           count={item.count}
-          onClick={(itemsOnClick && itemsOnClick(item)) || (() => showItemInfo(item))}
+          onClick={itemsOnClick ? (() => itemsOnClick(item)) : (() => showItemInfo(item))}
         />
       )}
     </>

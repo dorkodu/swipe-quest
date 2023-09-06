@@ -22,7 +22,7 @@ export interface IItemData {
   _id: number;
   path: string;
   type?: ItemType;
-  stars?: number;
+  stars?: 1 | 2 | 3;
 
   hp?: number;
   dmg?: number;
