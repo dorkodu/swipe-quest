@@ -52,10 +52,10 @@ function ItemList(
     });
   }
 
-  const goldText = `${util.formatNumber(player.gold, true)} Gold`;
-  const diamondText = `${util.formatNumber(player.diamond, true)} Diamond`;
-  const foodText = `${util.formatNumber(player.food, true)} Food`;
-  const xpText = `${util.formatNumber(player.xp, true)} Experience`;
+  const goldText = gold !== undefined ? `${util.formatNumber(gold, true)} Gold` : "";
+  const diamondText = diamond !== undefined ? `${util.formatNumber(diamond, true)} Diamond` : "";
+  const foodText = food !== undefined ? `${util.formatNumber(food, true)} Food` : "";
+  const xpText = xp !== undefined ? `${util.formatNumber(xp, true)} Experience` : "";
   const levelText =
     util.formatNumber(player.xp, true) +
     " / " +
