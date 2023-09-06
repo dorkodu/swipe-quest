@@ -52,9 +52,10 @@ function act(data: IGameData, info: Info) {
 }
 
 function eventItem(id: "item", data: IGameData, _info: Info) {
+  const items = Object.keys(itemData) as ItemId[];
   const itemId = random.percent(
     data,
-    Object.keys(itemData).map(result => ({ percent: 1, result: result as ItemId }))
+    items.map(result => ({ percent: (1 / itemData[result]._id) * items.length * 100, result }))
   );
 
   if (!itemId) return;
@@ -105,9 +106,10 @@ function eventMonsterFight(id: "monster_fight", data: IGameData, _info: Info) {
 }
 
 function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) {
+  const monsters = Object.keys(monsterData) as MonsterId[];
   const monsterId = random.percent(
     data,
-    Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+    monsters.map(result => ({ percent: (1 / monsterData[result]._id) * monsters.length * 100, result }))
   );
 
   if (!monsterId) return;

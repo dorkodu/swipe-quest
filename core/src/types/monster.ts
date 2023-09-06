@@ -13,6 +13,7 @@ export interface IMonster {
 }
 
 export interface IMonsterData {
+  _id: number;
   path: string | null;
   baseHp: number;
   baseDmg: number;
