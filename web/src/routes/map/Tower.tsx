@@ -20,7 +20,16 @@ function Tower() {
       const enemy: IMonster = { id: tower.monster.id, level: tower.monster.level };
       const ally = s.data.inventory.monsters[s.data.inventory.currentMonsterIndex];
       if (!ally) return;
-      actionMonsterFight.act(s.data, { phase: "start", type: MonsterFightType.Tower, ally, enemy });
+      actionMonsterFight.act(
+        s.data,
+        {
+          phase: "start",
+          type: MonsterFightType.Tower,
+          rewards: tower.rewards,
+          ally,
+          enemy
+        }
+      );
     })
   }
 

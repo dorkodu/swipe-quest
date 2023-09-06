@@ -159,6 +159,21 @@ function getBetterItem(
   return undefined;
 }
 
+function applyRewards(data: IGameData, rewards: IRewards) {
+  data.player.xp += rewards.xp || 0;
+  data.player.gold += rewards.gold || 0;
+  data.player.diamond += rewards.diamond || 0;
+  data.player.food += rewards.food || 0;
+
+  data.inventory.monsters.push(...(rewards.monsters || []));
+  rewards.items?.forEach(item => {
+    if (!data.inventory.items[item.id]) data.inventory.items[item.id] = { id: item.id, count: 0 }
+    data.inventory.items[item.id]!.count++;
+  });
+
+  checkPlayerXp(data);
+}
+
 function getCampaignLevels() {
 
 }
@@ -195,6 +210,8 @@ export const util = {
   sortItems,
 
   getBetterItem,
+
+  applyRewards,
 
   getCampaignLevels,
   getTowerLevel,

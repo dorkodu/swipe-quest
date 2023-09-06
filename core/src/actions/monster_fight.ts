@@ -1,8 +1,8 @@
 import { IGameData } from "../gamedata";
-import { random } from "../lib/random";
 import { util } from "../lib/util";
 import { IMonster } from "../types/monster";
 import { MonsterFightType } from "../types/monster_fight";
+import { IRewards } from "../types/types";
 import { actionGenerateGameEvent } from "./generate_game_event";
 
 export const actionMonsterFight = {
@@ -13,6 +13,7 @@ export const actionMonsterFight = {
 type Info = {
   phase: "start";
   type: MonsterFightType;
+  rewards: IRewards;
   ally: IMonster;
   enemy: IMonster;
   isEnemyBoss?: boolean;
@@ -32,6 +33,7 @@ function act(data: IGameData, info: Info) {
 
       data.currentMonsterFight = {
         type: info.type,
+        rewards: info.rewards,
         ally: info.ally,
         allyStats,
         enemy: info.enemy,
@@ -58,11 +60,7 @@ function act(data: IGameData, info: Info) {
       if (fight.enemyStats.hp <= 0) {
         if (fight.type === MonsterFightType.GameEvent) actionGenerateGameEvent.act(data, {});
         if (fight.type === MonsterFightType.Tower) data.tower.level++;
-
-        data.player.food += random.number(data, data.player.level * 10, data.player.level * 100);
-        data.player.gold += random.number(data, data.player.level * 10, data.player.level * 100);
-        data.player.xp += random.number(data, data.player.level * 10, data.player.level * 100);
-        util.checkPlayerXp(data);
+        util.applyRewards(data, fight.rewards);
         return "ally";
       }
 

@@ -32,4 +32,5 @@ export interface IRewards {
   diamond?: number;
   food?: number;
   items?: IItem[];
+  monsters?: IMonster[];
 }

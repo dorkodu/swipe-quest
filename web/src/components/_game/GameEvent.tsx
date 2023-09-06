@@ -13,6 +13,7 @@ import { useGameStore } from "@/stores/gameStore";
 import { useAppStore } from "@/stores/appStore";
 import { actionMonsterFight } from "@core/actions/monster_fight";
 import { MonsterFightType } from "@core/types/monster_fight";
+import { random } from "@core/lib/random";
 
 function GameEvent({ event }: { event: IGameEvent[GameEventId] | undefined }) {
   switch (event?.id) {
@@ -81,7 +82,20 @@ function MonsterFightEvent({ event }: { event: IGameEvent["monster_fight"] }) {
       const enemy = { id: event.monsterId, level: event.level, xp: 0 };
       const ally = s.data.inventory.monsters[s.data.inventory.currentMonsterIndex];
       if (!ally) return;
-      actionMonsterFight.act(s.data, { phase: "start", type: MonsterFightType.GameEvent, ally, enemy });
+      actionMonsterFight.act(
+        s.data,
+        {
+          phase: "start",
+          type: MonsterFightType.GameEvent,
+          rewards: {
+            food: random.number(s.data, s.data.player.level * 5, s.data.player.level * 50),
+            gold: random.number(s.data, s.data.player.level * 5, s.data.player.level * 50),
+            xp: random.number(s.data, s.data.player.level * 5, s.data.player.level * 50),
+          },
+          ally,
+          enemy
+        }
+      );
     });
   }
 
@@ -164,7 +178,18 @@ function BossFightEvent({ event }: { event: IGameEvent["boss_fight"] }) {
       if (!ally) return;
       actionMonsterFight.act(
         s.data,
-        { phase: "start", type: MonsterFightType.GameEvent, ally, enemy, isEnemyBoss: true }
+        {
+          phase: "start",
+          type: MonsterFightType.GameEvent,
+          rewards: {
+            food: random.number(s.data, s.data.player.level * 10, s.data.player.level * 100),
+            gold: random.number(s.data, s.data.player.level * 10, s.data.player.level * 100),
+            xp: random.number(s.data, s.data.player.level * 10, s.data.player.level * 100),
+          },
+          ally,
+          enemy,
+          isEnemyBoss: true
+        }
       );
     });
   }

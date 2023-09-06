@@ -1,5 +1,6 @@
 import { util } from "../lib/util";
 import { IMonster } from "./monster";
+import { IRewards } from "./types";
 
 export enum MonsterFightType {
   GameEvent = "game-event",
@@ -9,7 +10,8 @@ export enum MonsterFightType {
 
 export interface IMonsterFight {
   type: MonsterFightType;
-  
+  rewards: IRewards;
+
   ally: IMonster;
   enemy: IMonster;
 
