@@ -20,7 +20,7 @@ const useStyles = createStyles((theme) => ({
 
     [theme.fn.largerThan(640)]: {
       flex: 1,
-      height: 320,
+      height: 372,
     }
   }
 }));

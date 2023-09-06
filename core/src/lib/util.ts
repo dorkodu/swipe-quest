@@ -131,7 +131,10 @@ function sortItems(items: IItem[]) {
   return items.sort((a, b) => util.getItemPower(b.id) - util.getItemPower(a.id));
 }
 
-function hasBetterItem(inventory: IInventory, items: { [key in ItemId]?: IItemData }) {
+function getBetterItem(
+  inventory: IInventory,
+  items: { [key in ItemId]?: IItemData }
+): ItemId | undefined {
   const sortedItems = game.util.sortItems(
     Object
       .keys(items)
@@ -140,18 +143,19 @@ function hasBetterItem(inventory: IInventory, items: { [key in ItemId]?: IItemDa
   );
 
   const monster = inventory.monsters[inventory.currentMonsterIndex];
-  if (!monster) return false;
+  if (!monster) return undefined;
 
   const bestItem = sortedItems[0];
-  if (!bestItem) return false;
+  if (!bestItem) return undefined;
 
   const itemType = itemData[bestItem.id].type;
-  if (!itemType) return false
+  if (!itemType) return undefined
 
   const monsterItemId = monster[itemType];
-  if (!monsterItemId) return true;
+  if (!monsterItemId) return bestItem.id;
 
-  return util.getItemPower(bestItem.id) > util.getItemPower(monsterItemId);
+  if (util.getItemPower(bestItem.id) > util.getItemPower(monsterItemId)) return bestItem.id;
+  return undefined;
 }
 
 export const util = {
@@ -169,5 +173,5 @@ export const util = {
   sortMonsters,
   sortItems,
 
-  hasBetterItem,
+  getBetterItem,
 }
