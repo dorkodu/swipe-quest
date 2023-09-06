@@ -9,6 +9,10 @@ const Home = React.lazy(wait(() => import("./Home")));
 const Map = React.lazy(wait(() => import("./Map")));
 const Inventory = React.lazy(wait(() => import("./Inventory")));
 const Menu = React.lazy(wait(() => import("./Menu")));
+
+const Campaign = React.lazy(wait(() => import("./map/Campaign")));
+const Tower = React.lazy(wait(() => import("./map/Tower")));
+
 const NotFound = React.lazy(wait(() => import("./NotFound")));
 // Lazy routes \\
 
@@ -27,8 +31,13 @@ export const router = createHashRouter(
       <Route index element={<Navigate to="/home" />} />
 
       <Route path="/home" element={Page(Home)} />
+
       <Route path="/map" element={Page(Map)} />
+      <Route path="/map/campaign" element={Page(Campaign)} />
+      <Route path="/map/tower" element={Page(Tower)} />
+
       <Route path="/inventory" element={Page(Inventory)} />
+
       <Route path="/menu" element={Page(Menu)} />
 
       {/* Error routes & catch all */}

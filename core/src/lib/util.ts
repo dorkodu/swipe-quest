@@ -158,6 +158,16 @@ function getBetterItem(
   return undefined;
 }
 
+function getCampaignLevels() {
+
+}
+
+function getTowerLevel(level: number): { monster: IMonster, rewards: {} } {
+  const monster: IMonster = { id: "Angel", level }
+  const rewards = {}
+  return { monster, rewards };
+}
+
 export const util = {
   getItemPower,
   getItemStats,
@@ -174,4 +184,7 @@ export const util = {
   sortItems,
 
   getBetterItem,
+
+  getCampaignLevels,
+  getTowerLevel,
 }

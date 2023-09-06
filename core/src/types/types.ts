@@ -16,3 +16,12 @@ export interface IInventory {
   items: { [key in ItemId]?: IItem },
   monsters: Array<IMonster>
 }
+
+export interface ICampaign {
+  stage: "easy" | "normal" | "hard" | "expert" | "hell";
+  level: number;
+}
+
+export interface ITower {
+  level: number;
+}

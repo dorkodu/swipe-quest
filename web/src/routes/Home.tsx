@@ -10,6 +10,7 @@ function Home() {
   const handlers = useSwipeable({
     onSwipedUp: (_ev) => { useGameStore.setState(s => { actionGenerateGameEvent.act(s.data, {}) }) },
     trackMouse: true,
+    swipeDuration: 250,
   });
 
   const data = useGameStore(state => state.data);

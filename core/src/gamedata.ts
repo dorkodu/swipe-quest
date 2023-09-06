@@ -1,12 +1,15 @@
 import { GameEventId, IGameEvent } from "./types/game_event"
 import { IMonsterFight } from "./types/monster_fight";
-import { IInventory, IPlayer } from "./types/types";
+import { ICampaign, IInventory, IPlayer, ITower } from "./types/types";
 
 export interface IGameData {
   seed: number;
 
   player: IPlayer;
   inventory: IInventory;
+
+  campaign: ICampaign;
+  tower: ITower;
 
   currentGameEvent: IGameEvent[GameEventId] | undefined;
   currentMonsterFight: IMonsterFight | undefined;
@@ -34,6 +37,9 @@ export function createGameData(seed: number): IGameData {
         { id: "Angel", level: 1 },
       ]
     },
+
+    campaign: { stage: "easy", level: 1 },
+    tower: { level: 1 },
 
     currentGameEvent: undefined,
     currentMonsterFight: undefined,
