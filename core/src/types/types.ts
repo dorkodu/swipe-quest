@@ -25,3 +25,11 @@ export interface ICampaign {
 export interface ITower {
   level: number;
 }
+
+export interface IRewards {
+  xp?: number;
+  gold?: number;
+  diamond?: number;
+  food?: number;
+  items?: IItem[];
+}

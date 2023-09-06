@@ -3,7 +3,8 @@ import { IGameData } from "../gamedata";
 import { constants } from "../types/constants";
 import { IItem, IItemData, ItemId, itemData } from "../types/item";
 import { IMonster, monsterData } from "../types/monster";
-import { IInventory } from "../types/types";
+import { IInventory, IRewards } from "../types/types";
+import { random } from "./random";
 
 function getItemPower(itemId: ItemId | undefined) {
   const stats = getItemStats(itemId);
@@ -162,9 +163,19 @@ function getCampaignLevels() {
 
 }
 
-function getTowerLevel(level: number): { monster: IMonster, rewards: {} } {
+function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } {
   const monster: IMonster = { id: "Angel", level }
-  const rewards = {}
+  const rewards: IRewards = { gold: level * 25 }
+
+  if (level % 10 === 0) {
+    const items = Object.keys(itemData) as ItemId[];
+    const itemId = random.percent(
+      { seed: level },
+      items.map(result => ({ percent: (1 / itemData[result]._id) * items.length * 100, result }))
+    );
+    if (itemId) rewards.items = [{ id: itemId, count: 1 }];
+  }
+
   return { monster, rewards };
 }
 

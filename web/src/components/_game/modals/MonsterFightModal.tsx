@@ -32,8 +32,11 @@ function MonsterFightModal() {
 
     const interval = setInterval(() => {
       useGameStore.setState(s => {
-        const result = actionMonsterFight.act(s.data, { type: "progress" });
-        setWinner(result);
+        const result = actionMonsterFight.act(s.data, { phase: "progress" });
+        if (result) {
+          clearInterval(interval);
+          setWinner(result);
+        }
       });
     }, 500);
     return () => clearInterval(interval);

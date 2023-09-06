@@ -12,6 +12,7 @@ import { util } from "@/lib/util";
 import { useGameStore } from "@/stores/gameStore";
 import { useAppStore } from "@/stores/appStore";
 import { actionMonsterFight } from "@core/actions/monster_fight";
+import { MonsterFightType } from "@core/types/monster_fight";
 
 function GameEvent({ event }: { event: IGameEvent[GameEventId] | undefined }) {
   switch (event?.id) {
@@ -80,7 +81,7 @@ function MonsterFightEvent({ event }: { event: IGameEvent["monster_fight"] }) {
       const enemy = { id: event.monsterId, level: event.level, xp: 0 };
       const ally = s.data.inventory.monsters[s.data.inventory.currentMonsterIndex];
       if (!ally) return;
-      actionMonsterFight.act(s.data, { type: "start", ally, enemy, isGameEvent: true });
+      actionMonsterFight.act(s.data, { phase: "start", type: MonsterFightType.GameEvent, ally, enemy });
     });
   }
 
@@ -163,7 +164,7 @@ function BossFightEvent({ event }: { event: IGameEvent["boss_fight"] }) {
       if (!ally) return;
       actionMonsterFight.act(
         s.data,
-        { type: "start", ally, enemy, isEnemyBoss: true, isGameEvent: true }
+        { phase: "start", type: MonsterFightType.GameEvent, ally, enemy, isEnemyBoss: true }
       );
     });
   }

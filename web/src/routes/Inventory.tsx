@@ -7,13 +7,12 @@ import { Button, Card, Flex, Image, SegmentedControl, Title, createStyles } from
 import { IconArrowBigUpFilled } from "@tabler/icons-react";
 import MonsterItems from "@/components/_game/MonsterItems";
 import Emoji from "@/components/Emoji";
-import { ItemId, itemData } from "@core/types/item";
 import { util } from "@/lib/util";
 import { actionMonsterUpgrade } from "@core/actions/monster_upgrade";
-import { IInventory } from "@core/types/types";
 import { useAppStore } from "@/stores/appStore";
 import { InventoryItem } from "@/components/_game/InventoryItem";
 import { useMemo } from "react";
+import ItemList from "@/components/_game/ItemList";
 
 const useStyles = createStyles((theme) => ({
   inventoryTop: {
@@ -148,58 +147,16 @@ function ItemsSegment() {
   const data = useGameStore(state => state.data);
   const items = useMemo(() => game.util.sortItems(Object.values(data.inventory.items)), [data.inventory.items]);
 
-  const showItemInfo = (item: IInventory["items"][ItemId]) => {
-    useAppStore.setState(s => {
-      s.modals.itemInfo.opened = true;
-      s.modals.itemInfo.item = item;
-    });
-  }
-
-  const showOtherInfo = (name: "level" | "gold" | "diamond" | "food", text: string) => {
-    useAppStore.setState(s => {
-      s.modals.itemInfo.opened = true;
-      s.modals.itemInfo.other = { name, text };
-    });
-  }
-
-  const goldText = `${util.formatNumber(data.player.gold, true)} Gold`;
-  const diamondText = `${util.formatNumber(data.player.diamond, true)} Diamond`;
-  const foodText = `${util.formatNumber(data.player.food, true)} Food`;
-  const levelText =
-    util.formatNumber(data.player.xp, true) +
-    " / " +
-    util.formatNumber(game.util.getLevelUpXp(data.player.level), true) +
-    " Experience";
-
   return (
     <>
       <Flex direction="row" gap="md" wrap="wrap">
-        <InventoryItem
-          emoji="⭐" count={data.player.level}
-          onClick={() => showOtherInfo("level", levelText)}
+        <ItemList
+          level={data.player.level}
+          gold={data.player.gold}
+          diamond={data.player.diamond}
+          food={data.player.food}
+          items={items}
         />
-        <InventoryItem
-          emoji="🪙" count={data.player.gold}
-          onClick={() => showOtherInfo("gold", goldText)}
-        />
-        <InventoryItem
-          emoji="💎" count={data.player.diamond}
-          onClick={() => showOtherInfo("diamond", diamondText)}
-        />
-        <InventoryItem
-          emoji="🍏" count={data.player.food}
-          onClick={() => showOtherInfo("food", foodText)}
-        />
-
-        {items.map((item, i) =>
-          <InventoryItem
-            key={i}
-            src={assets.url(itemData[item.id].path)}
-            stars={item && itemData[item.id].stars}
-            count={item.count}
-            onClick={() => showItemInfo(item)}
-          />
-        )}
       </Flex>
     </>
   )
