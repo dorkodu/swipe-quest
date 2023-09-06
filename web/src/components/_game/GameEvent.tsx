@@ -80,7 +80,7 @@ function MonsterFightEvent({ event }: { event: IGameEvent["monster_fight"] }) {
       const enemy = { id: event.monsterId, level: event.level, xp: 0 };
       const ally = s.data.inventory.monsters[s.data.inventory.currentMonsterIndex];
       if (!ally) return;
-      actionMonsterFight.act(s.data, { type: "start", ally, enemy, isEnemyBoss: false });
+      actionMonsterFight.act(s.data, { type: "start", ally, enemy, isGameEvent: true });
     });
   }
 
@@ -161,7 +161,10 @@ function BossFightEvent({ event }: { event: IGameEvent["boss_fight"] }) {
       const enemy = { id: event.monsterId, level: event.level, xp: 0 };
       const ally = s.data.inventory.monsters[s.data.inventory.currentMonsterIndex];
       if (!ally) return;
-      actionMonsterFight.act(s.data, { type: "start", ally, enemy, isEnemyBoss: true });
+      actionMonsterFight.act(
+        s.data,
+        { type: "start", ally, enemy, isEnemyBoss: true, isGameEvent: true }
+      );
     });
   }
 

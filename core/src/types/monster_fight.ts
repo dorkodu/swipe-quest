@@ -8,7 +8,8 @@ export interface IMonsterFight {
   allyStats: ReturnType<typeof util.getMonsterStats>;
   enemyStats: ReturnType<typeof util.getMonsterStats>;
 
-  isEnemyBoss: boolean;
+  isEnemyBoss?: boolean;
+  isGameEvent?: boolean;
 
   whoseTurn: "ally" | "enemy";
   turn: number;
