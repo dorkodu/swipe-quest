@@ -1,4 +1,5 @@
 import { assets } from "@/assets/assets"
+import { InventoryItem } from "@/components/_game/InventoryItem"
 import ItemList from "@/components/_game/ItemList"
 import MonsterStats from "@/components/_game/MonsterStats"
 import { useAppStore } from "@/stores/appStore"
@@ -48,6 +49,13 @@ function Campaign() {
               food={campaign.rewards.food}
               items={campaign.rewards.items}
             />
+            {campaign.rewards.monsters?.map((m, i) =>
+              <InventoryItem
+                key={i}
+                src={assets.url(monsterData[m.id].path)}
+                count={m.level}
+              />
+            )}
           </Flex>
 
         </Flex>
