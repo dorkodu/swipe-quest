@@ -6,6 +6,31 @@ import { IMonster, MonsterId, monsterData } from "../types/monster";
 import { IInventory, IRewards } from "../types/types";
 import { random } from "./random";
 
+function equipItem(
+  data: IGameData,
+  monster: IMonster,
+  itemId: ItemId | undefined,
+  type: ItemType,
+) {
+  const _monster = data.inventory.monsters.find(m => m === monster);
+  if (!_monster) return;
+
+  const itemToEquip = itemId && data.inventory.items[itemId];
+
+  const itemToUnequip = _monster[type];
+
+  // Un-equip the item if exists
+  if (itemToUnequip) {
+    if (!data.inventory.items[itemToUnequip]) data.inventory.items[itemToUnequip] = { id: itemToUnequip, count: 0 }
+    data.inventory.items[itemToUnequip]!.count++;
+  }
+
+  _monster[type] = itemToEquip ? itemToEquip.id : undefined;
+  itemToEquip && itemToEquip.count--;
+
+  if (itemId && itemToEquip && itemToEquip.count === 0) delete data.inventory.items[itemId];
+}
+
 function getItemPower(itemId: ItemId | undefined) {
   const stats = getItemStats(itemId);
   return stats.hp + stats.dmg + stats.spd;
@@ -112,6 +137,29 @@ function getMonsterUpgradeCost(level: number) {
   }
 
   return { gold, food };
+}
+
+function getMonsterEvolve(data: IGameData, monsterIndexes: (number | undefined)[]): IMonster | undefined {
+  const monsterIndex = monsterIndexes[0];
+  if (monsterIndex === undefined) return undefined;
+
+  const monster = data.inventory.monsters[monsterIndex];
+  if (!monster) return undefined;
+
+  const length = monsterIndexes.filter(i => i !== undefined).length === 3;
+  if (!length) return undefined;
+
+  const same = monsterIndexes.filter(i => {
+    const m = i !== undefined && data.inventory.monsters[i];
+    return m && m.id === monster.id;
+  }).length === 3;
+  if (!same) return undefined;
+
+  const monsterIds = Object.keys(monsterData) as MonsterId[];
+  const evolvedId = monsterIds.filter(i => monsterData[i]._id === monsterData[monster.id]._id + 1)[0];
+  if (!evolvedId) return undefined;
+
+  return { id: evolvedId, level: 1 }
 }
 
 function getLevelUpXp(level: number) {
@@ -274,6 +322,7 @@ function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } 
 }
 
 export const util = {
+  equipItem,
   getItemPower,
   getItemStats,
   getItemUpgrade,
@@ -282,6 +331,7 @@ export const util = {
   getMonsterPower,
   getMonsterStats,
   getMonsterUpgradeCost,
+  getMonsterEvolve,
 
   getLevelUpXp,
   checkPlayerXp,
