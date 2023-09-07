@@ -37,8 +37,8 @@ function act(data: IGameData, info: Info) {
 
   // Remove monsters that are being evolved
   [...info.monsters]
-    .sort((a, b) => a && b ? b - a : 0)
-    .forEach(i => i && data.inventory.monsters.splice(i, 1));
+    .sort((a, b) => a !== undefined && b !== undefined ? b - a : 0)
+    .forEach(i => i !== undefined && data.inventory.monsters.splice(i, 1));
 
   // Add the monster that is evolved to inventory
   data.inventory.monsters.push(evolvedMonster);
