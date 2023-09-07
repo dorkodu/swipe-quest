@@ -284,7 +284,7 @@ function getCampaignLevel(level: number): {
   ) || "Angel";
 
   const monster: IMonster = { id: monsterId, level }
-  const rewards: IRewards = { xp: level * 50, gold: level * 50, food: level * 50 }
+  const rewards: IRewards = { xp: level * 100, gold: level * 100, food: level * 100 }
   const isBoss = level % 10 === 0;
   const requiredLevel = Math.floor(level / 2);
 
@@ -313,7 +313,7 @@ function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } 
   ) || "Angel";
 
   const monster: IMonster = { id: monsterId, level }
-  const rewards: IRewards = { food: level * 100 }
+  const rewards: IRewards = { food: level * 200 }
 
   if (level % 10 === 0) {
     const _id = Math.floor(level / 30) + 1;
