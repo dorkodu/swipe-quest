@@ -308,7 +308,7 @@ function getCampaignLevel(level: number): {
 
 function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } {
   const monsterId: MonsterId = random.percent(
-    { seed: level },
+    { seed: -level },
     Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
   ) || "Angel";
 
