@@ -12,7 +12,7 @@ function NotFound() {
       <Card withBorder w="100%" maw={360}>
         <Flex direction="column" align="center" gap="md">
 
-          <Title order={2}>Halt ye trespasser!</Title>
+          <Title order={2}>Halt ye scum!</Title>
           <Image
             src={assets.url(monsterData["Death Knight"].path)} width={150} height={150}
             style={{ imageRendering: "pixelated" }}
