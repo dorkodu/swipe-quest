@@ -284,12 +284,24 @@ function getCampaignLevel(level: number): {
   ) || "Angel";
 
   const monster: IMonster = { id: monsterId, level }
-  const rewards: IRewards = { xp: level * 10, gold: level * 10, food: level * 10 }
+  const rewards: IRewards = { xp: level * 50, gold: level * 50, food: level * 50 }
   const isBoss = level % 10 === 0;
   const requiredLevel = Math.floor(level / 2);
 
   if (level % 10 === 0) {
+  }
+  else if (level % 5 === 0) {
     const items = Object.keys(itemData) as ItemId[];
+    random.percent(
+      { seed: level * 10000 },
+      [
+        { result: ItemType.Weapon, percent: 1 },
+        { result: ItemType.Armor, percent: 1 },
+        { result: ItemType.Rune, percent: 1 },
+        { result: ItemType.Ring, percent: 1 },
+        { result: ItemType.Amulet, percent: 1 },
+      ]
+    );
     const itemId = random.percent(
       { seed: level * 10000 },
       items.map(result => ({ percent: (1 / itemData[result]._id) * items.length * 100, result }))
@@ -307,7 +319,7 @@ function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } 
   ) || "Angel";
 
   const monster: IMonster = { id: monsterId, level }
-  const rewards: IRewards = { gold: level * 25 }
+  const rewards: IRewards = { gold: level * 100 }
 
   if (level % 10 === 0) {
     const items = Object.keys(itemData) as ItemId[];
@@ -319,6 +331,41 @@ function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } 
   }
 
   return { monster, rewards };
+}
+
+function getRandomItem(data: { seed: number }, type: ItemType | undefined): IItem | undefined {
+  let _type = type;
+
+  if (!_type) {
+    const itemType = random.percent(
+      data,
+      [
+        { result: ItemType.Weapon, percent: 1 },
+        { result: ItemType.Armor, percent: 1 },
+        { result: ItemType.Rune, percent: 1 },
+        { result: ItemType.Ring, percent: 1 },
+        { result: ItemType.Amulet, percent: 1 },
+      ]
+    );
+    if (itemType) _type = itemType;
+    else return undefined;
+  }
+
+  let items: ItemId[];
+
+  switch (_type) {
+    case ItemType.Weapon: items = Object.keys(weaponData) as ItemId[]; break;
+    case ItemType.Armor: items = Object.keys(armorData) as ItemId[]; break;
+    case ItemType.Rune: items = Object.keys(runeData) as ItemId[]; break;
+    case ItemType.Ring: items = Object.keys(ringData) as ItemId[]; break;
+    case ItemType.Amulet: items = Object.keys(amuletData) as ItemId[]; break;
+    default: items = Object.keys(itemData) as ItemId[]; break;
+  }
+
+  const itemId = random.percent(
+    data,
+    items.map(result => ({ percent: (1 / itemData[result]._id) * items.length * 100, result }))
+  );
 }
 
 export const util = {

@@ -72,7 +72,11 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
 function eventGold(id: "gold", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(data, data.player.level * 5, data.player.level * 10),
+    count: random.number(
+      data,
+      data.player.level * constants.GAME_EVENT_GOLD_MIN_PER_LEVEL,
+      data.player.level * constants.GAME_EVENT_GOLD_MAX_PER_LEVEL
+    ),
   }
 
   data.player.gold += data.currentGameEvent.count;
@@ -81,7 +85,11 @@ function eventGold(id: "gold", data: IGameData, _info: Info) {
 function eventDiamond(id: "diamond", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(data, data.player.level * 1, data.player.level * 5),
+    count: random.number(
+      data,
+      data.player.level * constants.GAME_EVENT_DIAMOND_MIN_PER_LEVEL,
+      data.player.level * constants.GAME_EVENT_DIAMOND_MAX_PER_LEVEL
+    ),
   }
 
   data.player.diamond += data.currentGameEvent.count;
@@ -101,7 +109,15 @@ function eventMonsterFight(id: "monster_fight", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
     monsterId,
-    level: random.number(data, math.clamp(currentMonster.level - 10, 1, Number.MAX_SAFE_INTEGER), currentMonster.level + 10),
+    level: random.number(
+      data,
+      math.clamp(
+        currentMonster.level - constants.GAME_EVENT_MONSTER_FIGHT_MIN_LEVEL_DIFFERENCE,
+        1,
+        Number.MAX_SAFE_INTEGER
+      ),
+      currentMonster.level + constants.GAME_EVENT_MONSTER_FIGHT_MAX_LEVEL_DIFFERENCE
+    ),
   }
 }
 
@@ -137,7 +153,11 @@ function eventScratchCard(id: "scratch_card", data: IGameData, _info: Info) {
 function eventExperience(id: "experience", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(data, data.player.level * 5, data.player.level * 10),
+    count: random.number(
+      data,
+      data.player.level * constants.GAME_EVENT_EXPERIENCE_MIN_PER_LEVEL,
+      data.player.level * constants.GAME_EVENT_EXPERIENCE_MAX_PER_LEVEL
+    ),
   }
 
   data.player.xp += data.currentGameEvent.count;
@@ -148,7 +168,11 @@ function eventExperience(id: "experience", data: IGameData, _info: Info) {
 function eventFood(id: "food", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
-    count: random.number(data, data.player.level * 5, data.player.level * 10),
+    count: random.number(
+      data,
+      data.player.level * constants.GAME_EVENT_FOOD_MIN_PER_LEVEL,
+      data.player.level * constants.GAME_EVENT_FOOD_MAX_PER_LEVEL
+    ),
   }
 
   data.player.food += data.currentGameEvent.count;
@@ -168,6 +192,14 @@ function eventBossFight(id: "boss_fight", data: IGameData, _info: Info) {
   data.currentGameEvent = {
     id,
     monsterId,
-    level: random.number(data, math.clamp(currentMonster.level - 5, 1, Number.MAX_SAFE_INTEGER), currentMonster.level + 5),
+    level: random.number(
+      data,
+      math.clamp(
+        currentMonster.level - constants.GAME_EVENT_BOSS_FIGHT_MIN_LEVEL_DIFFERENCE,
+        1,
+        Number.MAX_SAFE_INTEGER
+      ),
+      currentMonster.level + constants.GAME_EVENT_BOSS_FIGHT_MAX_LEVEL_DIFFERENCE
+    ),
   }
 }
