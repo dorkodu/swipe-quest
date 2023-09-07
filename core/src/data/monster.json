@@ -78,5 +78,48 @@
   "Gigabat": {
     "_id": 20,
     "path": "/src/assets/monsters/gigabat.png"
+  },
+
+
+
+  "Anubis Guard": {
+    "_id": 21,
+    "path": "/src/assets/monsters/anubis_guard.png"
+  },
+  "Big Kobold": {
+    "_id": 22,
+    "path": "/src/assets/monsters/big_kobold_new.png"
+  },
+  "Boggart": {
+    "_id": 23,
+    "path": "/src/assets/monsters/boggart_new.png"
+  },
+  "Brown Ooze": {
+    "_id": 24,
+    "path": "/src/assets/monsters/brown_ooze.png"
+  },
+  "Centaur": {
+    "_id": 25,
+    "path": "/src/assets/monsters/centaur.png"
+  },
+  "Cyclops": {
+    "_id": 26,
+    "path": "/src/assets/monsters/cyclops_new.png"
+  },
+  "Fire Giant": {
+    "_id": 27,
+    "path": "/src/assets/monsters/fire_giant_new.png"
+  },
+  "Gnome": {
+    "_id": 28,
+    "path": "/src/assets/monsters/gnome.png"
+  },
+  "Lindwurm": {
+    "_id": 29,
+    "path": "/src/assets/monsters/lindwurm.png"
+  },
+  "Minotaur": {
+    "_id": 30,
+    "path": "/src/assets/monsters/minotaur.png"
   }
 }
