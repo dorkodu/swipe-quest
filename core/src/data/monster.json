@@ -1,142 +1,82 @@
 {
   "Angel": {
     "_id": 1,
-    "path": "/src/assets/monsters/angel.png",
-    "baseHp": 100,
-    "baseDmg": 10,
-    "baseSpd": 1
+    "path": "/src/assets/monsters/angel.png"
   },
   "Death Knight": {
     "_id": 2,
-    "path": "/src/assets/monsters/death_knight.png",
-    "baseHp": 150,
-    "baseDmg": 20,
-    "baseSpd": 1.5
+    "path": "/src/assets/monsters/death_knight.png"
   },
   "Deep Dwarf": {
     "_id": 3,
-    "path": "/src/assets/monsters/deep_dwarf.png",
-    "baseHp": 125,
-    "baseDmg": 12,
-    "baseSpd": 5
+    "path": "/src/assets/monsters/deep_dwarf.png"
   },
   "Jelly": {
     "_id": 4,
-    "path": "/src/assets/monsters/jelly.png",
-    "baseHp": 500,
-    "baseDmg": 8,
-    "baseSpd": 1
+    "path": "/src/assets/monsters/jelly.png"
   },
   "Ogre": {
     "_id": 5,
-    "path": "/src/assets/monsters/ogre_new.png",
-    "baseHp": 446,
-    "baseDmg": 36,
-    "baseSpd": 2
+    "path": "/src/assets/monsters/ogre_new.png"
   },
   "Phoenix": {
     "_id": 6,
-    "path": "/src/assets/monsters/phoenix.png",
-    "baseHp": 640,
-    "baseDmg": 35,
-    "baseSpd": 10
+    "path": "/src/assets/monsters/phoenix.png"
   },
   "Raven": {
     "_id": 7,
-    "path": "/src/assets/monsters/raven.png",
-    "baseHp": 380,
-    "baseDmg": 25,
-    "baseSpd": 10
+    "path": "/src/assets/monsters/raven.png"
   },
   "Freed Slave": {
     "_id": 8,
-    "path": "/src/assets/monsters/slave_freed.png",
-    "baseHp": 80,
-    "baseDmg": 8,
-    "baseSpd": 4
+    "path": "/src/assets/monsters/slave_freed.png"
   },
   "Stone Giant": {
     "_id": 9,
-    "path": "/src/assets/monsters/stone_giant_new.png",
-    "baseHp": 1234,
-    "baseDmg": 11,
-    "baseSpd": 1
+    "path": "/src/assets/monsters/stone_giant_new.png"
   },
   "Wizard": {
     "_id": 10,
-    "path": "/src/assets/monsters/wizard.png",
-    "baseHp": 320,
-    "baseDmg": 60,
-    "baseSpd": 10
+    "path": "/src/assets/monsters/wizard.png"
   },
   "Hell Sentinel": {
     "_id": 11,
-    "path": "/src/assets/monsters/hell_sentinel.png",
-    "baseHp": 666,
-    "baseDmg": 66,
-    "baseSpd": 6
+    "path": "/src/assets/monsters/hell_sentinel.png"
   },
   "Red Devil": {
     "_id": 12,
-    "path": "/src/assets/monsters/red_devil_new.png",
-    "baseHp": 510,
-    "baseDmg": 80,
-    "baseSpd": 3
+    "path": "/src/assets/monsters/red_devil_new.png"
   },
   "Black Dragon": {
     "_id": 13,
-    "path": "/src/assets/monsters/draconic_base-black_new.png",
-    "baseHp": 1000,
-    "baseDmg": 113,
-    "baseSpd": 7
+    "path": "/src/assets/monsters/draconic_base-black_new.png"
   },
   "Golden Dragon": {
     "_id": 14,
-    "path": "/src/assets/monsters/golden_dragon.png",
-    "baseHp": 1500,
-    "baseDmg": 226,
-    "baseSpd": 14
+    "path": "/src/assets/monsters/golden_dragon.png"
   },
   "Shining Eye": {
     "_id": 15,
-    "path": "/src/assets/monsters/shining_eye_new.png",
-    "baseHp": 700,
-    "baseDmg": 99,
-    "baseSpd": 10
+    "path": "/src/assets/monsters/shining_eye_new.png"
   },
   "Paladin": {
     "_id": 16,
-    "path": "/src/assets/monsters/paladin.png",
-    "baseHp": 1900,
-    "baseDmg": 230,
-    "baseSpd": 31
+    "path": "/src/assets/monsters/paladin.png"
   },
   "Molten Gargoyle": {
     "_id": 17,
-    "path": "/src/assets/monsters/molten_gargoyle.png",
-    "baseHp": 2000,
-    "baseDmg": 312,
-    "baseSpd": 15
+    "path": "/src/assets/monsters/molten_gargoyle.png"
   },
   "Bone Dragon": {
     "_id": 18,
-    "path": "/src/assets/monsters/bone_dragon_new.png",
-    "baseHp": 1200,
-    "baseDmg": 79,
-    "baseSpd": 10
+    "path": "/src/assets/monsters/bone_dragon_new.png"
   },
   "Lich": {
     "_id": 19,
-    "path": "/src/assets/monsters/lich.png",
-    "baseHp": 3200,
-    "baseDmg": 500,
-    "baseSpd": 69
+    "path": "/src/assets/monsters/lich.png"
   },
   "Gigabat": {
     "_id": 20,
-    "path": "/src/assets/monsters/gigabat.png",
-    "baseHp": 900,
-    "baseDmg": 750,
-    "baseSpd": 30
+    "path": "/src/assets/monsters/gigabat.png"
   }
 }
