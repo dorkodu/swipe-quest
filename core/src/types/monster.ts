@@ -32,9 +32,9 @@ function setData(
   for (const [key, value] of Object.entries(source)) {
     data[key] = {
       ...value,
-      baseHp: value._id * constants.MONSTER_BASEHP * constants.MONSTER_BASEHP_MODIFIER,
-      baseDmg: value._id * constants.MONSTER_BASEDMG * constants.MONSTER_BASEDMG_MODIFIER,
-      baseSpd: value._id * constants.MONSTER_BASESPD * constants.MONSTER_BASESPD_MODIFIER,
+      baseHp: Math.floor(constants.MONSTER_BASEHP * Math.pow(constants.MONSTER_BASEHP_MODIFIER, value._id)),
+      baseDmg: Math.floor(constants.MONSTER_BASEDMG * Math.pow(constants.MONSTER_BASEDMG_MODIFIER, value._id)),
+      baseSpd: Math.floor(constants.MONSTER_BASESPD * Math.pow(constants.MONSTER_BASESPD_MODIFIER, value._id)),
     };
   }
 }
