@@ -38,5 +38,45 @@
   "Gold Ring": {
     "_id": 10,
     "path": "/src/assets/rings/gold.png"
+  },
+  "Gold Blue Ring": {
+    "_id": 11,
+    "path": "/src/assets/rings/gold_blue.png"
+  },
+  "Gold Green Ring": {
+    "_id": 12,
+    "path": "/src/assets/rings/gold_green.png"
+  },
+  "Gold Red Ring": {
+    "_id": 13,
+    "path": "/src/assets/rings/gold_red.png"
+  },
+  "Granite Ring": {
+    "_id": 14,
+    "path": "/src/assets/rings/granite.png"
+  },
+  "Iron Ring": {
+    "_id": 15,
+    "path": "/src/assets/rings/iron.png"
+  },
+  "Jade Ring": {
+    "_id": 16,
+    "path": "/src/assets/rings/jade.png"
+  },
+  "Moonstone Ring": {
+    "_id": 17,
+    "path": "/src/assets/rings/moonstone.png"
+  },
+  "Opal Ring": {
+    "_id": 18,
+    "path": "/src/assets/rings/opal.png"
+  },
+  "Pearl Ring": {
+    "_id": 19,
+    "path": "/src/assets/rings/pearl.png"
+  },
+  "Plain Black Ring": {
+    "_id": 20,
+    "path": "/src/assets/rings/plain_black.png"
   }
 }

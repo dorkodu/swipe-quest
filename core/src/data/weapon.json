@@ -39,4 +39,48 @@
     "_id": 10,
     "path": "/src/assets/weapons/battle_axe_3.png"
   }
+
+
+
+  ,
+  "Battle Axe 4": {
+    "_id": 11,
+    "path": "/src/assets/weapons/battle_axe_4.png"
+  },
+  "Battle Axe 5": {
+    "_id": 12,
+    "path": "/src/assets/weapons/battle_axe_5.png"
+  },
+  "Battle Axe 6": {
+    "_id": 13,
+    "path": "/src/assets/weapons/battle_axe_6.png"
+  },
+  "Battle Axe 7": {
+    "_id": 14,
+    "path": "/src/assets/weapons/battle_axe_7.png"
+  },
+  "Blessed Blade": {
+    "_id": 15,
+    "path": "/src/assets/weapons/blessed_blade.png"
+  },
+  "Broad Axe 1": {
+    "_id": 16,
+    "path": "/src/assets/weapons/broad_axe_1.png"
+  },
+  "Broad Axe 2": {
+    "_id": 17,
+    "path": "/src/assets/weapons/broad_axe_2.png"
+  },
+  "Broad Axe 3": {
+    "_id": 18,
+    "path": "/src/assets/weapons/broad_axe_3.png"
+  },
+  "Broad Axe 4": {
+    "_id": 19,
+    "path": "/src/assets/weapons/broad_axe_4.png"
+  },
+  "Broad Axe 5": {
+    "_id": 20,
+    "path": "/src/assets/weapons/broad_axe_5.png"
+  }
 }

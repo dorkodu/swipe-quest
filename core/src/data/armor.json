@@ -38,5 +38,45 @@
   "Crystal Platemail Armor": {
     "_id": 10,
     "path": "/src/assets/armors/crystal_plate_mail.png"
+  },
+  "Dwarven Ringmail Armor": {
+    "_id": 11,
+    "path": "/src/assets/armors/dwarven_ringmail.png"
+  },
+  "Elven Leather Armor": {
+    "_id": 12,
+    "path": "/src/assets/armors/elven_leather_armor.png"
+  },
+  "Elven Ringmail Armor": {
+    "_id": 13,
+    "path": "/src/assets/armors/elven_ringmail.png"
+  },
+  "Elven Scalemail Armor": {
+    "_id": 14,
+    "path": "/src/assets/armors/elven_scalemail.png"
+  },
+  "Gold Dragon Armor": {
+    "_id": 15,
+    "path": "/src/assets/armors/gold_dragon_armor_new.png"
+  },
+  "Green Dragon Scalemail Armor": {
+    "_id": 16,
+    "path": "/src/assets/armors/green_dragon_scale_mail.png"
+  },
+  "Ice Dragon Armor": {
+    "_id": 17,
+    "path": "/src/assets/armors/ice_dragon_armor_new.png"
+  },
+  "Leather 1 Armor": {
+    "_id": 18,
+    "path": "/src/assets/armors/leather_armor_1.png"
+  },
+  "Leather 2 Armor": {
+    "_id": 19,
+    "path": "/src/assets/armors/leather_armor_2.png"
+  },
+  "Leather 3 Armor": {
+    "_id": 20,
+    "path": "/src/assets/armors/leather_armor_3.png"
   }
 }

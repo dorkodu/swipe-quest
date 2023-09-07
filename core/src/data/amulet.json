@@ -38,5 +38,45 @@
   "Cylinder Gray Amulet": {
     "_id": 10,
     "path": "/src/assets/amulets/cylinder_gray.png"
+  },
+  "Eye Cyan Amulet": {
+    "_id": 11,
+    "path": "/src/assets/amulets/eye_cyan.png"
+  },
+  "Eye Green Amulet": {
+    "_id": 12,
+    "path": "/src/assets/amulets/eye_green.png"
+  },
+  "Eye Magenta Amulet": {
+    "_id": 13,
+    "path": "/src/assets/amulets/eye_magenta.png"
+  },
+  "Face Gold Amulet": {
+    "_id": 14,
+    "path": "/src/assets/amulets/face_1_gold.png"
+  },
+  "Face Amulet": {
+    "_id": 15,
+    "path": "/src/assets/amulets/face_2.png"
+  },
+  "Penta Green Amulet": {
+    "_id": 16,
+    "path": "/src/assets/amulets/penta_green.png"
+  },
+  "Penta Orange Amulet": {
+    "_id": 17,
+    "path": "/src/assets/amulets/penta_orange.png"
+  },
+  "Ring Cyan Amulet": {
+    "_id": 18,
+    "path": "/src/assets/amulets/ring_cyan.png"
+  },
+  "Ring Green Amulet": {
+    "_id": 19,
+    "path": "/src/assets/amulets/ring_green.png"
+  },
+  "Ring Red Amulet": {
+    "_id": 20,
+    "path": "/src/assets/amulets/ring_red.png"
   }
 }

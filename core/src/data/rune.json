@@ -38,5 +38,45 @@
   "Demonic 6 Rune": {
     "_id": 10,
     "path": "/src/assets/runes/rune_demonic_6.png"
+  },
+  "Dis Rune": {
+    "_id": 11,
+    "path": "/src/assets/runes/rune_dis_new.png"
+  },
+  "Elven Rune": {
+    "_id": 12,
+    "path": "/src/assets/runes/rune_elven.png"
+  },
+  "Gehenna Rune": {
+    "_id": 13,
+    "path": "/src/assets/runes/rune_gehenna_new.png"
+  },
+  "Gloorx Vloq Rune": {
+    "_id": 14,
+    "path": "/src/assets/runes/rune_gloorx_vloq_new.png"
+  },
+  "Lom Lobon Rune": {
+    "_id": 15,
+    "path": "/src/assets/runes/rune_lom_lobon_new.png"
+  },
+  "Mnoleg Rune": {
+    "_id": 16,
+    "path": "/src/assets/runes/rune_mnoleg_new.png"
+  },
+  "Shoals Rune": {
+    "_id": 17,
+    "path": "/src/assets/runes/rune_shoals.png"
+  },
+  "Slime Rune": {
+    "_id": 18,
+    "path": "/src/assets/runes/rune_slime.png"
+  },
+  "Spider Rune": {
+    "_id": 19,
+    "path": "/src/assets/runes/rune_spider.png"
+  },
+  "Swamp Rune": {
+    "_id": 20,
+    "path": "/src/assets/runes/rune_swamp.png"
   }
 }
