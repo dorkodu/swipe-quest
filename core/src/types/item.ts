@@ -56,27 +56,27 @@ function setData(
   for (const [key, value] of Object.entries(source)) {
     data[`Common ${key}`] = {
       ...value as any,
-      hp: value._id * modifier.hp * constants.ITEM_COMMON_MODIFIER,
-      dmg: value._id * modifier.dmg * constants.ITEM_COMMON_MODIFIER,
-      spd: value._id * modifier.spd * constants.ITEM_COMMON_MODIFIER,
+      hp: Math.floor(modifier.hp * Math.pow(constants.ITEM_COMMON_MODIFIER, value._id)),
+      dmg: Math.floor(modifier.dmg * Math.pow(constants.ITEM_COMMON_MODIFIER, value._id)),
+      spd: Math.floor(modifier.spd * Math.pow(constants.ITEM_COMMON_MODIFIER, value._id)),
       stars: 1,
       type,
     };
 
     data[`Rare ${key}`] = {
       ...value as any,
-      hp: value._id * modifier.hp * constants.ITEM_RARE_MODIFIER,
-      dmg: value._id * modifier.dmg * constants.ITEM_RARE_MODIFIER,
-      spd: value._id * modifier.spd * constants.ITEM_RARE_MODIFIER,
+      hp: Math.floor(modifier.hp * Math.pow(constants.ITEM_RARE_MODIFIER, value._id)),
+      dmg: Math.floor(modifier.dmg * Math.pow(constants.ITEM_RARE_MODIFIER, value._id)),
+      spd: Math.floor(modifier.spd * Math.pow(constants.ITEM_RARE_MODIFIER, value._id)),
       stars: 2,
       type,
     };
 
     data[`Legendary ${key}`] = {
       ...value as any,
-      hp: value._id * modifier.hp * constants.ITEM_LEGENDARY_MODIFIER,
-      dmg: value._id * modifier.dmg * constants.ITEM_LEGENDARY_MODIFIER,
-      spd: value._id * modifier.spd * constants.ITEM_LEGENDARY_MODIFIER,
+      hp: Math.floor(modifier.hp * Math.pow(constants.ITEM_LEGENDARY_MODIFIER, value._id)),
+      dmg: Math.floor(modifier.dmg * Math.pow(constants.ITEM_LEGENDARY_MODIFIER, value._id)),
+      spd: Math.floor(modifier.spd * Math.pow(constants.ITEM_LEGENDARY_MODIFIER, value._id)),
       stars: 3,
       type,
     };
@@ -146,3 +146,9 @@ export const itemData = {
   ...ringData,
   ...amuletData,
 }
+
+console.log(weaponData)
+console.log(armorData)
+console.log(runeData)
+console.log(ringData)
+console.log(amuletData)
