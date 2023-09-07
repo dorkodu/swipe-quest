@@ -30,7 +30,7 @@ function Home() {
       >
         <Flex w="100%" h="100%" mx="md">
           <ScrollArea w="100%" h="100%" viewportRef={scrollAreaRef}>
-            <Flex w="100%" h="100%" py="md" align="center" justify="center">
+            <Flex w="100%" h="100%" py="md" align="center" justify="center" style={{ userSelect: "none" }}>
               <GameEvent event={data.currentGameEvent} />
             </Flex>
           </ScrollArea>
