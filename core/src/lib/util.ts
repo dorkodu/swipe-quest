@@ -153,8 +153,33 @@ function sortMonsters(data: IGameData) {
  * @param items 
  * @returns 
  */
-function sortItems(items: IItem[]) {
-  return items.sort((a, b) => util.getItemPower(b.id) - util.getItemPower(a.id));
+function sortItems(items: IItem[]): IItem[] {
+  const weapons: IItem[] = [];
+  const armors: IItem[] = [];
+  const runes: IItem[] = [];
+  const rings: IItem[] = [];
+  const amulets: IItem[] = [];
+
+  for (let i = 0; i < items.length; ++i) {
+    const item = items[i];
+    if (!item) continue;
+
+    switch (itemData[item.id].type) {
+      case ItemType.Weapon: weapons.push(item); break;
+      case ItemType.Armor: armors.push(item); break;
+      case ItemType.Rune: runes.push(item); break;
+      case ItemType.Ring: rings.push(item); break;
+      case ItemType.Amulet: amulets.push(item); break;
+    }
+  }
+
+  weapons.sort((a, b) => util.getItemPower(b.id) - util.getItemPower(a.id))
+  armors.sort((a, b) => util.getItemPower(b.id) - util.getItemPower(a.id))
+  runes.sort((a, b) => util.getItemPower(b.id) - util.getItemPower(a.id))
+  rings.sort((a, b) => util.getItemPower(b.id) - util.getItemPower(a.id))
+  amulets.sort((a, b) => util.getItemPower(b.id) - util.getItemPower(a.id))
+
+  return [...weapons, ...armors, ...runes, ...rings, ...amulets];
 }
 
 function getBetterItem(
