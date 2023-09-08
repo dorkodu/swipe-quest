@@ -1,7 +1,7 @@
 import { IGameData } from "../gamedata";
 import { util } from "../lib/util";
 import { IMonster } from "../types/monster";
-import { MonsterFightType } from "../types/monster_fight";
+import { IMonsterFight, MonsterFightType } from "../types/monster_fight";
 import { IRewards } from "../types/types";
 import { actionGenerateGameEvent } from "./generate_game_event";
 
@@ -23,7 +23,7 @@ function actable(_data: IGameData, _info: Info): boolean {
   return true;
 }
 
-function act(data: IGameData, info: Info) {
+function act(data: IGameData, info: Info): "ally" | "enemy" | undefined {
   if (!actable(data, info)) return;
 
   switch (info.phase) {
@@ -47,21 +47,24 @@ function act(data: IGameData, info: Info) {
       const fight = data.currentMonsterFight;
       if (!fight) return;
 
-      // If turn is 15 and allies hasn't won, enemy wins
+      // If turn is 15 and noone won, whoever has the highest hp wins
       if (fight.turn === 15) {
-        if (fight.type === MonsterFightType.GameEvent) actionGenerateGameEvent.act(data, {});
-        return "enemy";
+        if (fight.allyStats.hp > fight.enemyStats.hp) {
+          allyWin(data, fight);
+          return "ally";
+        }
+        else {
+          enemyWin(data, fight);
+          return "enemy";
+        }
       }
 
       if (fight.allyStats.hp <= 0) {
-        if (fight.type === MonsterFightType.GameEvent) actionGenerateGameEvent.act(data, {});
+        enemyWin(data, fight);
         return "enemy";
       }
       if (fight.enemyStats.hp <= 0) {
-        if (fight.type === MonsterFightType.GameEvent) actionGenerateGameEvent.act(data, {});
-        if (fight.type === MonsterFightType.Campaign) data.campaign.level++;
-        if (fight.type === MonsterFightType.Tower) data.tower.level++;
-        util.applyRewards(data, fight.rewards);
+        allyWin(data, fight);
         return "ally";
       }
 
@@ -76,4 +79,15 @@ function act(data: IGameData, info: Info) {
   }
 
   return;
+}
+
+function allyWin(data: IGameData, fight: IMonsterFight) {
+  if (fight.type === MonsterFightType.GameEvent) actionGenerateGameEvent.act(data, {});
+  if (fight.type === MonsterFightType.Campaign) data.campaign.level++;
+  if (fight.type === MonsterFightType.Tower) data.tower.level++;
+  util.applyRewards(data, fight.rewards);
+}
+
+function enemyWin(data: IGameData, fight: IMonsterFight) {
+  if (fight.type === MonsterFightType.GameEvent) actionGenerateGameEvent.act(data, {});
 }
