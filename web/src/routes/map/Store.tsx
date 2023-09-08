@@ -30,7 +30,11 @@ function Store() {
         <Flex direction="column" align="center" gap="md">
 
           <Flex justify="center" wrap="wrap" gap="md">
-            <ItemList gold={data.player.gold} diamond={data.player.diamond} />
+            <ItemList
+              gold={data.player.gold}
+              diamond={data.player.diamond}
+              food={data.player.food}
+            />
           </Flex>
 
           <Divider w="100%" />
