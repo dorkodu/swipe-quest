@@ -1,11 +1,12 @@
 import { assets } from "@/assets/assets";
+import { useSettings } from "@/components/hooks";
 import { util } from "@/lib/util";
 import { useAppStore } from "@/stores/appStore";
 import { useGameStore } from "@/stores/gameStore";
 import { actionMonsterFight } from "@core/actions/monster_fight";
 import { game } from "@core/game";
 import { monsterData } from "@core/types/monster";
-import { Flex, Image, Modal, Progress, Title } from "@mantine/core";
+import { ActionIcon, Flex, Image, Modal, Progress, Title } from "@mantine/core";
 import { useEffect, useMemo, useState } from "react";
 
 function MonsterFightModal() {
@@ -14,6 +15,8 @@ function MonsterFightModal() {
     useAppStore.setState(s => { s.modals.monsterFight.opened = false })
     setWinner(undefined);
   }
+
+  const { fightSpeed, setFightSpeed } = useSettings();
 
   const [winner, setWinner] = useState<"ally" | "enemy" | undefined>(undefined);
 
@@ -38,13 +41,13 @@ function MonsterFightModal() {
           setWinner(result);
         }
       });
-    }, 500);
+    }, 500 / fightSpeed);
     return () => clearInterval(interval);
   }, [monsterFight.opened]);
 
   useEffect(() => {
     if (!winner) return;
-    const timeout = setTimeout(() => { close() }, 1000);
+    const timeout = setTimeout(() => { close() }, 1000 / fightSpeed);
     return () => clearTimeout(timeout);
   }, [winner]);
 
@@ -58,8 +61,14 @@ function MonsterFightModal() {
         <Flex direction="row" justify="center" gap={100} wrap="wrap">
           {fight && monsterStats &&
             <>
-              <Flex pos="absolute" top={0} bottom={0} align="center">
+              <Flex direction="column" justify="center" align="center" gap="xs" pos="absolute" top={0} bottom={0}>
                 <Title order={5} opacity={0.75}>{`Turn ${Math.floor(fight.turn)}`}</Title>
+
+                <ActionIcon variant="default" onClick={() => setFightSpeed(fightSpeed % 2 + 1)}>
+                  <Title order={6} opacity={0.75}>{`${fightSpeed}x`}</Title>
+                </ActionIcon>
+              </Flex>
+              <Flex pos="absolute" top={0} bottom={0} align="center">
               </Flex>
 
               <Flex direction="column" gap="xs">

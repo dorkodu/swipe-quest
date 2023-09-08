@@ -146,9 +146,3 @@ export const itemData = {
   ...ringData,
   ...amuletData,
 }
-
-console.log(weaponData)
-console.log(armorData)
-console.log(runeData)
-console.log(ringData)
-console.log(amuletData)

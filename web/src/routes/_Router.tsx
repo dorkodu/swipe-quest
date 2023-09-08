@@ -14,6 +14,7 @@ const Campaign = React.lazy(wait(() => import("./map/Campaign")));
 const Tower = React.lazy(wait(() => import("./map/Tower")));
 const Altar = React.lazy(wait(() => import("./map/Altar")));
 const Blacksmith = React.lazy(wait(() => import("./map/Blacksmith")));
+const Store = React.lazy(wait(() => import("./map/Store")));
 
 const NotFound = React.lazy(wait(() => import("./NotFound")));
 // Lazy routes \\
@@ -39,6 +40,7 @@ export const router = createHashRouter(
       <Route path="/map/tower" element={Page(Tower)} />
       <Route path="/map/altar" element={Page(Altar)} />
       <Route path="/map/blacksmith" element={Page(Blacksmith)} />
+      <Route path="/map/store" element={Page(Store)} />
 
       <Route path="/inventory" element={Page(Inventory)} />
 

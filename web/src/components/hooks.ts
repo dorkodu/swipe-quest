@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocalStorage } from "@mantine/hooks";
 
 export function useDelay() {
   const [state, setState] = useState(true);
@@ -9,4 +10,16 @@ export function useDelay() {
   }, []);
 
   return state;
+}
+
+export function useSettings() {
+  const [fightSpeed, setFightSpeed] = useLocalStorage({
+    key: "fight-speed",
+    defaultValue: 1,
+    getInitialValueInEffect: false,
+  });
+
+  return {
+    fightSpeed, setFightSpeed,
+  }
 }
