@@ -1,3 +1,7 @@
+import { useAppStore } from "@/stores/appStore";
+import { IItem } from "@core/types/item";
+import { IMonster } from "@core/types/monster";
+
 export function wait<T>(
   start: () => Promise<T>,
   before: number = 100,
@@ -39,7 +43,32 @@ function clampNumber(number: number, min: number, max: number) {
   return number;
 }
 
+function showMonsterInfo(monster: IMonster) {
+  useAppStore.setState(s => {
+    s.modals.monsterInfo.opened = true;
+    s.modals.monsterInfo.monster = monster;
+  });
+}
+
+function showItemInfo(item: IItem) {
+  useAppStore.setState(s => {
+    s.modals.itemInfo.opened = true;
+    s.modals.itemInfo.item = item;
+  });
+}
+
+function showOtherInfo(name: "level" | "gold" | "diamond" | "food", text: string) {
+  useAppStore.setState(s => {
+    s.modals.itemInfo.opened = true;
+    s.modals.itemInfo.other = { name, text };
+  });
+}
+
 export const util = {
   formatNumber,
   clampNumber,
+
+  showMonsterInfo,
+  showItemInfo,
+  showOtherInfo,
 }

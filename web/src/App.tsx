@@ -8,6 +8,7 @@ import ItemPickerModal from "./components/_game/modals/ItemPickerModal";
 import ItemInfoModal from "./components/_game/modals/ItemInfoModal";
 import UpdateSWModal from "./components/modals/UpdateSWModal";
 import MonsterFightModal from "./components/_game/modals/MonsterFightModal";
+import MonsterInfoModal from "./components/_game/modals/MonsterInfoModal";
 
 function App() {
   const theme = useMantineTheme();
@@ -87,6 +88,7 @@ function App() {
       {/* Modals */}
       <UpdateSWModal />
       <ItemPickerModal />
+      <MonsterInfoModal />
       <ItemInfoModal />
       <MonsterFightModal />
 

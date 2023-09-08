@@ -1,7 +1,6 @@
 import { IItem, itemData } from "@core/types/item"
 import { InventoryItem } from "./InventoryItem"
 import { assets } from "@/assets/assets"
-import { useAppStore } from "@/stores/appStore";
 import { util } from "@/lib/util";
 import { useGameStore } from "@/stores/gameStore";
 import { game } from "@core/game";
@@ -38,20 +37,6 @@ function ItemList(
 ) {
   const player = useGameStore(state => state.data.player);
 
-  const showItemInfo = (item: IItem) => {
-    useAppStore.setState(s => {
-      s.modals.itemInfo.opened = true;
-      s.modals.itemInfo.item = item;
-    });
-  }
-
-  const showOtherInfo = (name: "level" | "gold" | "diamond" | "food", text: string) => {
-    useAppStore.setState(s => {
-      s.modals.itemInfo.opened = true;
-      s.modals.itemInfo.other = { name, text };
-    });
-  }
-
   const goldText = gold !== undefined ? `${util.formatNumber(gold, true)} Gold` : "";
   const diamondText = diamond !== undefined ? `${util.formatNumber(diamond, true)} Diamond` : "";
   const foodText = food !== undefined ? `${util.formatNumber(food, true)} Food` : "";
@@ -67,31 +52,31 @@ function ItemList(
       {level !== undefined &&
         <InventoryItem
           emoji="⭐" count={level}
-          onClick={levelOnClick || (() => showOtherInfo("level", levelText))}
+          onClick={levelOnClick || (() => util.showOtherInfo("level", levelText))}
         />
       }
       {xp !== undefined &&
         <InventoryItem
           emoji="⭐" count={xp}
-          onClick={xpOnClick || (() => showOtherInfo("level", xpText))}
+          onClick={xpOnClick || (() => util.showOtherInfo("level", xpText))}
         />
       }
       {gold !== undefined &&
         <InventoryItem
           emoji="🪙" count={gold}
-          onClick={goldOnClick || (() => showOtherInfo("gold", goldText))}
+          onClick={goldOnClick || (() => util.showOtherInfo("gold", goldText))}
         />
       }
       {diamond !== undefined &&
         <InventoryItem
           emoji="💎" count={diamond}
-          onClick={diamondOnClick || (() => showOtherInfo("diamond", diamondText))}
+          onClick={diamondOnClick || (() => util.showOtherInfo("diamond", diamondText))}
         />
       }
       {food !== undefined &&
         <InventoryItem
           emoji="🍏" count={food}
-          onClick={foodOnClick || (() => showOtherInfo("food", foodText))}
+          onClick={foodOnClick || (() => util.showOtherInfo("food", foodText))}
         />
       }
 
@@ -101,7 +86,7 @@ function ItemList(
           src={assets.url(itemData[item.id].path)}
           stars={item && itemData[item.id].stars}
           count={item.count}
-          onClick={itemsOnClick ? (() => itemsOnClick(item)) : (() => showItemInfo(item))}
+          onClick={itemsOnClick ? (() => itemsOnClick(item)) : (() => util.showItemInfo(item))}
         />
       )}
     </>

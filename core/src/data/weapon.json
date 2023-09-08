@@ -38,11 +38,7 @@
   "Battle Axe 3": {
     "_id": 10,
     "path": "/src/assets/weapons/battle_axe_3.png"
-  }
-
-
-
-  ,
+  },
   "Battle Axe 4": {
     "_id": 11,
     "path": "/src/assets/weapons/battle_axe_4.png"

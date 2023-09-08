@@ -1,4 +1,5 @@
 import { ItemId } from "@core/types/item";
+import { IMonster } from "@core/types/monster";
 import { IInventory } from "@core/types/types";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
@@ -16,6 +17,10 @@ export interface AppStoreState {
       opened: boolean,
       items: Array<IInventory["items"][ItemId]>,
       callback?: (item: IInventory["items"][ItemId]) => void,
+    },
+    monsterInfo: {
+      opened: boolean,
+      monster?: IMonster,
     },
     itemInfo: {
       opened: boolean,
@@ -51,6 +56,11 @@ const initialState: AppStoreState = {
       opened: false,
       items: [],
       callback: undefined,
+    },
+
+    monsterInfo: {
+      opened: false,
+      monster: undefined,
     },
 
     itemInfo: {

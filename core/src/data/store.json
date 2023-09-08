@@ -1,5 +1,140 @@
 [
   {
-    
+    "gold": 1000000,
+    "cost": {
+      "diamond": 1000
+    }
+  },
+  {
+    "food": 1000000,
+    "cost": {
+      "diamond": 1000
+    }
+  },
+
+
+  
+  {
+    "monsterId": "Angel",
+    "cost": {
+      "gold": 1000
+    }
+  },
+  {
+    "monsterId": "Ogre",
+    "cost": {
+      "gold": 50000
+    }
+  },
+  {
+    "monsterId": "Wizard",
+    "cost": {
+      "gold": 2000000
+    }
+  },
+
+
+
+  {
+    "itemId": "Common Ancient Sword",
+    "cost": {
+      "gold": 1000
+    }
+  },
+  {
+    "itemId": "Common Bardiche 2",
+    "cost": {
+      "gold": 50000
+    }
+  },
+  {
+    "itemId": "Common Battle Axe 3",
+    "cost": {
+      "gold": 2000000
+    }
+  },
+
+
+
+  {
+    "itemId": "Common Animal Skin 1 Armor",
+    "cost": {
+      "gold": 1000
+    }
+  },
+  {
+    "itemId": "Common Banded Mail 2 Armor",
+    "cost": {
+      "gold": 50000
+    }
+  },
+  {
+    "itemId": "Common Crystal Platemail Armor",
+    "cost": {
+      "gold": 2000000
+    }
+  },
+
+
+
+  {
+    "itemId": "Common Generic Rune",
+    "cost": {
+      "gold": 1000
+    }
+  },
+  {
+    "itemId": "Common Demonic 1 Rune",
+    "cost": {
+      "gold": 50000
+    }
+  },
+  {
+    "itemId": "Common Demonic 6 Rune",
+    "cost": {
+      "gold": 2000000
+    }
+  },
+
+
+
+  {
+    "itemId": "Common Agate Ring",
+    "cost": {
+      "gold": 1000
+    }
+  },
+  {
+    "itemId": "Common Copper Ring",
+    "cost": {
+      "gold": 50000
+    }
+  },
+  {
+    "itemId": "Common Gold Ring",
+    "cost": {
+      "gold": 2000000
+    }
+  },
+
+
+
+  {
+    "itemId": "Common Bone Gray Amulet",
+    "cost": {
+      "gold": 1000
+    }
+  },
+  {
+    "itemId": "Common Celtic Red Amulet",
+    "cost": {
+      "gold": 50000
+    }
+  },
+  {
+    "itemId": "Common Cylinder Gray Amulet",
+    "cost": {
+      "gold": 2000000
+    }
   }
 ]
