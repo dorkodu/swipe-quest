@@ -1,5 +1,5 @@
 import { Button, Flex } from "@mantine/core"
-import { IconBat, IconBuildingStore, IconCalendarEvent, IconChevronRight, IconHammer, IconLicense, IconMail, IconSword, IconTarget, IconTower } from "@tabler/icons-react"
+import { IconAward, IconBat, IconBuildingStore, IconCalendarEvent, IconChevronRight, IconHammer, IconLicense, IconMail, IconSword, IconTower } from "@tabler/icons-react"
 import { useNavigate } from "react-router-dom"
 
 function Map() {
@@ -12,8 +12,8 @@ function Map() {
     { icon: <IconHammer />, name: "Blacksmith", onClick: () => { navigate("blacksmith") } },
     { icon: <IconBuildingStore />, name: "Store", onClick: () => { navigate("store") } },
     { icon: <IconLicense />, name: "Daily Missions", onClick: () => { navigate("daily-missions") } },
-    { icon: <IconTarget />, name: "Achievements", onClick: () => { navigate("achievements") } },
-    { icon: <IconCalendarEvent />, name: "Events", onClick: () => { navigate("events") } },
+    { icon: <IconAward />, name: "Achievements", onClick: () => { navigate("achievements") } },
+    { icon: <IconCalendarEvent />, name: "Daily Rewards", onClick: () => { navigate("daily-rewards") } },
     { icon: <IconMail />, name: "Mails", onClick: () => { navigate("mails") } },
   ]
 
