@@ -31,6 +31,28 @@ export function wait<T>(
   })
 }
 
+function formatDate(date: number, long?: boolean) {
+  if (long) return new Intl.DateTimeFormat("en", { dateStyle: "medium", timeStyle: "short" }).format(date);
+
+  const current = date > Date.now() ? new Date(date) : new Date();
+  const target = date <= Date.now() ? new Date(date) : new Date();
+  let diff = 0;
+
+  if (current.getUTCFullYear() - target.getUTCFullYear() >= 1)
+    return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(date);
+  else if (current.getUTCMonth() - target.getUTCMonth() >= 1)
+    return new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(date);
+  else if (current.getUTCDate() - target.getUTCDate() >= 1)
+    return new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(date);
+  else if ((diff = current.getUTCHours() - target.getUTCHours()) >= 1)
+    return new Intl.RelativeTimeFormat("en", { numeric: "always", style: "narrow" }).format(diff, "hours");
+  else if ((diff = current.getUTCMinutes() - target.getUTCMinutes()) >= 1)
+    return new Intl.RelativeTimeFormat("en", { numeric: "always", style: "narrow" }).format(diff, "minutes");
+  else if ((diff = current.getUTCSeconds() - target.getUTCSeconds()) >= 1)
+    return new Intl.RelativeTimeFormat("en", { numeric: "always", style: "narrow" }).format(diff, "seconds");
+  else return new Intl.RelativeTimeFormat("en", { numeric: "auto" }).format(0, "seconds");
+}
+
 function formatNumber(number: number, long?: boolean) {
   number = Math.floor(number);
   if (long) return Intl.NumberFormat("en").format(number);
@@ -65,6 +87,7 @@ function showOtherInfo(name: "level" | "gold" | "diamond" | "food", text: string
 }
 
 export const util = {
+  formatDate,
   formatNumber,
   clampNumber,
 

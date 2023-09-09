@@ -332,6 +332,16 @@ function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } 
   return { monster, rewards };
 }
 
+function resetDailyMissions(data: IGameData) {
+  data.dailyMissionDate = Date.now();
+  Object
+    .values(data.dailyMissions)
+    .forEach(m => {
+      m.count = 0;
+      m.claimed = false;
+    })
+}
+
 function getRebirthPoints(data: IGameData) {
   let points = data.player.level + data.campaign.level + data.tower.level;
 
@@ -373,6 +383,8 @@ export const util = {
 
   getCampaignLevel,
   getTowerLevel,
+
+  resetDailyMissions,
 
   getRebirthPoints,
   getRebirthMultiplierCost,

@@ -1,25 +1,49 @@
 import { assets } from "@/assets/assets";
 import { InventoryItem } from "@/components/_game/InventoryItem";
 import ItemList from "@/components/_game/ItemList";
+import { util } from "@/lib/util";
 import { useGameStore } from "@/stores/gameStore"
 import { actionClaimDailyMission } from "@core/actions/claim_daily_mission";
+import { game } from "@core/game";
 import { DailyMissionKey, dailyMissions } from "@core/types/daily_missions";
 import { monsterData } from "@core/types/monster";
 import { Button, Card, Flex, Progress, Title } from "@mantine/core"
 import { IconCircle, IconCircleCheckFilled } from "@tabler/icons-react";
+import { useEffect, useState } from "react";
 
 function DailyMissions() {
+  const data = useGameStore(state => state.data);
+  const [remaining, setRemaining] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // TODO: Move reset daily missions into action
+      const resetDate = data.dailyMissionDate + 1000 * 60 * 60 * 24;
+      if (Date.now() > resetDate) useGameStore.setState(s => { game.util.resetDailyMissions(s.data) })
+      setRemaining(util.formatDate(resetDate))
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <Flex direction="column" gap="md" mx="md" my={80}>
-      <DailyMission mission="completeAllDailyMissions" />
-      <DailyMission mission="progressCampaign" />
-      <DailyMission mission="progressTower" />
-      <DailyMission mission="killMonster" />
-      <DailyMission mission="unlockMonster" />
-      <DailyMission mission="evolveMonster" />
-      <DailyMission mission="unlockItem" />
-      <DailyMission mission="upgradeItem" />
-      <DailyMission mission="swipeGameEvents" />
+    <Flex direction="column" align="center" gap="md" mx="md" my={80}>
+      <Card withBorder w="100%" maw={360}>
+        <Flex direction="column" gap="md">
+          <Card withBorder>
+            <Title order={4} align="center">{`Reset: ${remaining}`}</Title>
+          </Card>
+
+          <DailyMission mission="completeAllDailyMissions" />
+          <DailyMission mission="progressCampaign" />
+          <DailyMission mission="progressTower" />
+          <DailyMission mission="killMonster" />
+          <DailyMission mission="unlockMonster" />
+          <DailyMission mission="evolveMonster" />
+          <DailyMission mission="unlockItem" />
+          <DailyMission mission="upgradeItem" />
+          <DailyMission mission="swipeGameEvents" />
+        </Flex>
+      </Card>
     </Flex>
   )
 }
