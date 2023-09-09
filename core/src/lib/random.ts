@@ -10,8 +10,10 @@ function number(data: { seed: number }, min: number, max: number) {
 }
 
 function percent<T>(data: { seed: number }, cases: { percent: number, result: T }[]): T | undefined {
+  const multiplier = 1_000_000_000;
+
   let total = 0;
-  cases.forEach((value) => { total += value.percent })
+  cases.forEach((value) => { total += value.percent * multiplier })
 
   let percentage = number(data, 0, total) + 1;
 
@@ -20,7 +22,7 @@ function percent<T>(data: { seed: number }, cases: { percent: number, result: T 
     const value = cases[i];
     if (!value) continue;
 
-    probability += value.percent;
+    probability += value.percent * multiplier;
     if (percentage <= probability) return value.result;
   }
 

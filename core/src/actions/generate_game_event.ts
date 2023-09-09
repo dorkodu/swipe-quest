@@ -55,7 +55,7 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
   const items = Object.keys(itemData) as ItemId[];
   const itemId = random.percent(
     data,
-    items.map(result => ({ percent: (1 / itemData[result]._id) * items.length * 100, result }))
+    items.map(result => ({ percent: Math.pow(1 / itemData[result]._id, 4), result }))
   );
 
   if (!itemId) return;
@@ -125,7 +125,7 @@ function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) 
   const monsters = Object.keys(monsterData) as MonsterId[];
   const monsterId = random.percent(
     data,
-    monsters.map(result => ({ percent: (1 / monsterData[result]._id) * monsters.length * 100, result }))
+    monsters.map(result => ({ percent: Math.pow(1 / monsterData[result]._id, 4), result }))
   );
 
   if (!monsterId) return;
