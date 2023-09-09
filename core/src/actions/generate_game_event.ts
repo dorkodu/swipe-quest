@@ -59,7 +59,7 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
   const itemId = random.percent(
     data,
     items.map(result => ({
-      percent: Math.min(1, Math.pow(1 / (itemData[result]._id / data.rebirth.multipliers.item), 4)),
+      percent: Math.min(1, Math.pow(1 / (itemData[result]._id / data.rebirth.multipliers.item), 3)),
       result
     }))
   );
@@ -134,7 +134,7 @@ function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) 
   const monsterId = random.percent(
     data,
     monsters.map(result => ({
-      percent: Math.min(1, Math.pow(1 / (monsterData[result]._id * data.rebirth.multipliers.monster), 4)),
+      percent: Math.min(1, Math.pow(1 / (monsterData[result]._id * data.rebirth.multipliers.monster), 3)),
       result
     }))
   );
