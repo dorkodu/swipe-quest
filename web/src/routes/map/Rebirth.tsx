@@ -56,7 +56,7 @@ function Rebirth() {
           <Card withBorder>
             <Title order={3} align="center">You have:</Title>
             <Title order={4} align="center">
-              {`${data.rebirth.points} Rebirth Points`}
+              {`${util.formatNumber(data.rebirth.points)} Rebirth Points`}
             </Title>
           </Card>
 
