@@ -55,7 +55,10 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
   const items = Object.keys(itemData) as ItemId[];
   const itemId = random.percent(
     data,
-    items.map(result => ({ percent: Math.pow(1 / itemData[result]._id, 4), result }))
+    items.map(result => ({
+      percent: Math.min(1, Math.pow(1 / (itemData[result]._id / data.rebirth.multipliers.item), 4)),
+      result
+    }))
   );
 
   if (!itemId) return;
@@ -74,8 +77,8 @@ function eventGold(id: "gold", data: IGameData, _info: Info) {
     id,
     count: random.number(
       data,
-      data.player.level * constants.GAME_EVENT_GOLD_MIN_PER_LEVEL,
-      data.player.level * constants.GAME_EVENT_GOLD_MAX_PER_LEVEL
+      data.player.level * constants.GAME_EVENT_GOLD_MIN_PER_LEVEL * data.rebirth.multipliers.gold,
+      data.player.level * constants.GAME_EVENT_GOLD_MAX_PER_LEVEL * data.rebirth.multipliers.gold
     ),
   }
 
@@ -87,8 +90,8 @@ function eventDiamond(id: "diamond", data: IGameData, _info: Info) {
     id,
     count: random.number(
       data,
-      data.player.level * constants.GAME_EVENT_DIAMOND_MIN_PER_LEVEL,
-      data.player.level * constants.GAME_EVENT_DIAMOND_MAX_PER_LEVEL
+      data.player.level * constants.GAME_EVENT_DIAMOND_MIN_PER_LEVEL * data.rebirth.multipliers.diamond,
+      data.player.level * constants.GAME_EVENT_DIAMOND_MAX_PER_LEVEL * data.rebirth.multipliers.diamond
     ),
   }
 
@@ -125,7 +128,10 @@ function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) 
   const monsters = Object.keys(monsterData) as MonsterId[];
   const monsterId = random.percent(
     data,
-    monsters.map(result => ({ percent: Math.pow(1 / monsterData[result]._id, 4), result }))
+    monsters.map(result => ({
+      percent: Math.min(1, Math.pow(1 / (monsterData[result]._id * data.rebirth.multipliers.monster), 4)),
+      result
+    }))
   );
 
   if (!monsterId) return;
@@ -155,8 +161,8 @@ function eventExperience(id: "experience", data: IGameData, _info: Info) {
     id,
     count: random.number(
       data,
-      data.player.level * constants.GAME_EVENT_EXPERIENCE_MIN_PER_LEVEL,
-      data.player.level * constants.GAME_EVENT_EXPERIENCE_MAX_PER_LEVEL
+      data.player.level * constants.GAME_EVENT_EXPERIENCE_MIN_PER_LEVEL * data.rebirth.multipliers.xp,
+      data.player.level * constants.GAME_EVENT_EXPERIENCE_MAX_PER_LEVEL * data.rebirth.multipliers.xp
     ),
   }
 
@@ -170,8 +176,8 @@ function eventFood(id: "food", data: IGameData, _info: Info) {
     id,
     count: random.number(
       data,
-      data.player.level * constants.GAME_EVENT_FOOD_MIN_PER_LEVEL,
-      data.player.level * constants.GAME_EVENT_FOOD_MAX_PER_LEVEL
+      data.player.level * constants.GAME_EVENT_FOOD_MIN_PER_LEVEL * data.rebirth.multipliers.food,
+      data.player.level * constants.GAME_EVENT_FOOD_MAX_PER_LEVEL * data.rebirth.multipliers.food
     ),
   }
 

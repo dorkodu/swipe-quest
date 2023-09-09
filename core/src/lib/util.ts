@@ -262,10 +262,10 @@ function getBetterItem(
 }
 
 function applyRewards(data: IGameData, rewards: IRewards) {
-  data.player.xp += rewards.xp || 0;
-  data.player.gold += rewards.gold || 0;
-  data.player.diamond += rewards.diamond || 0;
-  data.player.food += rewards.food || 0;
+  data.player.xp += rewards.xp ? rewards.xp * data.rebirth.multipliers.xp : 0;
+  data.player.gold += rewards.gold ? rewards.gold * data.rebirth.multipliers.gold : 0;
+  data.player.diamond += rewards.diamond ? rewards.diamond * data.rebirth.multipliers.diamond : 0;
+  data.player.food += rewards.food ? rewards.food * data.rebirth.multipliers.food : 0;
 
   data.inventory.monsters.push(...(rewards.monsters || []));
   rewards.items?.forEach(item => {
@@ -333,21 +333,7 @@ function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } 
 }
 
 function getRebirthPoints(data: IGameData) {
-  let items = 0;
-  let monsters = 0;
-
-  data.inventory.monsters.forEach(m => {
-    monsters += monsterData[m.id]._id;
-    m.weapon && (items += itemData[m.weapon]._id);
-    m.armor && (items += itemData[m.armor]._id);
-    m.rune && (items += itemData[m.rune]._id);
-    m.ring && (items += itemData[m.ring]._id);
-    m.amulet && (items += itemData[m.amulet]._id);
-  });
-
-  Object.values(data.inventory.items).map(i => { items += itemData[i.id]._id });
-
-  let points = data.player.level + data.campaign.level + data.tower.level + items + monsters;
+  let points = data.player.level + data.campaign.level + data.tower.level;
 
   return points;
 }
