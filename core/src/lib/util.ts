@@ -6,7 +6,6 @@ import { IMonster, MonsterId, monsterData } from "../types/monster";
 import { IRebirth } from "../types/rebirth";
 import { IInventory, IRewards } from "../types/types";
 import { random } from "./random";
-import { signals } from "./signals";
 
 function equipItem(
   data: IGameData,
@@ -186,8 +185,6 @@ function checkPlayerXp(data: IGameData) {
     data.player.level++;
 
     cost = getLevelUpXp(data.player.level);
-
-    signals.playerLevelUp.dispatch({ data });
   }
 }
 
