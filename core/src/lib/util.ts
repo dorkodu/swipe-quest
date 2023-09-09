@@ -3,6 +3,7 @@ import { IGameData } from "../gamedata";
 import { constants } from "../types/constants";
 import { IItem, IItemData, ItemId, ItemType, amuletData, armorData, itemData, ringData, runeData, weaponData } from "../types/item";
 import { IMonster, MonsterId, monsterData } from "../types/monster";
+import { IRebirth } from "../types/rebirth";
 import { IInventory, IRewards } from "../types/types";
 import { random } from "./random";
 import { signals } from "./signals";
@@ -331,6 +332,37 @@ function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } 
   return { monster, rewards };
 }
 
+function getRebirthPoints(data: IGameData) {
+  let items = 0;
+  let monsters = 0;
+
+  data.inventory.monsters.forEach(m => {
+    monsters += monsterData[m.id]._id;
+    m.weapon && (items += itemData[m.weapon]._id);
+    m.armor && (items += itemData[m.armor]._id);
+    m.rune && (items += itemData[m.rune]._id);
+    m.ring && (items += itemData[m.ring]._id);
+    m.amulet && (items += itemData[m.amulet]._id);
+  });
+
+  Object.values(data.inventory.items).map(i => { items += itemData[i.id]._id });
+
+  let points = data.player.level + data.campaign.level + data.tower.level + items + monsters;
+
+  return points;
+}
+
+function getRebirthMultiplierCost(data: IGameData, multiplier: keyof IRebirth["multipliers"]) {
+  switch (multiplier) {
+    case "xp": return Math.pow(100, data.rebirth.multipliers["xp"]);
+    case "gold": return Math.pow(100, data.rebirth.multipliers["gold"]);
+    case "food": return Math.pow(100, data.rebirth.multipliers["food"]);
+    case "diamond": return Math.pow(100, data.rebirth.multipliers["diamond"]);
+    case "monster": return Math.pow(100, data.rebirth.multipliers["monster"]);
+    case "item": return Math.pow(100, data.rebirth.multipliers["item"]);
+  }
+}
+
 export const util = {
   equipItem,
   getItemPower,
@@ -355,4 +387,7 @@ export const util = {
 
   getCampaignLevel,
   getTowerLevel,
+
+  getRebirthPoints,
+  getRebirthMultiplierCost,
 }

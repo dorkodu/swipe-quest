@@ -1,6 +1,7 @@
 import { IDailyMissions } from "./types/daily_missions";
 import { GameEventId, IGameEvent } from "./types/game_event"
 import { IMonsterFight } from "./types/monster_fight";
+import { IRebirth } from "./types/rebirth";
 import { ICampaign, IInventory, IPlayer, ITower } from "./types/types";
 
 export interface IGameData {
@@ -13,6 +14,9 @@ export interface IGameData {
   tower: ITower;
 
   dailyMissions: IDailyMissions;
+  dailyMissionDate: number;
+
+  rebirth: IRebirth;
 
   currentGameEvent: IGameEvent[GameEventId] | undefined;
   currentMonsterFight: IMonsterFight | undefined;
@@ -58,6 +62,20 @@ export function createGameData(seed: number): IGameData {
       upgradeItem: { count: 0 },
       swipeGameEvents: { count: 0 },
       completeAllDailyMissions: { count: 0 },
+    },
+    dailyMissionDate: Date.now(),
+
+    rebirth: {
+      points: 0,
+
+      multipliers: {
+        xp: 1,
+        gold: 1,
+        diamond: 1,
+        food: 1,
+        item: 1,
+        monster: 1,
+      }
     },
 
     currentGameEvent: undefined,
