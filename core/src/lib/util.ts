@@ -272,12 +272,7 @@ function applyRewards(data: IGameData, rewards: IRewards) {
   checkPlayerXp(data);
 }
 
-function getCampaignLevel(level: number): {
-  monster: IMonster,
-  rewards: IRewards,
-  isBoss: boolean,
-  requiredLevel: number,
-} {
+function getCampaignLevel(level: number): { monster: IMonster, rewards: IRewards, isBoss: boolean, requiredLevel: number } {
   const monsterId: MonsterId = random.percent(
     { seed: level },
     Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))

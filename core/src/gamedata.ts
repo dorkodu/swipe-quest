@@ -31,7 +31,11 @@ export function createGameData(seed: number): IGameData {
     inventory: {
       currentMonsterIndex: 0,
 
-      items: {},
+      items: {
+        "Common Ancient Sword": {
+          id: "Common Ancient Sword", count: 1
+        }
+      },
 
       monsters: [
         { id: "Angel", level: 1 },
