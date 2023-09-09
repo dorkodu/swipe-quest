@@ -1,4 +1,5 @@
 import { IGameData } from "../gamedata";
+import { signals } from "../lib/signals";
 import { util } from "../lib/util";
 import { IMonster } from "../types/monster";
 import { IMonsterFight, MonsterFightType } from "../types/monster_fight";
@@ -83,9 +84,17 @@ function act(data: IGameData, info: Info): "ally" | "enemy" | undefined {
 
 function allyWin(data: IGameData, fight: IMonsterFight) {
   if (fight.type === MonsterFightType.GameEvent) actionGenerateGameEvent.act(data, {});
-  if (fight.type === MonsterFightType.Campaign) data.campaign.level++;
-  if (fight.type === MonsterFightType.Tower) data.tower.level++;
+  if (fight.type === MonsterFightType.Campaign) {
+    signals.progressCampaign.dispatch({ data });
+    data.campaign.level++;
+  }
+  if (fight.type === MonsterFightType.Tower) {
+    signals.progressTower.dispatch({ data });
+    data.tower.level++;
+  }
+
   util.applyRewards(data, fight.rewards);
+  signals.killMonster.dispatch({ data });
 }
 
 function enemyWin(data: IGameData, fight: IMonsterFight) {
