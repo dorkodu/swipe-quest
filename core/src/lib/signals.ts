@@ -8,14 +8,10 @@ export const signals = {
   killMonster: new Signal<{ data: IGameData }>(),
   evolveMonster: new Signal<{ data: IGameData }>(),
   unlockMonster: new Signal<{ data: IGameData }>(),
-  buyMonster: new Signal<{ data: IGameData }>(),
   upgradeMonster: new Signal<{ data: IGameData }>(),
 
   unlockItem: new Signal<{ data: IGameData }>(),
   upgradeItem: new Signal<{ data: IGameData }>(),
-  buyItem: new Signal<{ data: IGameData }>(),
 
   swipeGameEvents: new Signal<{ data: IGameData }>(),
-
-  playerLevelUp: new Signal<{ data: IGameData }>(),
 }

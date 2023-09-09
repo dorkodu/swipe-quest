@@ -1,4 +1,5 @@
 import { IGameData } from "../gamedata";
+import { signals } from "../lib/signals";
 import { util } from "../lib/util";
 import { ItemId } from "../types/item";
 
@@ -34,7 +35,7 @@ function act(data: IGameData, info: Info) {
   if (!item) return;
 
   const upgradedId = util.getItemUpgrade(info.itemId);
-  if (!upgradedId) return
+  if (!upgradedId) return;
 
   if (!data.inventory.items[upgradedId]) data.inventory.items[upgradedId] = { id: upgradedId, count: 0 }
   data.inventory.items[upgradedId]!.count++;
@@ -42,4 +43,6 @@ function act(data: IGameData, info: Info) {
   item.count -= 3;
 
   if (item.count === 0) delete data.inventory.items[info.itemId];
+
+  signals.upgradeItem.dispatch({ data });
 }

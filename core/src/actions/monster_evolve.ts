@@ -1,4 +1,5 @@
 import { IGameData } from "../gamedata";
+import { signals } from "../lib/signals";
 import { util } from "../lib/util";
 import { ItemType } from "../types/item";
 
@@ -44,4 +45,6 @@ function act(data: IGameData, info: Info) {
   data.inventory.monsters.push(evolvedMonster);
 
   util.sortMonsters(data);
+  
+  signals.evolveMonster.dispatch({ data });
 }

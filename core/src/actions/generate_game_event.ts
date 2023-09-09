@@ -1,6 +1,7 @@
 import { IGameData } from "../gamedata";
 import { math } from "../lib/math";
 import { random } from "../lib/random";
+import { signals } from "../lib/signals";
 import { util } from "../lib/util";
 import { constants } from "../types/constants";
 import { IGameEvent, GameEventId } from "../types/game_event";
@@ -49,6 +50,8 @@ function act(data: IGameData, info: Info) {
     case "food": eventFood(id, data, info); break;
     case "boss_fight": eventBossFight(id, data, info); break;
   }
+
+  signals.swipeGameEvents.dispatch({ data });
 }
 
 function eventItem(id: "item", data: IGameData, _info: Info) {
@@ -70,6 +73,8 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
 
   if (!data.inventory.items[itemId]) data.inventory.items[itemId] = { id: itemId, count: 0 }
   data.inventory.items[itemId]!.count++;
+  
+  signals.unlockItem.dispatch({ data });
 }
 
 function eventGold(id: "gold", data: IGameData, _info: Info) {
@@ -142,6 +147,8 @@ function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) 
   }
 
   data.inventory.monsters.push({ id: monsterId, level: 1 });
+  
+  signals.unlockMonster.dispatch({ data });
 }
 
 function eventMysteryBox(id: "mystery_box", data: IGameData, _info: Info) {
