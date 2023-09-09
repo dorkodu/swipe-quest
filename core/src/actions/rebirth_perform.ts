@@ -26,8 +26,14 @@ function act(data: IGameData, info: Info) {
   data.player.xp = 0;
   data.player.gold = 0;
   data.player.food = 1;
-  data.inventory.monsters = [];
-  data.inventory.items = {};
+  data.inventory.monsters = [
+    { id: "Angel", level: 1 }
+  ];
+  data.inventory.items = {
+    "Common Ancient Sword": {
+      id: "Common Ancient Sword", count: 1
+    }
+  };
 
   // Reset campaing and tower
   data.campaign.level = 1;
