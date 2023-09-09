@@ -1,4 +1,5 @@
 import { IGameData } from "../gamedata";
+import { signals } from "../lib/signals";
 import { util } from "../lib/util";
 
 export const actionMonsterUpgrade = {
@@ -39,4 +40,6 @@ function act(data: IGameData, info: Info) {
 
   // Sort the monsters by level because the monster level has changed
   util.sortMonsters(data);
+
+  signals.upgradeMonster.dispatch({ data });
 }
