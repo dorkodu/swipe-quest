@@ -5,8 +5,13 @@ import { actionRebirthMultiplierIncrease } from "@core/actions/rebirth_multiplie
 import { game } from "@core/game";
 import { constants } from "@core/types/constants";
 import { IRebirth } from "@core/types/rebirth";
-import { Button, Card, Flex, Title } from "@mantine/core"
+import { Button, Card, Flex, Image, Title } from "@mantine/core"
 import { IconRefresh } from "@tabler/icons-react";
+import Emoji from "@/components/Emoji";
+import { assets } from "@/assets/assets";
+import { monsterData } from "@core/types/monster";
+import { InventoryItem } from "@/components/_game/InventoryItem";
+import { itemData } from "@core/types/item";
 
 function Rebirth() {
   const data = useGameStore(state => state.data);
@@ -36,7 +41,8 @@ function Rebirth() {
 
               <Title order={3} mt="md">Receive:</Title>
               <Title order={4}>
-                {`${util.formatNumber(game.util.getRebirthPoints(data), true)} Rebirth Points`}
+                <Emoji emoji="🧪" />
+                {` ${util.formatNumber(game.util.getRebirthPoints(data), true)} Rebirth Points`}
               </Title>
 
               <Button
@@ -47,7 +53,11 @@ function Rebirth() {
               </Button>
 
               {!rebirthable &&
-                <Title order={5} mt="md" color="red">Minimum 100 RP required</Title>
+                <Title order={5} mt="md" color="red">
+                  {`Minimum `}
+                  <Emoji emoji="🧪" />
+                  {` 100 RP required`}
+                </Title>
               }
 
             </Flex>
@@ -56,7 +66,8 @@ function Rebirth() {
           <Card withBorder>
             <Title order={3} align="center">You have:</Title>
             <Title order={4} align="center">
-              {`${util.formatNumber(data.rebirth.points)} Rebirth Points`}
+              <Emoji emoji="🧪" />
+              {` ${util.formatNumber(data.rebirth.points)} Rebirth Points`}
             </Title>
           </Card>
 
@@ -95,17 +106,36 @@ function RebirthMultiplier({ multiplier }: { multiplier: keyof IRebirth["multipl
     }
   }
 
+  const image = () => {
+    switch (multiplier) {
+      case "xp": return { emoji: "⭐" }
+      case "gold": return { emoji: "🪙" }
+      case "diamond": return { emoji: "💎" }
+      case "food": return { emoji: "🍏" }
+      case "monster": return { src: assets.url(monsterData["Angel"].path) }
+      case "item": return { src: assets.url(itemData["Common Ancient Sword"].path) }
+    }
+  }
+
   const percent = util.formatNumber(data.rebirth.multipliers[multiplier] * 100, true);
   const cost = util.formatNumber(game.util.getRebirthMultiplierCost(data, multiplier), true);
   const increasePercent = util.formatNumber(constants.REBIRTH_MULTIPLIER_INCREASE * 100)
 
   return (
     <Card withBorder>
-      <Flex direction="column" gap="xs">
-        <Title order={4}>{`${name()}: %${percent}`}</Title>
-        <Flex align="center" gap="md" wrap="wrap">
+      <Flex direction="row" gap="md">
+        <Flex direction="column">
+          <InventoryItem {...image()} />
+        </Flex>
+
+        <Flex direction="column" align="start" gap="xs">
+          <Title order={4}>{`${name()}: %${percent}`}</Title>
           <Button onClick={increase} disabled={!increaseable}>{`Increase +${increasePercent}%`}</Button>
-          <Title order={4}>{`Cost: ${cost} RP`}</Title>
+          <Title order={4}>
+            {`Cost: `}
+            <Emoji emoji="🧪" />
+            {` ${cost} RP`}
+          </Title>
         </Flex>
       </Flex>
     </Card>

@@ -4,6 +4,7 @@ import ItemList from "@/components/_game/ItemList";
 import { util } from "@/lib/util";
 import { useGameStore } from "@/stores/gameStore"
 import { actionClaimDailyMission } from "@core/actions/claim_daily_mission";
+import { actionResetDailyMissions } from "@core/actions/reset_daily_missions";
 import { game } from "@core/game";
 import { DailyMissionKey, dailyMissions } from "@core/types/daily_missions";
 import { monsterData } from "@core/types/monster";
@@ -17,9 +18,8 @@ function DailyMissions() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // TODO: Move reset daily missions into action
-      const resetDate = data.dailyMissionDate + 1000 * 60 * 60 * 24;
-      if (Date.now() > resetDate) useGameStore.setState(s => { game.util.resetDailyMissions(s.data) })
+      const resetDate = game.util.getDailyMissionResetDate(data);
+      if (Date.now() > resetDate) useGameStore.setState(s => { actionResetDailyMissions.act(s.data, {}) })
       setRemaining(util.formatDate(resetDate))
     }, 1000);
     return () => clearInterval(interval);
