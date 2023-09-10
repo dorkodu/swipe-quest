@@ -30,9 +30,11 @@ function act(data: IGameData, info: Info) {
     { id: "Angel", level: 1 }
   ];
   data.inventory.items = {
-    "Common Ancient Sword": {
-      id: "Common Ancient Sword", count: 1
-    }
+    "Legendary Ancient Sword": { id: "Legendary Ancient Sword", count: 1 },
+    "Legendary Animal Skin 1 Armor": { id: "Legendary Animal Skin 1 Armor", count: 1 },
+    "Legendary Generic Rune": { id: "Legendary Generic Rune", count: 1 },
+    "Legendary Agate Ring": { id: "Legendary Agate Ring", count: 1 },
+    "Legendary Bone Gray Amulet": { id: "Legendary Bone Gray Amulet", count: 1 },
   };
 
   // Reset campaing and tower
