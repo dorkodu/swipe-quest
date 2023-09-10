@@ -1,4 +1,4 @@
-import { ActionIcon, Card, Flex, Image, MantineProvider, Title, useMantineTheme } from "@mantine/core"
+import { ActionIcon, Card, Flex, Image, MantineProvider, MediaQuery, Title, useMantineTheme } from "@mantine/core"
 import { IconArrowLeft, IconBackpack, IconHome, IconMap, IconMenu2 } from "@tabler/icons-react";
 import { Outlet, ScrollRestoration, useLocation, useNavigate } from "react-router-dom"
 import { theme as _theme } from "./styles/theme";
@@ -40,8 +40,13 @@ function App() {
               </ActionIcon>
 
               <Flex align="center" gap="xs">
-                <Image src="./icon-512.png" width={32} height={32} style={{ imageRendering: "pixelated" }} />
-                <Title order={2}>RPG</Title>
+                <Image src="/icon-512.png" width={32} height={32} style={{ imageRendering: "pixelated" }} />
+                <MediaQuery largerThan={360} styles={{ display: "none" }}>
+                  <Title order={3}>SwipeQuest</Title>
+                </MediaQuery>
+                <MediaQuery smallerThan={360} styles={{ display: "none" }}>
+                  <Title order={2}>SwipeQuest</Title>
+                </MediaQuery>
               </Flex>
 
               <ActionIcon
