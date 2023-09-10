@@ -44,7 +44,7 @@ function Blacksmith() {
                 <Flex pos="relative">
                   <IconArrowBigRightFilled />
                   <Title order={6} pos="absolute" top={24}>
-                    {itemId ? `${data.inventory.items[itemId]?.count}/3` : `0/3`}
+                    {`${(itemId && data.inventory.items[itemId]?.count) || 0}/3`}
                   </Title>
                 </Flex>
                 {!upgradedId ?
