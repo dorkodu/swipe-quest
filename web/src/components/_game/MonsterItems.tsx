@@ -55,7 +55,7 @@ function MonsterItems() {
   return (
     <>
       <Flex direction="column" align="center">
-        <Indicator color="red" disabled={!game.util.getBetterItem(inventory, weaponData)}>
+        <Indicator zIndex={99} color="red" disabled={!game.util.getBetterItem(inventory, weaponData)}>
           <Button variant="default" h="auto" p="md" onClick={() => show(weaponData, ItemType.Weapon)}>
             {!monster.weapon ?
               <Image src={assets.url(itemData["Common Axe"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
@@ -69,7 +69,7 @@ function MonsterItems() {
       </Flex>
 
       <Flex direction="row" justify="center" gap="xl">
-        <Indicator color="red" disabled={!game.util.getBetterItem(inventory, armorData)} mr="xl">
+        <Indicator zIndex={99} color="red" disabled={!game.util.getBetterItem(inventory, armorData)} mr="xl">
           <Button variant="default" h="auto" p="md" onClick={() => show(armorData, ItemType.Armor)}>
             {!monster.armor ?
               <Image src={assets.url(itemData["Common Banded Mail 1 Armor"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
@@ -81,7 +81,7 @@ function MonsterItems() {
           </Button>
         </Indicator>
 
-        <Indicator color="red" disabled={!game.util.getBetterItem(inventory, amuletData)}>
+        <Indicator zIndex={99} color="red" disabled={!game.util.getBetterItem(inventory, amuletData)}>
           <Button variant="default" h="auto" p="md" ml="xl" onClick={() => show(amuletData, ItemType.Amulet)}>
             {!monster.amulet ?
               <Image src={assets.url(itemData["Common Cameo Blue Amulet"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
@@ -95,7 +95,7 @@ function MonsterItems() {
       </Flex>
 
       <Flex direction="row" justify="center" gap="md">
-        <Indicator color="red" disabled={!game.util.getBetterItem(inventory, runeData)}>
+        <Indicator zIndex={99} color="red" disabled={!game.util.getBetterItem(inventory, runeData)}>
           <Button variant="default" h="auto" p="md" onClick={() => show(runeData, ItemType.Rune)}>
             {!monster.rune ?
               <Image src={assets.url(itemData["Common Generic Rune"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
@@ -107,7 +107,7 @@ function MonsterItems() {
           </Button>
         </Indicator>
 
-        <Indicator color="red" disabled={!game.util.getBetterItem(inventory, ringData)}>
+        <Indicator zIndex={99} color="red" disabled={!game.util.getBetterItem(inventory, ringData)}>
           <Button variant="default" h="auto" p="md" onClick={() => show(ringData, ItemType.Ring)}>
             {!monster.ring ?
               <Image src={assets.url(itemData["Common Agate Ring"].path)} width={32} height={32} style={{ filter: "blur(1px) contrast(50%)" }} /> :
