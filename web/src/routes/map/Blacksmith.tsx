@@ -11,7 +11,7 @@ import { useMemo, useState } from "react";
 
 function Blacksmith() {
   const data = useGameStore(state => state.data);
-  const items = useMemo(() => game.util.sortItems(Object.values(data.inventory.items)), [data.inventory.items]);
+  const items = useMemo(() => Object.values(data.inventory.items).sort((a, b) => b.count - a.count), [data.inventory.items]);
 
   const [itemId, setItemId] = useState<ItemId | undefined>(undefined);
   const upgradedId = game.util.getItemUpgrade(itemId);
