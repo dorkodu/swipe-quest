@@ -5,7 +5,7 @@ import { useGameStore } from "@/stores/gameStore"
 import { actionItemUpgrade } from "@core/actions/item_upgrade";
 import { game } from "@core/game";
 import { ItemId, itemData } from "@core/types/item";
-import { Button, Card, Flex } from "@mantine/core"
+import { Button, Card, Flex, Title } from "@mantine/core"
 import { IconArrowBigRightFilled, IconHammer } from "@tabler/icons-react";
 import { useMemo, useState } from "react";
 
@@ -41,7 +41,12 @@ function Blacksmith() {
                     onClick={() => setItemId(undefined)}
                   />
                 }
-                <IconArrowBigRightFilled />
+                <Flex pos="relative">
+                  <IconArrowBigRightFilled />
+                  <Title order={6} pos="absolute" top={24}>
+                    {itemId ? `${data.inventory.items[itemId]?.count}/3` : `0/3`}
+                  </Title>
+                </Flex>
                 {!upgradedId ?
                   <InventoryItem src={assets.url(itemData["Common Axe"].path)} blur /> :
                   <InventoryItem
