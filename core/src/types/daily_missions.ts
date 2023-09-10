@@ -40,6 +40,10 @@ signals.swipeGameEvents.add(({ data }) => { progressDailyMission(data, "swipeGam
 function progressDailyMission(data: IGameData, key: DailyMissionKey) {
   // Increase mission progress count
   const mission = data.dailyMissions[key];
+
+  // If mission is already completed, return
+  if (data.dailyMissions[key].count >= dailyMissions[key].count) return;
+
   mission.count = math.clamp(mission.count + 1, 0, dailyMissions[key].count);
 
   // If mission is not completed, return
