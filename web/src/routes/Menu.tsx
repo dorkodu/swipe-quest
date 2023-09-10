@@ -1,14 +1,20 @@
 import { useGameStore } from "@/stores/gameStore"
 import { Anchor, Button, Card, Flex, Image, Text } from "@mantine/core"
 import DorkoduLogo from "@/assets/dorkodu_logo.svg"
+import { IconTrash } from "@tabler/icons-react"
+import { useState } from "react"
 
 function Menu() {
+  const [confirm, setConfirm] = useState(false);
+
   return (
     <Flex direction="column" align="center" gap="md" mx="md" my={80}>
       <Flex direction="column" align="center" gap="md" w="100%" maw={360}>
         <Button
-          onClick={() => useGameStore.getState().reset()}
-          variant="default"
+          onClick={() => { confirm ? useGameStore.getState().reset() : setConfirm(true) }}
+          color={confirm ? "red" : undefined}
+          variant={confirm ? undefined : "default"}
+          leftIcon={<IconTrash />}
           fullWidth
         >
           Reset Progress
