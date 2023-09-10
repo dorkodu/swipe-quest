@@ -1,0 +1,16 @@
+FROM node:16.17.1-alpine as base
+WORKDIR /swipequest
+
+RUN mkdir -p /swipequest/web
+RUN mkdir -p /swipequest/core
+
+RUN npm install -g pnpm && pnpm config set --global store-dir /root/.local/share/pnpm/store/v3
+
+WORKDIR /swipequest/web
+
+COPY ./web /swipequest/web
+COPY ./core /swipequest/core
+RUN cd /swipequest && pnpm install -r
+
+#RUN pnpm test
+RUN pnpm build

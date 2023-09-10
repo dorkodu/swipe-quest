@@ -1,0 +1,17 @@
+version: '3.8'
+name: swipequest_prod
+
+services:
+  swipequest_web:
+    build:
+      context: .
+      dockerfile: ./web/Dockerfile.prod
+    env_file:
+      - ./.env
+    environment:
+      - NODE_ENV=production
+
+networks:
+  nginx-proxy:
+    external: true
+  app:
