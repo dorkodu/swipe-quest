@@ -45,7 +45,7 @@ function Menu() {
               <b>Dorkodu</b> &copy; {new Date().getFullYear()}
             </Text>
 
-            <Title order={5} align="center">SwipeQuest v0.1.0</Title>
+            <Title order={5} align="center">SwipeQuest v0.1.1</Title>
 
           </Flex>
         </Card>
