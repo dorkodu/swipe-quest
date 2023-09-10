@@ -1,5 +1,5 @@
 import { useGameStore } from "@/stores/gameStore"
-import { Anchor, Button, Card, Flex, Image, Text } from "@mantine/core"
+import { Anchor, Button, Card, Flex, Image, Text, Title } from "@mantine/core"
 import DorkoduLogo from "@/assets/dorkodu_logo.svg"
 import { IconTrash } from "@tabler/icons-react"
 import { useState } from "react"
@@ -44,6 +44,8 @@ function Menu() {
             <Text color="dimmed" weight={450}>
               <b>Dorkodu</b> &copy; {new Date().getFullYear()}
             </Text>
+
+            <Title order={5} align="center">SwipeQuest v0.1.0</Title>
 
           </Flex>
         </Card>
