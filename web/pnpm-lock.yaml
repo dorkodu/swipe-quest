@@ -29,6 +29,9 @@ dependencies:
   react-swipeable:
     specifier: ^7.0.1
     version: 7.0.1(react@18.2.0)
+  react-timer-hook:
+    specifier: ^3.0.7
+    version: 3.0.7(react@18.2.0)
   twemoji:
     specifier: ^14.0.2
     version: 14.0.2
@@ -4231,6 +4234,14 @@ packages:
       use-latest: 1.2.1(@types/react@18.2.21)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /react-timer-hook@3.0.7(react@18.2.0):
+    resolution: {integrity: sha512-ATpNcU+PQRxxfNBPVqce2+REtjGAlwmfoNQfcEBMZFxPj0r3GYdKhyPHdStvqrejejEi0QvqaJZjy2lBlFvAsA==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react@18.2.0:

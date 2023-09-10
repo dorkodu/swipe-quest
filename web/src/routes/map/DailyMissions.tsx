@@ -1,7 +1,7 @@
 import { assets } from "@/assets/assets";
+import Emoji from "@/components/Emoji";
 import { InventoryItem } from "@/components/_game/InventoryItem";
 import ItemList from "@/components/_game/ItemList";
-import { util } from "@/lib/util";
 import { useGameStore } from "@/stores/gameStore"
 import { actionClaimDailyMission } from "@core/actions/claim_daily_mission";
 import { actionResetDailyMissions } from "@core/actions/reset_daily_missions";
@@ -10,27 +10,31 @@ import { DailyMissionKey, dailyMissions } from "@core/types/daily_missions";
 import { monsterData } from "@core/types/monster";
 import { Button, Card, Flex, Progress, Title } from "@mantine/core"
 import { IconCircle, IconCircleCheckFilled } from "@tabler/icons-react";
-import { useEffect, useState } from "react";
+import { useTimer } from 'react-timer-hook';
 
 function DailyMissions() {
   const data = useGameStore(state => state.data);
-  const [remaining, setRemaining] = useState("");
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const resetDate = game.util.getDailyMissionResetDate(data);
-      if (Date.now() > resetDate) useGameStore.setState(s => { actionResetDailyMissions.act(s.data, {}) })
-      setRemaining(util.formatDate(resetDate))
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+  const { hours, minutes, seconds } = useTimer({
+    expiryTimestamp: new Date(game.util.getDailyMissionResetDate(data)),
+    onExpire: () => {
+      useGameStore.setState(s => { actionResetDailyMissions.act(s.data, {}) });
+    },
+  });
+
+  const h = (hours < 10 ? "0" : "") + hours;
+  const m = (minutes < 10 ? "0" : "") + minutes;
+  const s = (seconds < 10 ? "0" : "") + seconds;
 
   return (
     <Flex direction="column" align="center" gap="md" mx="md" my={80}>
       <Card withBorder w="100%" maw={360}>
         <Flex direction="column" gap="md">
           <Card withBorder>
-            <Title order={4} align="center">{`Reset: ${remaining}`}</Title>
+            <Title order={4} align="center">
+              <Emoji emoji="⏰" />
+              {` Resets in ${h}:${m}:${s}`}
+            </Title>
           </Card>
 
           <DailyMission mission="completeAllDailyMissions" />
