@@ -5,7 +5,7 @@ import { actionRebirthMultiplierIncrease } from "@core/actions/rebirth_multiplie
 import { game } from "@core/game";
 import { constants } from "@core/types/constants";
 import { IRebirth } from "@core/types/rebirth";
-import { Button, Card, Flex, Image, Title } from "@mantine/core"
+import { Button, Card, Flex, Title } from "@mantine/core"
 import { IconRefresh } from "@tabler/icons-react";
 import Emoji from "@/components/Emoji";
 import { assets } from "@/assets/assets";
