@@ -45,6 +45,12 @@ function act(data: IGameData, info: Info) {
   data.inventory.monsters.push(evolvedMonster);
 
   util.sortMonsters(data);
-  
+
+  // If current monster index is empty, select the evolved monster
+  if (!data.inventory.monsters[data.inventory.currentMonsterIndex]) {
+    const index = data.inventory.monsters.findIndex(m => m === evolvedMonster);
+    if (index !== -1) data.inventory.currentMonsterIndex = index;
+  }
+
   signals.evolveMonster.dispatch({ data });
 }
