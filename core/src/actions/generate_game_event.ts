@@ -59,7 +59,7 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
   const itemId = random.percent(
     data,
     items.map(result => ({
-      percent: Math.min(1, Math.pow(1 / (itemData[result]._id / data.rebirth.multipliers.item), 3)),
+      percent: Math.min(1, Math.pow(1 / (itemData[result]._id / data.rebirth.multipliers.item), 2.5)),
       result
     }))
   );
@@ -73,7 +73,7 @@ function eventItem(id: "item", data: IGameData, _info: Info) {
 
   if (!data.inventory.items[itemId]) data.inventory.items[itemId] = { id: itemId, count: 0 }
   data.inventory.items[itemId]!.count++;
-  
+
   signals.unlockItem.dispatch({ data });
 }
 
@@ -134,7 +134,7 @@ function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) 
   const monsterId = random.percent(
     data,
     monsters.map(result => ({
-      percent: Math.min(1, Math.pow(1 / (monsterData[result]._id * data.rebirth.multipliers.monster), 3)),
+      percent: Math.min(1, Math.pow(1 / (monsterData[result]._id * data.rebirth.multipliers.monster), 2.5)),
       result
     }))
   );
@@ -147,7 +147,7 @@ function eventMonsterUnlock(id: "monster_unlock", data: IGameData, _info: Info) 
   }
 
   data.inventory.monsters.push({ id: monsterId, level: 1 });
-  
+
   signals.unlockMonster.dispatch({ data });
 }
 
