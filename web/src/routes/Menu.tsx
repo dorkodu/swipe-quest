@@ -3,15 +3,23 @@ import { Anchor, Button, Card, Flex, Image, Text } from "@mantine/core"
 import DorkoduLogo from "@/assets/dorkodu_logo.svg"
 import { IconTrash } from "@tabler/icons-react"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 function Menu() {
+  const navigate = useNavigate();
   const [confirm, setConfirm] = useState(false);
 
   return (
     <Flex direction="column" align="center" gap="md" mx="md" my={80}>
       <Flex direction="column" align="center" gap="md" w="100%" maw={360}>
         <Button
-          onClick={() => { confirm ? useGameStore.getState().reset() : setConfirm(true) }}
+          onClick={() => {
+            if (confirm) {
+              useGameStore.getState().reset();
+              navigate("/home");
+            }
+            setConfirm(!confirm)
+          }}
           color={confirm ? "red" : undefined}
           variant={confirm ? undefined : "default"}
           leftIcon={<IconTrash />}
