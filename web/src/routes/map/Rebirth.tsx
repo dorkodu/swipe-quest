@@ -117,9 +117,17 @@ function RebirthMultiplier({ multiplier }: { multiplier: keyof IRebirth["multipl
     }
   }
 
-  const percent = util.formatNumber(data.rebirth.multipliers[multiplier] * 100, true);
-  const cost = util.formatNumber(game.util.getRebirthMultiplierCost(data, multiplier), true);
-  const increasePercent = util.formatNumber(constants.REBIRTH_MULTIPLIER_INCREASE * 100)
+  const percent = util.formatNumber(
+    Math.round(data.rebirth.multipliers[multiplier] * 100),
+    true
+  );
+  const cost = util.formatNumber(
+    Math.round(game.util.getRebirthMultiplierCost(data, multiplier)),
+    true
+  );
+  const increasePercent = util.formatNumber(
+    Math.round(constants.REBIRTH_MULTIPLIER_INCREASE * 100)
+  );
 
   return (
     <Card withBorder>

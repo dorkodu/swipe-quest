@@ -28,7 +28,7 @@ export const useGameStore = create(
       }),
       {
         name: "game",
-        version: 1,
+        version: 2,
         migrate(persistedState, version) {
           const state = persistedState as any;
 
@@ -59,6 +59,10 @@ export const useGameStore = create(
                   monster: 1,
                 }
               }
+              break;
+
+            case 1:
+              state.data.rebirth.multipliers.monster += 0.15;
               break;
           }
 
