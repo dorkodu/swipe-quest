@@ -62,7 +62,7 @@ export const useGameStore = create(
               break;
 
             case 1:
-              state.data.rebirth.multipliers.monster += 0.15;
+              //state.data.rebirth.multipliers.monster += 0.15;
               break;
           }
 
