@@ -274,9 +274,13 @@ function applyRewards(data: IGameData, rewards: IRewards) {
 }
 
 function getCampaignLevel(level: number): { monster: IMonster, rewards: IRewards, isBoss: boolean, requiredLevel: number } {
+  const monsters = Object.keys(monsterData) as MonsterId[];
+  const _min = Math.max(Math.floor(level / 10) - 5, 0);
+  const _max = Math.min(Math.floor(level / 10) + 5, monsters.length - 1);
+  const _monsters = monsters.filter(m => monsterData[m]._id >= _min && monsterData[m]._id <= _max);
   const monsterId: MonsterId = random.percent(
     { seed: level },
-    Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+    _monsters.map(result => ({ percent: 1, result: result as MonsterId }))
   ) || "Angel";
 
   const monster: IMonster = { id: monsterId, level }
@@ -303,9 +307,13 @@ function getCampaignLevel(level: number): { monster: IMonster, rewards: IRewards
 }
 
 function getTowerLevel(level: number): { monster: IMonster, rewards: IRewards } {
+  const monsters = Object.keys(monsterData) as MonsterId[];
+  const _min = Math.max(Math.floor(level / 10) - 5, 0);
+  const _max = Math.min(Math.floor(level / 10) + 5, monsters.length - 1);
+  const _monsters = monsters.filter(m => monsterData[m]._id >= _min && monsterData[m]._id <= _max);
   const monsterId: MonsterId = random.percent(
     { seed: -level },
-    Object.keys(monsterData).map(result => ({ percent: 1, result: result as MonsterId }))
+    _monsters.map(result => ({ percent: 1, result: result as MonsterId }))
   ) || "Angel";
 
   const monster: IMonster = { id: monsterId, level }
