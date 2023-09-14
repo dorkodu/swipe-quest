@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { createHashRouter, createRoutesFromElements, Navigate, Route } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from "react-router-dom";
 import App from "../App";
 import CenterLoader from "@/components/loaders/CenterLoader";
 import { wait } from "@/lib/util";
@@ -29,7 +29,7 @@ function Page(Component: React.LazyExoticComponent<React.ComponentType<any>>) {
   )
 }
 
-export const router = createHashRouter(
+export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       {/* Navigate to "/home" on path "/" */}
